@@ -1,0 +1,155 @@
+{
+   "navbar": {
+      "home": "Home",
+      "about": "About",
+      "projects": "Projects",
+      "contact": "Contact",
+      "darkTheme": "Dark Theme",
+      "lightTheme": "Light Theme",
+      "idioms": "Idioms",
+      "themes": "Themes"
+   },
+   "home": {
+      "title1": "Hi,",
+      "title2": "I'm Tulio,",
+      "title3": "web developer."
+   },
+   "about": {
+      "title": "About Me",
+      "description1": "I'm a self-taught developer, that after trying some javascript frameworks and libraries, I fell in love with React, and by extension with one of its most popular frameworks: \"Next.js\", and its easy integration with Tailwind (in my opinion, the best utility-first CSS framework).",
+      "description2": "I'm a well-organized person, problem solver, employee with high attention to detail, I'm always aware of updates to my favorite frameworks and libraries, and enjoy to learn more, either from my peers or by myself.",
+      "mainSkills": "Main Skills",
+      "lesserSkills": "Other Skills"
+   },
+   "projects": {
+      "title": "My Projects",
+      "repository": "Repository",
+      "website": "Website",
+      "languagesUsed": "Lenguages used",
+      "projects": [
+         {
+            "name": "Film Organizer",
+            "description": "Film Organizer it's a full stack MERN web application made with React functional components. The app allows you to create \"Lists\" in which you can save Movies or TV Shows. It also allows manual authentication or using an existing Google account.",
+            "img": "film-organizer.png",
+            "year": "2021",
+            "websiteLink": "https://film-organizer.netlify.app/home",
+            "repositoryLink": "https://github.com/TulioDR/Film-Organizer",
+            "languages": [
+               {
+                  "name": "HTML",
+                  "icon": "html5.png",
+                  "link": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+               },
+               {
+                  "name": "CSS",
+                  "icon": "css.png",
+                  "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+               },
+               {
+                  "name": "Javascript",
+                  "icon": "javascript.png",
+                  "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+               },
+               {
+                  "name": "React",
+                  "icon": "react.png",
+                  "link": "https://reactjs.org/"
+               },
+               {
+                  "name": "React-Router",
+                  "icon": "react-router.png",
+                  "link": "https://reactrouter.com/"
+               },
+               {
+                  "name": "Redux",
+                  "icon": "redux.png",
+                  "link": "https://redux.js.org/"
+               },
+               {
+                  "name": "Tailwind",
+                  "icon": "tailwind.svg",
+                  "link": "https://tailwindcss.com/"
+               },
+               {
+                  "name": "Node js",
+                  "icon": "node.png",
+                  "link": "https://nodejs.org/"
+               },
+               {
+                  "name": "Mongo DB",
+                  "icon": "mongodb.png",
+                  "link": "https://www.mongodb.com/"
+               },
+               {
+                  "name": "Express",
+                  "icon": "express.png",
+                  "link": "https://expressjs.com/"
+               }
+            ]
+         },
+         {
+            "name": "Simple Pokédex",
+            "description": "Simple Pokédex is a plain and simple web application made with the PokéAPI that allows you to find pokemons y see their details. The app has a simple UI to facilitate its usage.",
+            "img": "pokedex.png",
+            "year": "2021",
+            "websiteLink": "https://simple-pokedex-app.netlify.app/pokedex/",
+            "repositoryLink": "https://github.com/TulioDR/Simple-Pokedex",
+            "languages": [
+               {
+                  "name": "HTML",
+                  "icon": "html5.png",
+                  "link": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+               },
+               {
+                  "name": "CSS",
+                  "icon": "css.png",
+                  "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+               },
+               {
+                  "name": "Javascript",
+                  "icon": "javascript.png",
+                  "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+               },
+               {
+                  "name": "React",
+                  "icon": "react.png",
+                  "link": "https://reactjs.org/"
+               },
+               {
+                  "name": "React-Router",
+                  "icon": "react-router.png",
+                  "link": "https://reactrouter.com/"
+               },
+               {
+                  "name": "Tailwind",
+                  "icon": "tailwind.svg",
+                  "link": "https://tailwindcss.com/"
+               }
+            ]
+         }
+      ]
+   },
+   "contact": {
+      "contactMe": "Contact Me",
+      "text": "If you have a request or question, don’t hesitate to use the form or email me at",
+      "yourName": "Your Name *",
+      "yourEmail": "Your Email *",
+      "yourSubject": "Write a Subject",
+      "yourMessage": "Your Message *",
+      "send": "Send",
+      "close": "Close",
+      "successMessage": "Email sent successfully",
+      "errorMessage": "Something went wrong.",
+      "errors": {
+         "noName": "Please write your name",
+         "invalidName": "The name can only contain letters and spaces",
+         "noEmail": "Please write your email",
+         "invalidEmail": "Invalid email",
+         "noMessage": "Please write a message"
+      },
+      "title1": "Let's get",
+      "title2": "to work",
+      "sayHello": "Say Hello at",
+      "checkRepo": "Or check my Repo!"
+   }
+}

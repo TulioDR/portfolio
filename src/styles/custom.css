@@ -1,0 +1,30 @@
+.modal-enter {
+   opacity: 0;
+}
+.modal-enter-active {
+   opacity: 1;
+   transition: opacity 300ms;
+}
+.modal-exit {
+   opacity: 1;
+}
+.modal-exit-active {
+   opacity: 0;
+   transition: opacity 300ms;
+}
+
+body::-webkit-scrollbar {
+   width: 15px;
+}
+
+body::-webkit-scrollbar-track {
+   background-color: #d1d5db;
+}
+
+body::-webkit-scrollbar-thumb {
+   background-color: #2563eb;
+}
+
+.dark body::-webkit-scrollbar-track {
+   background-color: black;
+}
