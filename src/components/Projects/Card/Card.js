@@ -34,7 +34,7 @@ export default function Card({ project }) {
                priority={true}
                src={`/projects/${img}`}
                alt={name}
-               className="object-cover w-full h-full transform duration-500 scale-105 group-hover:scale-100 filter brightness-20"
+               className="object-cover w-full h-full transform duration-500 scale-105 group-hover:scale-100 filter brightness-30"
             />
             <div className="w-full h-full flex flex-col justify-between absolute top-0 px-5 py-8 text-white">
                <div className="flex justify-between items-center">

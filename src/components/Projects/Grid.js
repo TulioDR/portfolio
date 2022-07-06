@@ -7,7 +7,7 @@ export default function Grid() {
    const { projects } = currentIdiom.projects;
    return (
       <Container>
-         <div className="grid md:grid-cols-2 lg:grid-cols-3">
+         <div className="grid md:grid-cols-2 lg:grid-cols-2">
             {projects.map((project, index) => (
                <Card key={index} project={project} />
             ))}
