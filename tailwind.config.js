@@ -27,6 +27,11 @@ module.exports = {
          margin: {
             "-full": "-100%",
          },
+         brightness: {
+            40: 0.4,
+            30: 0.3,
+            20: 0.2,
+         },
          colors: {
             gray: {
                DEFAULT: "#191919",

@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 import Container from "components/Container";
 import SelectViewBtn from "components/Projects/SelectViewBtn";
-import Jumbotron from "components/Projects/Jumbotron";
+// import Jumbotron from "components/Projects/Jumbotron";
 import Grid from "components/Projects/Grid";
 const Carousel = dynamic(() => import("components/Projects/Carousel"), {
    ssr: false,
@@ -38,16 +38,8 @@ export default function Projects() {
                            icon="view_carousel"
                            {...{ view, setView }}
                         />
-                        <div className="hidden lg:block">
-                           <SelectViewBtn
-                              id={2}
-                              icon="view_sidebar"
-                              {...{ view, setView }}
-                              rotate
-                           />
-                        </div>
                         <SelectViewBtn
-                           id={3}
+                           id={2}
                            icon="view_module"
                            {...{ view, setView }}
                         />
@@ -57,8 +49,7 @@ export default function Projects() {
             </div>
 
             {view === 1 && <Carousel />}
-            <div className="hidden lg:block">{view === 2 && <Jumbotron />}</div>
-            {view === 3 && <Grid />}
+            {view === 2 && <Grid />}
          </div>
       </div>
    );

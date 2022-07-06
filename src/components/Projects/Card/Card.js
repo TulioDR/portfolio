@@ -25,10 +25,7 @@ export default function Card({ project }) {
    const { currentIdiom } = useIdiom();
    const { repository, website } = currentIdiom.projects;
    return (
-      <article
-         data-aos="fade-up"
-         className="w-full h-125 2xl:h-150 px-6 sm:px-4"
-      >
+      <article data-aos="fade-up" className="h-125 2xl:h-150 px-6 sm:px-4">
          <div className="relative rounded-md shadow-lg overflow-hidden h-full group">
             <Image
                key={name}
@@ -37,9 +34,9 @@ export default function Card({ project }) {
                priority={true}
                src={`/projects/${img}`}
                alt={name}
-               className="object-cover w-full h-full transform duration-500 scale-105 group-hover:scale-100"
+               className="object-cover w-full h-full transform duration-500 scale-105 group-hover:scale-100 filter brightness-20"
             />
-            <div className="w-full h-full flex flex-col justify-between absolute top-0 bg-gradient-to-t from-black to-transparent bg-black bg-opacity-40 px-5 py-8 text-white">
+            <div className="w-full h-full flex flex-col justify-between absolute top-0 px-5 py-8 text-white">
                <div className="flex justify-between items-center">
                   <div className="font-semibold text-2xl text-white">
                      {year}

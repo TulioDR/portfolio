@@ -11,7 +11,7 @@ export default function CardDescription({ name, description, showLanguages }) {
             <h2 className="text-3xl font-bold">{name}</h2>
             <div className="h-1 w-0 group-hover:w-full bg-blue-500 duration-500 mt-1"></div>
          </div>
-         <p className="opacity-0 group-hover:opacity-100 duration-500 group-hover:delay-700 mt-2">
+         <p className="opacity-0 group-hover:opacity-100 duration-500 group-hover:delay-700 mt-2 text-sm">
             {description}
          </p>
       </div>
