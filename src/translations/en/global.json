@@ -16,8 +16,8 @@
    },
    "about": {
       "title": "About Me",
-      "description1": "I'm a self-taught developer, that after trying some javascript frameworks and libraries, I fell in love with React, and by extension with one of its most popular frameworks: \"Next.js\", and its easy integration with Tailwind (in my opinion, the best utility-first CSS framework).",
-      "description2": "I'm a well-organized person, problem solver, employee with high attention to detail, I'm always aware of updates to my favorite frameworks and libraries, and enjoy to learn more, either from my peers or by myself.",
+      "description1": "I'm a self-taught developer, that after trying some javascript frameworks and libraries, I fell in love with React, and by extension with one of its most popular frameworks: \"Next.js\".",
+      "description2": "I'm a well-organized person, problem solver, employee with high attention to detail and I speak spanish and english. This is more than “just a job” for me. It is a passion that motivates me to learn and improve my skills day by day, either with my team or on my own.",
       "mainSkills": "Main Skills",
       "lesserSkills": "Other Skills"
    },

@@ -16,8 +16,8 @@
    },
    "about": {
       "title": "Sobre Mi",
-      "description1": "Soy un desarrollador web autodidacta, que luego de intentar diferentes frameworks y bibliotecas de javascript terminé enamorándome de React, y por extensión con uno sus frameworks más populares disponibles: \"Next.js\", y de su fácil integración con Tailwind (En mi opinión, el mejor framework de utilildad-primero para css).",
-      "description2": "Soy una persona bien organizada, solucionador de problemas, empleado con gran atención a los detalles, siempre estoy al tanto de las actualizaciones de mis frameworks y bibliotecas favoritas, y disfruto aprender más, ya sea de mis compañeros o por mi cuenta.",
+      "description1": "Soy un desarrollador web autodidacta, que luego de intentar diferentes frameworks y bibliotecas de javascript terminé enamorándome de React, y por extensión con uno sus frameworks más populares disponibles: \"Next.js\".",
+      "description2": "Soy una persona organizada, solucionador de problemas, tengo gran atención a los detalles y hablo inglés y español. Esto es más que un “simple trabajo” para mí. Es una pasión que me motiva a aprender y mejorar mis habilidades día a día, ya sea con mi equipo o por mi cuenta.",
       "mainSkills": "Habilidades Principales",
       "lesserSkills": "Otras Habilidades"
    },

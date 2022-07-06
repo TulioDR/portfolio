@@ -40,11 +40,6 @@ export const mainSkillsArray = [
       link: "https://redux.js.org/",
    },
    {
-      name: "Next",
-      img: "nextjs.png",
-      link: "https://nextjs.org/",
-   },
-   {
       name: "Git",
       img: "git.png",
       link: "https://git-scm.com/",
@@ -52,6 +47,11 @@ export const mainSkillsArray = [
 ];
 
 export const otherSkillsArray = [
+   {
+      name: "Next",
+      img: "nextjs.png",
+      link: "https://nextjs.org/",
+   },
    {
       name: "Mongo DB",
       img: "mongodb.png",
