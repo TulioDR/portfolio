@@ -2,7 +2,7 @@ import { useState } from "react";
 import Tooltip from "./Tooltip";
 import GestureHandler from "@/components/GestureHandler";
 import AnimatedText from "@/components/AnimatedText";
-import { useRouter } from "next/navigation";
+import useIsLoadedContext from "@/context/IsLoadedContext";
 
 type Props = {
    className?: string;
@@ -24,6 +24,8 @@ export default function HomeCard({
    const [restart, setRestart] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
 
+   const { startNavigation } = useIsLoadedContext();
+
    const handleEnter = () => {
       onMouseEnter();
       setRestart((prev) => !prev);
@@ -35,8 +37,10 @@ export default function HomeCard({
       setIsHovered(false);
    };
 
-   const router = useRouter();
-   const handleClick = () => router.push(href);
+   const handleClick = () => {
+      startNavigation(href);
+      // router.push(href);
+   };
 
    return (
       <div
@@ -46,9 +50,10 @@ export default function HomeCard({
          <GestureHandler
             onEnter={handleEnter}
             onLeave={handleLeave}
+            el="button"
             onClick={handleClick}
             style={{ transform: `translateZ(${50}px)` }}
-            className={`w-full h-full rounded-sm flex items-center justify-center pointer-events-auto shadow-lg
+            className={`w-full h-full rounded-sm flex items-center justify-center pointer-events-auto cursor-pointer shadow-lg
                ${isHovered ? "bg-black text-white" : "text-black bg-white"}`}
          >
             <AnimatedText

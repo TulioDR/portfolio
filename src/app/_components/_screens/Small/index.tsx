@@ -1,50 +1,39 @@
-import { motion, MotionValue } from "framer-motion";
-
 import HomeTitleText from "../../HomeTitleText";
 import MyName from "../../MyName";
 import Socials from "@/components/Socials";
 import CircularScreen from "../../CircularScreen";
 
-type Props = {
-   rotateX: MotionValue<number>;
-   rotateY: MotionValue<number>;
-};
+type Props = {};
 
-export default function Small({ rotateX, rotateY }: Props) {
+export default function Small({}: Props) {
    return (
       <div
-         style={{ perspective: 3000 }}
-         className="h-svh w-full bg-text overflow-hidden py-24 px-4 xl:hidden"
+         style={{ transformStyle: "preserve-3d" }}
+         className="h-full w-full flex flex-col py-24 px-4 xl:hidden"
       >
-         <motion.div
-            style={{
-               transformStyle: "preserve-3d",
-               rotateX: rotateX,
-               rotateY: rotateY,
-            }}
-            className="w-full h-full flex flex-col"
+         <div
+            style={{ transformStyle: "preserve-3d" }}
+            className="flex-1 w-full flex items-center justify-center z-50"
          >
-            <div className="flex-1 w-full flex items-center justify-center z-50">
-               <HomeTitleText />
-            </div>
+            <HomeTitleText />
+         </div>
+         <div
+            style={{ transformStyle: "preserve-3d" }}
+            className="flex justify-center"
+         >
             <div
                style={{ transformStyle: "preserve-3d" }}
-               className="flex justify-center"
+               className="w-[75vw] lg:w-[50vw]"
             >
-               <div
-                  style={{ transformStyle: "preserve-3d" }}
-                  className="w-[75vw] lg:w-[50vw]"
-               >
-                  <CircularScreen selectedIcon="home" />
-               </div>
+               <CircularScreen selectedIcon="home" />
             </div>
-            <div className="flex-1 w-full flex items-center justify-center gap-4">
-               <div className="w-min text-center">
-                  <MyName />
-               </div>
-               <Socials tooltipPosition="top" />
+         </div>
+         <div className="flex-1 w-full flex items-center justify-center gap-4">
+            <div className="w-min text-center">
+               <MyName />
             </div>
-         </motion.div>
+            <Socials tooltipPosition="top" />
+         </div>
       </div>
    );
 }

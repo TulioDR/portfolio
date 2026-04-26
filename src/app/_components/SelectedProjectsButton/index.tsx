@@ -64,7 +64,7 @@ export default function SelectedProjectsButton({
             <Swiper
                loop={true}
                autoplay={{ delay: 3000 }}
-               className="h-full! w-full!"
+               className="h-full!"
                modules={[Autoplay]}
             >
                {selectedProjectsArray.map(({ showcaseImg, link }) => (

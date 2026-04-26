@@ -4,6 +4,9 @@ import "./globals.css";
 import "swiper/css";
 import { LanguageContextProvider } from "@/context/LanguageContext";
 import Script from "next/script";
+import Preloader from "@/components/Preloader";
+import { IsLoadedContextProvider } from "@/context/IsLoadedContext";
+import AnimatedLayout from "@/components/AnimatedLayout";
 
 const kodeMono = Kode_Mono({
    subsets: ["latin"],
@@ -29,7 +32,12 @@ export default function RootLayout({
             />
          </head>
          <body className={`${kodeMono.variable} antialiased`}>
-            <LanguageContextProvider>{children}</LanguageContextProvider>
+            <IsLoadedContextProvider>
+               <LanguageContextProvider>
+                  <Preloader />
+                  <AnimatedLayout>{children}</AnimatedLayout>
+               </LanguageContextProvider>
+            </IsLoadedContextProvider>
 
             <Script
                src="https://kit.fontawesome.com/d2dfe56c5c.js"
