@@ -1,0 +1,50 @@
+import { motion, MotionValue } from "framer-motion";
+
+import HomeTitleText from "../../HomeTitleText";
+import MyName from "../../MyName";
+import Socials from "@/components/Socials";
+import CircularScreen from "../../CircularScreen";
+
+type Props = {
+   rotateX: MotionValue<number>;
+   rotateY: MotionValue<number>;
+};
+
+export default function Small({ rotateX, rotateY }: Props) {
+   return (
+      <div
+         style={{ perspective: 3000 }}
+         className="h-svh w-full bg-text overflow-hidden py-24 px-4 xl:hidden"
+      >
+         <motion.div
+            style={{
+               transformStyle: "preserve-3d",
+               rotateX: rotateX,
+               rotateY: rotateY,
+            }}
+            className="w-full h-full flex flex-col"
+         >
+            <div className="flex-1 w-full flex items-center justify-center z-50">
+               <HomeTitleText />
+            </div>
+            <div
+               style={{ transformStyle: "preserve-3d" }}
+               className="flex justify-center"
+            >
+               <div
+                  style={{ transformStyle: "preserve-3d" }}
+                  className="w-[75vw] lg:w-[50vw]"
+               >
+                  <CircularScreen selectedIcon="home" />
+               </div>
+            </div>
+            <div className="flex-1 w-full flex items-center justify-center gap-4">
+               <div className="w-min text-center">
+                  <MyName />
+               </div>
+               <Socials tooltipPosition="top" />
+            </div>
+         </motion.div>
+      </div>
+   );
+}

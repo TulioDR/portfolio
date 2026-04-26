@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+   @apply font-kode-mono text-text bg-primary;
+}
+
+@theme {
+   /* --- Colors --- */
+   --color-primary: #161616;
+   --color-text: #e5e7eb;
+   --color-line: #71717a;
+   --color-accent: #ea580c;
+   --color-light-accent: #fff16a;
+   --color-about: #828282;
+
+   /* This connects the Next.js variable to a Tailwind utility class */
+   --font-kode-mono: var(--font-kode-mono), monospace;
+   /* If you want Kode Mono to be the default font for the whole site: */
+   --font-sans: var(--font-kode-mono), monospace;
+
+   /* v4 automatically generates spacing scales if you use numbers */
+   --spacing-15: 3.75rem;
+   --spacing-30: 7.5rem;
+   --spacing-35: 8.75rem;
+   --spacing-main-spacing: 8rem;
+   --spacing-main-spacing-mobile: 1.5rem;
+
+   /* --- Height --- */
+   --height-main-height: calc(100vh - 16rem);
+   --height-main-height-mobile: calc(100vh - 3rem);
+
+   /* --- Width --- */
+   --width-main-width: calc(100vw - 16rem);
+   --width-main-width-mobile: calc(100vw - 3rem);
 }
