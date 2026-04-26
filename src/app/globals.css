@@ -33,3 +33,11 @@ body {
    --width-main-width: calc(100vw - 16rem);
    --width-main-width-mobile: calc(100vw - 3rem);
 }
+
+/* .swiper {
+   height: 100% !important;
+}
+
+.swiper-wrapper {
+   height: 100% !important;
+} */

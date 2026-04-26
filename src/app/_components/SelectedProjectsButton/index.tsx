@@ -1,5 +1,5 @@
 import projects from "@/data/projects";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GestureHandler from "@/components/GestureHandler";
 import AnimatedText from "@/components/AnimatedText";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -41,8 +41,12 @@ export default function SelectedProjectsButton({
       setIsHovered(false);
    };
 
+   useEffect(() => {
+      console.log(selectedProjectsArray);
+   }, [selectedProjectsArray]);
+
    return (
-      <div className="w-full h-full bg-red-500 rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent p-1 pointer-events-auto">
+      <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent p-1 pointer-events-auto">
          <div className="w-full h-full border-4 border-black rounded-lg overflow-hidden relative">
             {isHovered && <Tooltip number={number} />}
             <GestureHandler
@@ -60,12 +64,12 @@ export default function SelectedProjectsButton({
             <Swiper
                loop={true}
                autoplay={{ delay: 3000 }}
-               className="w-full h-full"
+               className="h-full! w-full!"
                modules={[Autoplay]}
             >
-               {selectedProjectsArray.map(({ showcaseImg, link }, index) => (
-                  <SwiperSlide key={link + index}>
-                     <ProjectSlide src={showcaseImg} />
+               {selectedProjectsArray.map(({ showcaseImg, link }) => (
+                  <SwiperSlide key={link} className="h-full!">
+                     <ProjectSlide src={showcaseImg} alt={link} />
                   </SwiperSlide>
                ))}
             </Swiper>

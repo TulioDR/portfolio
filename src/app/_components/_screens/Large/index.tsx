@@ -19,7 +19,6 @@ export default function Large({
    rotateX,
    rotateY,
 }: Props) {
-   const value = "";
    const [selectedIcon, setSelectedIcon] = useState<IconType>("home");
 
    const transition: Transition = { duration: 1, ease: [0.22, 1, 0.36, 1] };

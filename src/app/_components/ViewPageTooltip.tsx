@@ -1,5 +1,5 @@
 import { AnimatePresence, MotionValue, motion, useSpring } from "framer-motion";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 type Props = {
    showTooltip: boolean;

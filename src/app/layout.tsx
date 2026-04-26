@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kode_Mono } from "next/font/google";
 import "./globals.css";
+import "swiper/css";
 import { LanguageContextProvider } from "@/context/LanguageContext";
 import Script from "next/script";
 

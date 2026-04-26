@@ -37,7 +37,7 @@ export default function HomeLeftSide({ setSelectedIcon }: Props) {
             style={{ transform: `translateZ(${1}px)` }}
             className="w-full flex-1 translate-x-8 relative z-50"
          >
-            <div className="w-[35vw] h-full absolute top-0 left-0">
+            <div className="w-[35vw] h-full absolute top-0 left-0 min-h-0">
                <SelectedProjectsButton
                   number={3}
                   onMouseEnter={() => setSelectedIcon("trophy")}
