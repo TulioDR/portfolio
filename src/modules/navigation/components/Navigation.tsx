@@ -3,14 +3,13 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-// import useDeviceSizeContext from "@/context/useDeviceSizeContext";
-import QuickNavigation from "./QuickNavigation";
 import NavButtons from "./NavButtons";
-import PanelNavigation from "./PanelNavigation";
 import AnimationContainer from "./AnimationContainer";
 import { XL_MEDIA_QUERY } from "@/constants/MEDIA_QUERIES";
 import { useMediaQuery } from "react-responsive";
 import useIsLoadedContext from "@/context/IsLoadedContext";
+import Large from "./_screens/Large";
+import Small from "./_screens/Small";
 
 export default function Navigation() {
    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -28,7 +27,7 @@ export default function Navigation() {
          <AnimatePresence>
             {isMenuOpen && (
                <AnimationContainer>
-                  {isSmall ? <PanelNavigation /> : <QuickNavigation />}
+                  {isSmall ? <Small /> : <Large />}
                </AnimationContainer>
             )}
          </AnimatePresence>

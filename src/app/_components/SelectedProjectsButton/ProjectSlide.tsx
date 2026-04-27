@@ -4,7 +4,7 @@ type Props = { src: StaticImageData; alt: string };
 
 export default function ProjectSlide({ src, alt }: Props) {
    return (
-      <div className="relative w-full h-full bg-red-500">
+      <div className="relative w-full h-full">
          <Image
             src={src}
             alt={alt}

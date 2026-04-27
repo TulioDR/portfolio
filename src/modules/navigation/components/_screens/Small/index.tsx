@@ -3,7 +3,7 @@ import PanelButtons from "./PanelButtons";
 
 type Props = {};
 
-export default function PanelNavigation({}: Props) {
+export default function Small({}: Props) {
    return (
       <div className="w-full h-full relative border-x border-t border-line">
          <div

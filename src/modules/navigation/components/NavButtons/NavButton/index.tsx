@@ -43,7 +43,7 @@ export default function NavButton({
                onClick={onClick}
                onEnter={onHoverStart}
                onLeave={onHoverEnd}
-               className={`h-16 absolute flex items-center pointer-events-auto justify-center aspect-square border border-line z-50 select-none
+               className={`h-16 absolute flex items-center pointer-events-auto cursor-pointer justify-center aspect-square border border-line z-50 select-none
                   ${isHovered ? "bg-white text-black" : "bg-black text-text"}
                   ${topLeft ? "top-0 left-0" : ""}
                   ${topRight ? "top-0 right-0" : ""}

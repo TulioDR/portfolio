@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import useIsLoadedContext from "@/context/IsLoadedContext";
 
 type Props = {
    subpage?: boolean;
@@ -32,27 +32,31 @@ export default function MenuItem({
       else setIsSelected(false);
    }, [pathname]);
 
+   const { startNavigation } = useIsLoadedContext();
+   const handleClick = () => {
+      startNavigation(href);
+   };
+
    return (
-      <Link href={href} scroll={false} className="h-16 w-full z-10">
-         <motion.div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={onMouseLeave}
-            className={`w-full pl-4 h-full flex items-center
+      <motion.div
+         onMouseEnter={handleMouseEnter}
+         onMouseLeave={onMouseLeave}
+         onClick={handleClick}
+         className={`w-full pl-4 h-16 flex items-center z-10
             ${subpage ? "text-text/80" : "text-white"}
             ${isSelected ? "bg-accent" : "hover:bg-text hover:text-black"}
          `}
-         >
-            <AnimatedText
-               initial
-               restart={restart}
-               text={title}
-               className={`uppercase pointer-events-none ${
-                  subpage
-                     ? "text-xs xl:text-sm 2xl:text-base"
-                     : "text-sm xl:text-base 2xl:text-lg"
-               }`}
-            />
-         </motion.div>
-      </Link>
+      >
+         <AnimatedText
+            initial
+            restart={restart}
+            text={title}
+            className={`uppercase pointer-events-none ${
+               subpage
+                  ? "text-xs xl:text-sm 2xl:text-base"
+                  : "text-sm xl:text-base 2xl:text-lg"
+            }`}
+         />
+      </motion.div>
    );
 }

@@ -6,7 +6,7 @@ import NavMenuItems from "./NavMenuItems";
 
 type Props = {};
 
-export default function QuickNavigation({}: Props) {
+export default function Large({}: Props) {
    const { mouseX, mouseY, getMousePosition, mouseContainerRef } =
       useMousePosition();
 
