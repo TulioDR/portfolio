@@ -7,6 +7,7 @@ import Script from "next/script";
 import Preloader from "@/components/Preloader";
 import { IsLoadedContextProvider } from "@/context/IsLoadedContext";
 import AnimatedLayout from "@/components/AnimatedLayout";
+import Navigation from "@/modules/navigation/components/Navigation";
 
 const kodeMono = Kode_Mono({
    subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
          <body className={`${kodeMono.variable} antialiased`}>
             <IsLoadedContextProvider>
                <LanguageContextProvider>
+                  <Navigation />
                   <Preloader />
                   <AnimatedLayout>{children}</AnimatedLayout>
                </LanguageContextProvider>

@@ -1,16 +1,16 @@
-import ProjectModel from "@/models/ProjectModel";
 import nftSiteEnglish from "./translations/english";
 import nftSiteSpanish from "./translations/spanish";
 
-import showcaseImg from "./img/nft-site-showcase.jpg";
+import showcaseImg from "./img/main/nft-site-showcase.jpg";
+import ProjectType from "@/types/ProjectType";
 
-const nftSite: ProjectModel = {
+const nftSite: ProjectType = {
    title: "NFT Site",
    showcaseImg: showcaseImg,
    link: "nft-site",
    website: "#",
    repository: "#",
-   technologies: [],
+   techStack: [],
    isFinished: false,
    translations: {
       english: nftSiteEnglish,

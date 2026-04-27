@@ -1,4 +1,3 @@
-import ProjectModel from "@/models/ProjectModel";
 import dashboard from "./dashboard";
 import filmOrganizer from "./filmOrganizer";
 import oldPortfolio from "./oldPortfolio";
@@ -6,11 +5,12 @@ import pokedex from "./pokedex";
 import nftSite from "./nftSite";
 import neptuneDesigns from "./neptuneDesigns";
 import spaceSite from "./spaceSite";
+import ProjectType from "@/types/ProjectType";
 
 const selectedProjects = [filmOrganizer, pokedex, dashboard];
 export { selectedProjects };
 
-const projects: ProjectModel[] = [
+const projects: ProjectType[] = [
    filmOrganizer,
    pokedex,
    dashboard,

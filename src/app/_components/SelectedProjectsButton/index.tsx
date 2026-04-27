@@ -53,12 +53,13 @@ export default function SelectedProjectsButton({
                onEnter={handleMouseEnter}
                onLeave={handleMouseLeave}
                onClick={handleClick}
-               className="absolute inset-0 bg-black/50 flex items-center pl-8 z-10 hover:bg-black active:bg-black"
+               el="button"
+               className="absolute inset-0 bg-black/50 flex items-center pl-8 z-10 hover:bg-black active:bg-black cursor-pointer"
             >
                <AnimatedText
                   restart={restart}
                   text={selectedProjects}
-                  className="text-4xl text-left xl:text-4xl 2xl:text-5xl font-black uppercase w-min tracking-tighter pointer-events-none text-white"
+                  className="text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-5xl text-left font-black uppercase w-min tracking-tighter pointer-events-none text-white"
                />
             </GestureHandler>
             <Swiper
