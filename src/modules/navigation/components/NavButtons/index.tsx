@@ -2,7 +2,7 @@ import NavButton from "./NavButton";
 import useLanguageContext from "@/context/LanguageContext";
 import { CONTACT_ICON, HOME_ICON } from "@/constants/ICONS";
 import { usePathname } from "next/navigation";
-import useIsLoadedContext from "@/context/IsLoadedContext";
+import usePageTransitionContext from "@/context/PageTransitionContext";
 
 type Props = {
    isMenuOpen: boolean;
@@ -15,7 +15,7 @@ export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
    const isNotHome = pathname !== "/" && pathname !== "/home-test";
    const isNotContact = pathname !== "/contact";
 
-   const { startNavigation } = useIsLoadedContext();
+   const { startNavigation } = usePageTransitionContext();
 
    const { toggleLanguage, language } = useLanguageContext();
 

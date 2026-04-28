@@ -13,7 +13,7 @@ export default function PageTransition({}: Props) {
    };
 
    return (
-      <div className="fixed top-0 left-0 w-screen h-[100svh] overflow-hidden z-40 pointer-events-none">
+      <div className="fixed top-0 left-0 w-screen h-svh overflow-hidden z-40 pointer-events-none">
          <motion.div
             variants={container}
             initial="initial"

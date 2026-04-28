@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import { usePathname } from "next/navigation";
-import useIsLoadedContext from "@/context/IsLoadedContext";
+import usePageTransitionContext from "@/context/PageTransitionContext";
 
 type Props = {
    subpage?: boolean;
@@ -32,7 +32,7 @@ export default function MenuItem({
       else setIsSelected(false);
    }, [pathname]);
 
-   const { startNavigation } = useIsLoadedContext();
+   const { startNavigation } = usePageTransitionContext();
    const handleClick = () => {
       startNavigation(href);
    };

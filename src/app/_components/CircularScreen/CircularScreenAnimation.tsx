@@ -1,4 +1,5 @@
 import { IconType } from "@/app/_types/IconType";
+import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {
@@ -10,10 +11,12 @@ export default function CircularScreenAnimation({
    selectedIcon,
    children,
 }: Props) {
+   const { isLoaded } = usePreloaderContext();
+
    return (
       <motion.div
          initial={{ scale: 0 }}
-         animate={{ scale: 1 }}
+         animate={{ scale: isLoaded ? 1 : 0 }}
          exit={{ scale: 0 }}
          transition={{ duration: 0.1 }}
          style={{ transformStyle: "preserve-3d" }}

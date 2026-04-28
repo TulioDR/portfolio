@@ -1,11 +1,9 @@
-import React from "react";
-
 type Props = {};
 
 export default function InitialLoading({}: Props) {
    return (
-      <div className="fixed top-0 left-0 w-screen h-screen bg-gradient-to-tr from-about to-about/50 z-40 p-12 pb-main-spacing">
-         <div className="w-full h-full border-[24px] border-black rounded-3xl bg-primary"></div>
+      <div className="fixed top-0 left-0 w-screen h-screen bg-linear-to-tr from-about to-about/50 z-40 p-12 pb-main-spacing">
+         <div className="w-full h-full border-24 border-black rounded-3xl bg-primary"></div>
          <div className="absolute bottom-0 left-main-spacing h-main-spacing w-96 pt-8">
             <div className="w-full h-full flex">
                {Array.from({ length: 20 }).map((_, index) => (

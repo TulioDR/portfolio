@@ -2,7 +2,7 @@ import { useState } from "react";
 import Tooltip from "./Tooltip";
 import GestureHandler from "@/components/GestureHandler";
 import AnimatedText from "@/components/AnimatedText";
-import useIsLoadedContext from "@/context/IsLoadedContext";
+import usePageTransitionContext from "@/context/PageTransitionContext";
 
 type Props = {
    className?: string;
@@ -24,7 +24,7 @@ export default function HomeCard({
    const [restart, setRestart] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
 
-   const { startNavigation } = useIsLoadedContext();
+   const { startNavigation } = usePageTransitionContext();
 
    const handleEnter = () => {
       onMouseEnter();

@@ -2,7 +2,7 @@ import { useState } from "react";
 import AnimatedText from "@/components/AnimatedText";
 import Tooltip from "./Tooltip";
 import GestureHandler from "@/components/GestureHandler";
-import useIsLoadedContext from "@/context/IsLoadedContext";
+import usePageTransitionContext from "@/context/PageTransitionContext";
 
 type Props = {
    text: string;
@@ -22,7 +22,7 @@ export default function PanelButton({ text, href, number }: Props) {
    const handleLeave = () => {
       setIsHovered(false);
    };
-   const { startNavigation } = useIsLoadedContext();
+   const { startNavigation } = usePageTransitionContext();
    const handleClick = () => startNavigation(href);
 
    return (

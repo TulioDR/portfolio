@@ -7,15 +7,15 @@ import NavButtons from "./NavButtons";
 import AnimationContainer from "./AnimationContainer";
 import { XL_MEDIA_QUERY } from "@/constants/MEDIA_QUERIES";
 import { useMediaQuery } from "react-responsive";
-import useIsLoadedContext from "@/context/IsLoadedContext";
 import Large from "./_screens/Large";
 import Small from "./_screens/Small";
+import usePageTransitionContext from "@/context/PageTransitionContext";
 
 export default function Navigation() {
    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
    const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-   const { targetRoute } = useIsLoadedContext();
+   const { targetRoute } = usePageTransitionContext();
    useEffect(() => {
       setIsMenuOpen(false);
    }, [targetRoute]);

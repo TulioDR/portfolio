@@ -4,10 +4,11 @@ import "./globals.css";
 import "swiper/css";
 import { LanguageContextProvider } from "@/context/LanguageContext";
 import Script from "next/script";
-import Preloader from "@/components/Preloader";
-import { IsLoadedContextProvider } from "@/context/IsLoadedContext";
 import AnimatedLayout from "@/components/AnimatedLayout";
 import Navigation from "@/modules/navigation/components/Navigation";
+import Preloader from "@/modules/preloader/components/Preloader";
+import { PageTransitionContextProvider } from "@/context/PageTransitionContext";
+import { PreloaderContextProvider } from "@/modules/preloader/context/PreloaderContext";
 
 const kodeMono = Kode_Mono({
    subsets: ["latin"],
@@ -33,13 +34,15 @@ export default function RootLayout({
             />
          </head>
          <body className={`${kodeMono.variable} antialiased`}>
-            <IsLoadedContextProvider>
+            <PreloaderContextProvider>
                <LanguageContextProvider>
-                  <Navigation />
-                  <Preloader />
-                  <AnimatedLayout>{children}</AnimatedLayout>
+                  <PageTransitionContextProvider>
+                     <Navigation />
+                     <Preloader />
+                     <AnimatedLayout>{children}</AnimatedLayout>
+                  </PageTransitionContextProvider>
                </LanguageContextProvider>
-            </IsLoadedContextProvider>
+            </PreloaderContextProvider>
 
             <Script
                src="https://kit.fontawesome.com/d2dfe56c5c.js"

@@ -2,7 +2,6 @@ import { IconType } from "@/app/_types/IconType";
 import { motion } from "framer-motion";
 import CircularScreenIcon from "./CircularScreenIcon";
 import CircularScreenAnimation from "./CircularScreenAnimation";
-
 type Props = {
    selectedIcon: IconType;
 };

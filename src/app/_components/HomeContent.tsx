@@ -1,16 +1,16 @@
 "use client";
 
-import useIsLoadedContext from "@/context/IsLoadedContext";
 import Large from "./../_components/_screens/Large";
 import Small from "./../_components/_screens/Small";
 import useHomeMotion from "./../_hooks/useHomeMotion";
 import { motion, Transition } from "framer-motion";
+import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
 
 export default function HomeContent() {
    const { handleMouseLeave, handleMouseMove, rotateX, rotateY } =
       useHomeMotion();
 
-   const { isLoaded } = useIsLoadedContext();
+   const { isLoaded } = usePreloaderContext();
    const transition: Transition = { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
 
    return (

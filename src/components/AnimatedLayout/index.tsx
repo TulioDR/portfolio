@@ -1,6 +1,6 @@
 "use client";
 
-import useIsLoadedContext from "@/context/IsLoadedContext";
+import usePageTransitionContext from "@/context/PageTransitionContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function AnimatedLayout({ children }: Props) {
-   const { targetRoute, completeNavigation } = useIsLoadedContext();
+   const { targetRoute, completeNavigation } = usePageTransitionContext();
    const pathname = usePathname();
    const isExiting = targetRoute && targetRoute !== pathname;
 
