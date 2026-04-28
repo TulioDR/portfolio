@@ -1,3 +1,4 @@
+import { IconType } from "@/app/_types/IconType";
 import {
    HOME_ICON,
    SKILLS_ICON,
@@ -5,37 +6,52 @@ import {
    CONTACT_ICON,
    PROJECTS_ICON,
    WORK_ICON,
+   SELECTED_PROJECTS_ICON,
 } from "@/constants/ICONS";
 
-export const HOME_ITEM = { name: "Home", link: "/", icon: HOME_ICON };
-export const SKILLS_ITEM = {
+export const HOME_ITEM: NAV_ITEM_TYPE = {
+   name: "Home",
+   link: "/",
+   icon: HOME_ICON,
+};
+export const SKILLS_ITEM: NAV_ITEM_TYPE = {
    name: "Skills",
    link: "/skills",
    icon: SKILLS_ICON,
 };
-export const WORK_ITEM = {
+export const WORK_ITEM: NAV_ITEM_TYPE = {
    name: "Work",
    link: "/work",
    icon: WORK_ICON,
 };
-export const PROJECTS_ITEM = {
+export const PROJECTS_ITEM: NAV_ITEM_TYPE = {
    name: "Projects",
    link: "/projects",
    icon: PROJECTS_ICON,
 };
-export const ABOUT_ITEM = { name: "About", link: "/about", icon: ABOUT_ICON };
-export const CONTACT_ITEM = {
+export const ABOUT_ITEM: NAV_ITEM_TYPE = {
+   name: "About",
+   link: "/about",
+   icon: ABOUT_ICON,
+};
+export const CONTACT_ITEM: NAV_ITEM_TYPE = {
    name: "Contact",
    link: "/contact",
    icon: CONTACT_ICON,
 };
-export const SELECTED_PROJECTS_ITEM = {
+export const SELECTED_PROJECTS_ITEM: NAV_ITEM_TYPE = {
    name: "Selected P.",
    link: "/selected-projects",
-   icon: CONTACT_ICON,
+   icon: SELECTED_PROJECTS_ICON,
 };
 
-const NAV_ITEMS = [
+interface NAV_ITEM_TYPE {
+   name: string;
+   link: string;
+   icon: IconType;
+}
+
+const NAV_ITEMS: NAV_ITEM_TYPE[] = [
    HOME_ITEM,
    SKILLS_ITEM,
    WORK_ITEM,
