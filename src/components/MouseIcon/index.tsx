@@ -1,12 +1,12 @@
 import React from "react";
-import { AnimationControls, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ENTER_EASE } from "@/constants/TRANSITIONS";
 
 interface Props {
-   controls?: AnimationControls;
+   controls?: any;
 }
 export default function MouseIcon({ controls }: Props) {
-   const mouseVariants = {
+   const mouseVariants: any = {
       initial: { y: "-100%" },
       animate: { y: "0%", transition: ENTER_EASE },
    };

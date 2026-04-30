@@ -1,5 +1,5 @@
 import projects from "@/data/projects";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GestureHandler from "@/components/GestureHandler";
 import AnimatedText from "@/components/AnimatedText";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -40,10 +40,6 @@ export default function SelectedProjectsButton({
       onMouseLeave && onMouseLeave();
       setIsHovered(false);
    };
-
-   useEffect(() => {
-      console.log(selectedProjectsArray);
-   }, [selectedProjectsArray]);
 
    return (
       <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent p-1 pointer-events-auto">

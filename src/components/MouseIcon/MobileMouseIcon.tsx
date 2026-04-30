@@ -1,14 +1,12 @@
-import React from "react";
 import MouseIcon from ".";
-import { AnimationControls } from "framer-motion";
-import useDeviceSizeContext from "@/context/useDeviceSizeContext";
 
 type Props = {
-   controls?: AnimationControls;
+   controls?: any;
 };
 
 export default function MobileMouseIcon({ controls }: Props) {
-   const { isMobile } = useDeviceSizeContext();
+   // const { isMobile } = useDeviceSizeContext();
+   const isMobile = false;
 
    if (!isMobile) return <></>;
    return (

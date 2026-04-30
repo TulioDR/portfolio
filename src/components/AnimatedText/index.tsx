@@ -1,5 +1,5 @@
 import { useInView } from "framer-motion";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 // import useLanguageContext from "@/context/LanguageContext";
 import InnerText from "./InnerText";

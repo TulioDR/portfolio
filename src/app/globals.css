@@ -34,10 +34,11 @@ body {
    --width-main-width-mobile: calc(100vw - 3rem);
 }
 
-/* .swiper {
-   height: 100% !important;
+:root::-webkit-scrollbar {
+   display: none;
 }
 
-.swiper-wrapper {
-   height: 100% !important;
-} */
+:root {
+   scrollbar-width: none;
+   -ms-overflow-style: none;
+}

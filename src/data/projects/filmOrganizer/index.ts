@@ -26,7 +26,7 @@ const {
 } = ALL_TECH;
 
 const filmOrganizer: ProjectType = {
-   title: "Film Organizer",
+   title: "Film App",
    showcaseImg: showcaseImg,
    landingImg: landingImg,
    link: "film-organizer",
