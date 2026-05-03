@@ -1,39 +1,47 @@
-"use client";
-
 import { useState } from "react";
-import ProjectsModal from "./ProjectsModal";
-import { AnimatePresence } from "framer-motion";
-import ReactLenis from "lenis/react";
-import ProjectType from "@/types/ProjectType";
-import ProjectsMarks from "./ProjectsMarks";
-import ScrollableContent from "./ScrollableContent";
+import { AnimatePresence, useMotionValue, useSpring } from "framer-motion";
+import { LayoutType } from "@/app/projects/_types/LayoutType";
+import Header from "../../Header";
+import Carousel from "./Layouts/Carousel";
+import Grid from "./Layouts/Grid";
+import LayoutSelector from "./LayoutSelector";
+import List from "./Layouts/List";
 
 type Props = {};
 
 export default function Large({}: Props) {
-   const [selectedP, setSelectedP] = useState<ProjectType | null>(null);
-   const onWheel = () => setSelectedP(null);
+   const [layout, setLayout] = useState<LayoutType>("carousel");
+   const changeLayout = (newLayout: LayoutType) => setLayout(newLayout);
+
+   const [isInitialAnimation, setIsInitialAnimation] = useState(true);
+
+   const currentScroll = useMotionValue(0);
+   const smoothScroll = useSpring(currentScroll, {
+      stiffness: 1000,
+      damping: 50,
+      mass: 0.1,
+   });
 
    return (
-      <ReactLenis
-         options={{ orientation: "horizontal" }}
-         style={{
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-         }}
-         onWheel={onWheel}
-         className="h-svh w-screen overflow-x-auto [&::-webkit-scrollbar]:hidden"
-      >
-         <ProjectsMarks />
-         <ScrollableContent selectedP={selectedP} setSelectedP={setSelectedP} />
-         <AnimatePresence>
-            {selectedP && (
-               <ProjectsModal
-                  selectedProject={selectedP}
-                  setSelectedProject={setSelectedP}
+      <>
+         <LayoutSelector changeLayout={changeLayout} layout={layout} />
+         <Header smoothScroll={smoothScroll} />
+         <AnimatePresence mode="wait">
+            {layout === "carousel" && (
+               <Carousel
+                  key="carousel"
+                  currentScroll={currentScroll}
+                  isInitialAnimation={isInitialAnimation}
+                  setIsInitialAnimation={setIsInitialAnimation}
                />
             )}
+            {layout === "grid" && (
+               <Grid key="grid" currentScroll={currentScroll} />
+            )}
+            {layout === "list" && (
+               <List key="list" currentScroll={currentScroll} />
+            )}
          </AnimatePresence>
-      </ReactLenis>
+      </>
    );
 }

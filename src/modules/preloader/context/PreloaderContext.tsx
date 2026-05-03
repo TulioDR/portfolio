@@ -27,8 +27,10 @@ export function PreloaderContextProvider({ children }: Props) {
    const [isFinished, setIsFinished] = useState(false);
 
    const progress = useSpring(0, {
-      stiffness: 35,
-      damping: 20,
+      stiffness: 1000, // Very high: pulls the value to the target hard
+      damping: 60, // Higher damping to prevent "bouncing" at such high speed
+      mass: 0.5, // Lower mass: makes the object feel lighter and easier to move
+      restDelta: 0.001, // Stops the calculation early so it doesn't "whisper" at the end
    });
 
    useEffect(() => {

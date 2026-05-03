@@ -26,7 +26,7 @@ export default function Preloader() {
          setMessage("welcome");
          setTimeout(() => {
             setIsFinished(true);
-         }, 2000);
+         }, 1000);
       }
    });
 
