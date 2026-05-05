@@ -1,5 +1,4 @@
 import ProjectType from "@/types/ProjectType";
-import CardTitle from "./CardTitle";
 import CardText from "./CardText";
 import CardLine from "./CardLine";
 import CardViewButton from "./CardViewButton";
@@ -18,7 +17,7 @@ export default function ProjectCardBody({ project, initial }: Props) {
    return (
       <div className="flex flex-col gap-8 pt-8">
          <div className="flex justify-between items-stretch w-full gap-4">
-            <CardTitle title={project.title} initial={initial} />
+            <CardText text={project.title} initial={initial} title />
             <CardViewButton onClick={goToProject} />
          </div>
          <CardLine initial={initial} />

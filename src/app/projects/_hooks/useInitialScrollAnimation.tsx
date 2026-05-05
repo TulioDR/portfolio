@@ -30,7 +30,7 @@ export default function useInitialScrollAnimation(isInitialAnimation: boolean) {
          if (!isLoaded) return;
 
          lenis.scrollTo("left", {
-            duration: 1,
+            duration: 1.5,
             lock: true,
             easing: (x) =>
                x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2,

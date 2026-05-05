@@ -5,10 +5,10 @@ type Props = {};
 
 export default function ListHeader({}: Props) {
    return (
-      <div className="h-8 w-full flex items-start px-32 relative text-xs text-text">
-         <ListText text="[PROJECT_NAME]" flex={3} />
-         <ListText text="[SYSTEM_ROLE]" />
-         <ListText text="[CORE_STACK]" />
+      <div className="h-8 w-full flex items-start px-32 relative text-text">
+         <ListText text="[PROJECT_NAME]" flex={3} header />
+         <ListText text="[SYSTEM_ROLE]" header />
+         <ListText text="[CORE_STACK]" header />
          <ListUnderline initial />
       </div>
    );

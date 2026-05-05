@@ -7,8 +7,7 @@ import neptuneDesigns from "./neptuneDesigns";
 import spaceSite from "./spaceSite";
 import ProjectType from "@/types/ProjectType";
 
-const selectedProjects = [filmOrganizer, pokedex, dashboard];
-export { selectedProjects };
+export const selectedProjects = [filmOrganizer, pokedex, dashboard];
 
 const projects: ProjectType[] = [
    filmOrganizer,

@@ -4,6 +4,9 @@ import ListProjectCard from "./ListProjectCard";
 import { MotionValue } from "framer-motion";
 import useProjectsLenisScroll from "@/app/projects/_hooks/useProjectsLenisScroll";
 import ListHeader from "./ListHeader";
+import ProjectsListSlider from "./ProjectsListSlider";
+import { motion } from "framer-motion";
+import useHoverPreview from "@/modules/HoverPreview/hooks/useHoverPreview";
 
 type Props = {
    currentScroll: MotionValue<number>;
@@ -11,15 +14,34 @@ type Props = {
 
 export default function List({ currentScroll }: Props) {
    const { scrollRef } = useProjectsLenisScroll(currentScroll);
+
+   const { getMousePosition, yAxisIndex, changeYAxisIndex, mouseX, mouseY } =
+      useHoverPreview();
+
    return (
       <ProjectsReactLenis scrollRef={scrollRef}>
          <div className="h-screen w-full pointer-events-none"></div>
          <div className="w-full flex flex-col -mt-24 min-h-max px-32 z-10 pb-8">
             <ListHeader />
-            {projects.map((project) => (
-               <ListProjectCard key={project.title} project={project} />
-            ))}
+            <motion.div
+               onMouseMove={getMousePosition}
+               onHoverEnd={() => changeYAxisIndex(null)}
+               className="w-full flex flex-col"
+            >
+               {projects.map((project, index) => (
+                  <ListProjectCard
+                     key={project.title}
+                     project={project}
+                     onHover={() => changeYAxisIndex(index)}
+                  />
+               ))}
+            </motion.div>
          </div>
+         <ProjectsListSlider
+            mouseX={mouseX}
+            mouseY={mouseY}
+            yAxisIndex={yAxisIndex}
+         />
       </ProjectsReactLenis>
    );
 }

@@ -1,38 +1,61 @@
-import SliderContainer from "./SliderContainer";
 import { MotionValue } from "framer-motion";
-import XAxisContainer from "./XAxisContainer";
 import NAV_ITEMS from "@/constants/NAV_ITEMS";
 import projects from "@/data/projects";
-import YAxisContainer from "./YAxisContainer";
-import ProjectSlide from "./ProjectSlide";
+import NavProjectSlide from "./NavProjectSlide";
+import NavItemSlide from "./NavItemSlide";
+import HoverPreview from "@/modules/hoverPreview/components/HoverPreview";
+import SliderContainer from "@/modules/hoverPreview/components/SliderContainer";
 
 type Props = {
    mouseX: MotionValue<number>;
    mouseY: MotionValue<number>;
-   xAxis: number;
-   yAxis: number;
+   xAxisIndex: number | null;
+   yAxisIndex: number | null;
 };
 
-export default function NavMenuSlider({ mouseX, mouseY, xAxis, yAxis }: Props) {
+export default function NavMenuSlider({
+   mouseX,
+   mouseY,
+   xAxisIndex,
+   yAxisIndex,
+}: Props) {
+   const x = `-${(1 / NAV_ITEMS.length) * (xAxisIndex || 0) * 100}%`;
+   const y = `${(1 / projects.length) * (yAxisIndex || 0) * -100}%`;
+
+   const itemsY = `${(yAxisIndex || 0) * -100}%`;
+
    return (
-      <SliderContainer x={mouseX} y={mouseY}>
-         <XAxisContainer xAxis={xAxis} yAxis={yAxis}>
-            {NAV_ITEMS.map((item, index) => (
-               <div
-                  key={index}
-                  className="h-full aspect-square flex items-center justify-center bg-primary"
-               >
-                  <span className="material-symbols-outlined text-text! text-7xl!">
-                     {item.icon}
-                  </span>
-               </div>
+      <HoverPreview
+         bottom
+         isOpen={yAxisIndex !== null && xAxisIndex !== null}
+         mouseX={mouseX}
+         mouseY={mouseY}
+      >
+         <SliderContainer x={x} y={itemsY}>
+            {NAV_ITEMS.map((item) => (
+               <NavItemSlide key={item.name} icon={item.icon} />
             ))}
-         </XAxisContainer>
-         <YAxisContainer yAxis={yAxis}>
-            {projects.map((project, index) => (
-               <ProjectSlide key={index} project={project} />
+         </SliderContainer>
+         <SliderContainer vertical y={y} isSubItem>
+            {projects.map((project) => (
+               <NavProjectSlide key={project.title} project={project} />
             ))}
-         </YAxisContainer>
-      </SliderContainer>
+         </SliderContainer>
+      </HoverPreview>
    );
+
+   // return (
+   //    <SliderContainer smoothX={smoothX} smoothY={smoothY}>
+   //       <XAxisContainer x={x}>
+   //          {NAV_ITEMS.map((item) => (
+   //             <NavItemSlide key={item.name} icon={item.icon} />
+   //          ))}
+   //       </XAxisContainer>
+   //       <YAxisContainer y={y}>
+   //          {projects.map((project) => (
+   //             <NavProjectSlide key={project.title} project={project} />
+   //          ))}
+   //       </YAxisContainer>
+   //    </SliderContainer>
+   // );
 }

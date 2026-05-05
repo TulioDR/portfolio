@@ -6,11 +6,15 @@ import { motion } from "framer-motion";
 
 type Props = {
    project: ProjectType;
+   onHover: () => void;
 };
 
-export default function ListProjectCard({ project }: Props) {
+export default function ListProjectCard({ project, onHover }: Props) {
    const [restart, setRestart] = useState(false);
-   const onHoverStart = () => setRestart((prev) => !prev);
+   const onHoverStart = () => {
+      onHover();
+      setRestart((prev) => !prev);
+   };
 
    const handleClick = () => {};
 

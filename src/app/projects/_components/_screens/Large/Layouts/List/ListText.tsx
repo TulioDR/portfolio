@@ -1,5 +1,4 @@
 import CardText from "@/app/projects/_components/ProjectCardBody/CardText";
-import CardTitle from "@/app/projects/_components/ProjectCardBody/CardTitle";
 
 type Props = {
    text: string;
@@ -21,18 +20,13 @@ export default function ListText({
          style={{ flex: flex }}
          className="overflow-hidden flex justify-start"
       >
-         {title && <CardTitle title={text} initial restart={restart} />}
-         {header && (
-            <CardText
-               text={text}
-               initial
-               className="text-xs"
-               restart={restart}
-            />
-         )}
-         {!title && !header && (
-            <CardText text={text} initial restart={restart} />
-         )}
+         <CardText
+            text={text}
+            initial
+            restart={restart}
+            title={title}
+            header={header}
+         />
       </div>
    );
 }

@@ -6,7 +6,7 @@ type Props = {
    project: ProjectType;
 };
 
-export default function ProjectSlide({ project }: Props) {
+export default function NavProjectSlide({ project }: Props) {
    const { lighterColor } = useExtractColors(project.showcaseImg.src);
    return (
       <div
@@ -15,7 +15,7 @@ export default function ProjectSlide({ project }: Props) {
       >
          <div className="aspect-video w-11/12 relative">
             <Image
-               src={project.showcaseImg}
+               src={project.landingImg || project.showcaseImg}
                alt={project.title}
                fill
                sizes="100%"

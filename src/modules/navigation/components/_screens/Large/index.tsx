@@ -1,42 +1,42 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import useMousePosition from "@/hooks/useMousePosition";
+import { motion } from "framer-motion";
 import NavMenuSlider from "./NavMenuSlider";
 import NavMenuItems from "./NavMenuItems";
+import useHoverPreview from "@/modules/hoverPreview/hooks/useHoverPreview";
 
 type Props = {};
 
 export default function Large({}: Props) {
-   const { mouseX, mouseY, getMousePosition, mouseContainerRef } =
-      useMousePosition();
-
-   const [xAxis, setXAxis] = useState<number | null>(null);
-   const [yAxis, setYAxis] = useState<number | null>(null);
-
-   const isXAxis = xAxis || xAxis === 0;
-   const isYAxis = yAxis || yAxis === 0;
+   const {
+      mouseX,
+      mouseY,
+      getMousePosition,
+      xAxisIndex,
+      yAxisIndex,
+      changeXAxisIndex,
+      changeYAxisIndex,
+   } = useHoverPreview();
 
    return (
       <div className="w-full h-full bg-black/90 backdrop-blur p-8">
-         <div className="w-full flex items-center h-full border-y border-line">
+         <div className="w-full flex pt-8 h-full border-y border-line">
             <div className="h-full w-16 border-x border-line"></div>
             <motion.div
                onMouseMove={getMousePosition}
-               ref={mouseContainerRef}
-               className="flex flex-1 relative px-8"
+               className="flex flex-1 relative px-8 "
             >
-               <AnimatePresence>
-                  {isXAxis && isYAxis && (
-                     <NavMenuSlider
-                        mouseX={mouseX}
-                        mouseY={mouseY}
-                        xAxis={xAxis}
-                        yAxis={yAxis}
-                     />
-                  )}
-               </AnimatePresence>
-               <NavMenuItems setXAxis={setXAxis} setYAxis={setYAxis} />
+               <NavMenuItems
+                  changeXAxisIndex={changeXAxisIndex}
+                  changeYAxisIndex={changeYAxisIndex}
+               />
             </motion.div>
+
+            <NavMenuSlider
+               mouseX={mouseX}
+               mouseY={mouseY}
+               xAxisIndex={xAxisIndex}
+               yAxisIndex={yAxisIndex}
+            />
+
             <div className="h-full w-16 border-x border-line"></div>
          </div>
       </div>
