@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { LayoutType } from "@/app/projects/_types/LayoutType";
 import Header from "../../Header";
@@ -22,10 +22,15 @@ export default function Large({}: Props) {
       mass: 0.1,
    });
 
+   const [showHeader, setShowHeader] = useState(false);
+   useEffect(() => {
+      if (!isInitialAnimation) setShowHeader(true);
+   }, [isInitialAnimation]);
+
    return (
       <>
          <LayoutSelector changeLayout={changeLayout} layout={layout} />
-         <Header smoothScroll={smoothScroll} />
+         <Header showHeader={showHeader} smoothScroll={smoothScroll} />
          <AnimatePresence mode="wait">
             {layout === "carousel" && (
                <Carousel

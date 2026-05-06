@@ -19,7 +19,7 @@ export default function Header({ showHeader = true, smoothScroll }: Props) {
    return (
       <motion.div
          style={{ opacity, scale }}
-         className="w-screen fixed top-0 left-0 h-svh flex items-center justify-center pointer-events-none"
+         className="w-full lg:w-screen lg:fixed top-0 left-0 h-svh  flex items-center justify-center pointer-events-none"
       >
          {showHeader && (
             <div className="relative">

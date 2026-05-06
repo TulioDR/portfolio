@@ -21,7 +21,6 @@ export default function NavMenuSlider({
 }: Props) {
    const x = `-${(1 / NAV_ITEMS.length) * (xAxisIndex || 0) * 100}%`;
    const y = `${(1 / projects.length) * (yAxisIndex || 0) * -100}%`;
-
    const itemsY = `${(yAxisIndex || 0) * -100}%`;
 
    return (

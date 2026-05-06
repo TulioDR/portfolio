@@ -11,7 +11,7 @@ type Props = {
 
 export default function GridProjectCard({ project }: Props) {
    return (
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col overflow-hidden">
          <div className="w-full aspect-square flex justify-center">
             <motion.div
                initial={{ width: 0 }}

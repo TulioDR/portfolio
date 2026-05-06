@@ -18,7 +18,7 @@ export default function ProjectsListSlider({
    const y = `${(1 / projects.length) * -100 * (yAxisIndex || 0)}%`;
    return (
       <HoverPreview
-         isOpen={yAxisIndex !== null}
+         isOpen={yAxisIndex !== null && !!mouseX.get() && !!mouseY.get()}
          mouseX={mouseX}
          mouseY={mouseY}
       >

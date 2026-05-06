@@ -28,9 +28,9 @@ export default function CardText({
                text={text}
                initial={initial}
                className={`uppercase truncate font-thin 
-                  ${title ? "text-3xl 2xl:text-4xl" : ""}
+                  ${title ? " text-base md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl" : ""}
                   ${header ? "text-xs" : ""}
-                  ${!title && !header ? "" : ""}
+                  ${!title && !header ? "text-xs sm:text-sm md:text-base" : ""}
                `}
             />
          </motion.div>

@@ -19,10 +19,7 @@ export default function SliderContainer({
    return (
       <motion.div
          initial={false}
-         animate={{
-            y: y,
-            x: x,
-         }}
+         animate={{ y: y, x: x }}
          transition={NAV_TRANSITION}
          className={`absolute left-0 flex 
             ${vertical ? "flex-col w-full" : "h-full"}

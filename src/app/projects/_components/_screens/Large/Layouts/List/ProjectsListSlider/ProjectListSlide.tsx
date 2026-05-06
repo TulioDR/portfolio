@@ -13,6 +13,7 @@ export default function ProjectListSlide({ project }: Props) {
             src={project.showcaseImg}
             alt={project.title}
             fill
+            sizes="100%"
             className="object-cover w-full h-full brightness-75"
          />
          <FrontImage project={project} />

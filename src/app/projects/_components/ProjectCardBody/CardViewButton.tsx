@@ -38,7 +38,7 @@ export default function CardViewButton({ onClick }: Props) {
          animate={{ scale: 1 }}
          exit={{ scale: 0 }}
          transition={{ duration: PROJECT_ANIMATION_DURATION }}
-         className={`flex items-center justify-center px-8 pointer-events-auto cursor-pointer
+         className={`flex items-center justify-center  px-8 pointer-events-auto cursor-pointer
             ${isHovered ? "bg-accent text-white" : "bg-white text-black"}
          `}
       >

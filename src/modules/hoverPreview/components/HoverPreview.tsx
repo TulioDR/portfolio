@@ -18,7 +18,7 @@ export default function HoverPreview({
 }: Props) {
    return (
       <AnimatePresence>
-         {isOpen && (
+         {isOpen && !!mouseX.get() && !!mouseY.get() && (
             <HoverPreviewContainer
                bottom={bottom}
                mouseX={mouseX}
