@@ -48,7 +48,7 @@ export default function Preloader() {
                {/* Load number */}
                <LoadValue displayValue={displayValue} />
 
-               <div className="flex flex-col gap-8 w-80">
+               <div className="flex flex-col gap-8 w-64 xl:w-80">
                   {/* Progress Bar */}
                   <ProgressBar scaleX={scaleXProgress} />
                   {/* Bottom text */}
