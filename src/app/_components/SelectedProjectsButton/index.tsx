@@ -1,4 +1,3 @@
-import projects from "@/data/projects";
 import { useState } from "react";
 import GestureHandler from "@/components/GestureHandler";
 import AnimatedText from "@/components/AnimatedText";
@@ -8,6 +7,7 @@ import { Autoplay } from "swiper/modules";
 import useLanguageContext from "@/context/LanguageContext";
 import Tooltip from "../_screens/Large/HomeCard/Tooltip";
 import { useRouter } from "next/navigation";
+import { SELECTED_PROJECTS } from "@/data/projects";
 
 type Props = {
    onMouseEnter?: () => void;
@@ -22,7 +22,6 @@ export default function SelectedProjectsButton({
 }: Props) {
    const [restart, setRestart] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
-   const selectedProjectsArray = [projects[0], projects[1], projects[2]];
    const { language } = useLanguageContext();
    const { selectedProjects } = language.home.panel;
    const router = useRouter();
@@ -64,7 +63,7 @@ export default function SelectedProjectsButton({
                className="h-full!"
                modules={[Autoplay]}
             >
-               {selectedProjectsArray.map(({ showcaseImg, link }) => (
+               {SELECTED_PROJECTS.map(({ showcaseImg, link }) => (
                   <SwiperSlide key={link} className="h-full!">
                      <ProjectSlide src={showcaseImg} alt={link} />
                   </SwiperSlide>

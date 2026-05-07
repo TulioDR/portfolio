@@ -8,7 +8,7 @@ import {
    WORK_ICON,
    SELECTED_PROJECTS_ICON,
 } from "@/constants/ICONS";
-import projects, { selectedProjects } from "@/data/projects";
+import PROJECTS, { SELECTED_PROJECTS } from "@/data/projects";
 import ProjectType from "@/types/ProjectType";
 
 export const HOME_ITEM: NAV_ITEM_TYPE = {
@@ -30,7 +30,7 @@ export const PROJECTS_ITEM: NAV_ITEM_TYPE = {
    name: "Projects",
    link: "/projects",
    icon: PROJECTS_ICON,
-   subPages: projects,
+   subPages: PROJECTS,
 };
 export const ABOUT_ITEM: NAV_ITEM_TYPE = {
    name: "About",
@@ -46,7 +46,7 @@ export const SELECTED_PROJECTS_ITEM: NAV_ITEM_TYPE = {
    name: "Selected P.",
    link: "/selected-projects",
    icon: SELECTED_PROJECTS_ICON,
-   subPages: selectedProjects,
+   subPages: SELECTED_PROJECTS,
 };
 
 interface NAV_ITEM_TYPE {

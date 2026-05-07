@@ -31,7 +31,7 @@ export default function Large({}: Props) {
       <>
          <LayoutSelector changeLayout={changeLayout} layout={layout} />
          <Header showHeader={showHeader} smoothScroll={smoothScroll} />
-         <AnimatePresence mode="wait">
+         <AnimatePresence mode="wait" propagate>
             {layout === "carousel" && (
                <Carousel
                   key="carousel"

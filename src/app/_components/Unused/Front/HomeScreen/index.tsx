@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import SkillsPV from "./PagePreview/SkillsPV";
 import ContactPV from "./PagePreview/ContactPV";
