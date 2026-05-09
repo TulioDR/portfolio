@@ -22,6 +22,11 @@ export default function Navigation() {
 
    const isSmall = useMediaQuery({ maxWidth: XL_MEDIA_QUERY });
 
+   const [isSmallPage, setIsSmallPage] = useState<boolean>(false);
+   useEffect(() => {
+      setIsSmallPage(isSmall);
+   }, [isSmall]);
+
    return (
       <>
          <AnimatePresence>
@@ -32,7 +37,7 @@ export default function Navigation() {
             )}
          </AnimatePresence>
          <NavButtons
-            isSmall={isSmall}
+            isSmall={isSmallPage}
             isMenuOpen={isMenuOpen}
             toggleMenu={toggleMenu}
          />

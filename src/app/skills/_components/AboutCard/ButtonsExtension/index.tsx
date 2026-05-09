@@ -1,4 +1,3 @@
-import React from "react";
 import TopLight from "./TopLight";
 import TopButton from "./TopButton";
 

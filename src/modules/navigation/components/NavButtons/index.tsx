@@ -12,7 +12,7 @@ type Props = {
 
 export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
    const pathname = usePathname();
-   const isNotHome = pathname !== "/" && pathname !== "/home-test";
+   const isNotHome = pathname !== "/";
    const isNotContact = pathname !== "/contact";
 
    const { startNavigation } = usePageTransitionContext();
@@ -39,14 +39,12 @@ export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
             <NavButton
                topRight
                icon={isMenuOpen ? "close" : "menu"}
-               show={true}
                onClick={toggleMenu}
                tooltip={isMenuOpen ? close : quickNavigation}
             />
             <NavButton
                bottomRight
                icon={"translate"}
-               show={true}
                onClick={toggleLanguage}
                translate
                tooltip={translate}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 type Props = {
    icon: string;
@@ -17,7 +17,7 @@ export default function TopButton({ icon, onClick }: Props) {
          onMouseDown={handleMouseDown}
          onMouseLeave={handleMouseUp}
          onMouseUp={handleMouseUp}
-         className={`rounded aspect-square h-12 flex items-center justify-center border-black text-black bg-zinc-200 ${
+         className={`rounded aspect-square cursor-pointer h-12 flex items-center justify-center border-black text-black bg-zinc-200 ${
             isDown ? "border-2" : "border"
          }`}
       >

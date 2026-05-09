@@ -11,7 +11,7 @@ type Props = {
    topRight?: true;
    bottomRight?: true;
    bottomLeft?: true;
-   show: boolean;
+   show?: boolean;
    translate?: true;
    tooltip: string;
 };
@@ -23,7 +23,7 @@ export default function NavButton({
    topRight,
    bottomRight,
    bottomLeft,
-   show,
+   show = true,
    translate,
    tooltip,
 }: Props) {
