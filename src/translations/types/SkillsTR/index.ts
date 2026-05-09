@@ -22,10 +22,6 @@ export default interface SkillsTR {
             name: string;
             description: string;
          };
-         targetedSkills: {
-            name: string;
-            description: string;
-         };
       };
    };
    strengths: {

@@ -29,11 +29,6 @@ const skillsTR: SkillsTR = {
             description:
                "Esta sección destaca las tecnologías que actualmente estoy aprendiendo e integrando a mi conjunto de habilidades. Impulsado por una pasión por el crecimiento continuo en el desarrollo de software, estoy explorando y desarrollando activamente mi dominio en estas áreas.",
          },
-         targetedSkills: {
-            name: "Objetivos",
-            description:
-               "Esta sección destaca las habilidades de desarrollo de software que pretendo adquirir e integrar a mi experiencia en el futuro. Comprendiendo que el aprendizaje continuo es primordial en este campo dinámico, estoy investigando y planificando activamente mi ruta de aprendizaje para estas tecnologías. Este enfoque prospectivo subraya mi dedicación a mantenerme relevante y versátil.",
-         },
       },
    },
    strengths: {

@@ -228,13 +228,3 @@ export const ALL_TECH = {
       link: "",
    },
 } satisfies TechRecordType;
-
-export const mainSkills = Object.values(ALL_TECH).filter(
-   (t) => t.category === "main",
-);
-export const secondarySkills = Object.values(ALL_TECH).filter(
-   (t) => t.category === "secondary",
-);
-export const inProgressSkills = Object.values(ALL_TECH).filter(
-   (t) => t.category === "inProgress",
-);

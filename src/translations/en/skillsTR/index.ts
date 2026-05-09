@@ -29,11 +29,6 @@ const skillsTR: SkillsTR = {
             description:
                "This section highlights technologies I am currently engaged in learning and integrating into my skillset. Driven by a passion for continuous growth in software development, I am actively exploring and developing proficiency in these areas.",
          },
-         targetedSkills: {
-            name: "Targeted",
-            description:
-               "This section highlights the software development skills I intend to pursue and integrate into my expertise in the future. Understanding that continuous learning is paramount in this dynamic field, I am actively researching and planning my learning path for these technologies. This forward-thinking approach underscores my dedication to staying relevant and versatile.",
-         },
       },
    },
    strengths: {

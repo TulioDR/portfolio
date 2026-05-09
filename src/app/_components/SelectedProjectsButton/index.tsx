@@ -6,8 +6,8 @@ import ProjectSlide from "./ProjectSlide";
 import { Autoplay } from "swiper/modules";
 import useLanguageContext from "@/context/LanguageContext";
 import Tooltip from "../_screens/Large/HomeCard/Tooltip";
-import { useRouter } from "next/navigation";
 import { SELECTED_PROJECTS } from "@/data/projects";
+import usePageTransitionContext from "@/context/PageTransitionContext";
 
 type Props = {
    onMouseEnter?: () => void;
@@ -24,9 +24,11 @@ export default function SelectedProjectsButton({
    const [isHovered, setIsHovered] = useState(false);
    const { language } = useLanguageContext();
    const { selectedProjects } = language.home.panel;
-   const router = useRouter();
+
+   const { startNavigation } = usePageTransitionContext();
+
    const handleClick = () => {
-      router.push("/selected-projects");
+      startNavigation("/selected-projects");
    };
 
    const handleMouseEnter = () => {
