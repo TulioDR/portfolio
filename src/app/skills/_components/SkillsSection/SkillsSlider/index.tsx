@@ -37,7 +37,7 @@ export default function SkillsSlider({}: Props) {
                SKILL_SLIDES={SKILL_SLIDES}
             />
             <TrianglePagination
-               PAGINATION_LENGTH={SKILL_SLIDES.length}
+               SKILL_SLIDES={SKILL_SLIDES}
                activeIndex={activeIndex}
                isForward={isForward}
             />

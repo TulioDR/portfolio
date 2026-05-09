@@ -51,27 +51,34 @@ export default function Content({}: Props) {
    };
 
    return (
-      <motion.div
-         onPointerMove={handleMouseMove}
-         onPointerLeave={handleMouseLeave}
-         ref={containerRef}
-         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-         className="w-full h-full bg-primary relative overflow-x-auto [&::-webkit-scrollbar]:hidden"
-      >
+      <div className="w-full h-full bg-primary relative overflow-hidden">
          <motion.div
-            ref={sliderRef}
-            style={{ x: smoothMouse }}
-            className="min-w-max h-full flex gap-1 xl:gap-4 p-4"
+            onPointerMove={handleMouseMove}
+            onPointerLeave={handleMouseLeave}
+            ref={containerRef}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            className="w-full h-full overflow-x-auto [&::-webkit-scrollbar]:hidden"
          >
-            {ALL_SKILLS.map((skill) => (
-               <SkillCard key={skill.name} skill={skill} disableHover bigText />
-            ))}
+            <motion.div
+               ref={sliderRef}
+               style={{ x: smoothMouse }}
+               className="min-w-max h-full flex gap-1 xl:gap-4 p-4"
+            >
+               {ALL_SKILLS.map((skill) => (
+                  <SkillCard
+                     key={skill.name}
+                     skill={skill}
+                     disableHover
+                     bigText
+                  />
+               ))}
+            </motion.div>
          </motion.div>
          {isMouse ? (
             <VelocityMeter key="mouse" motionValue={smoothMouse} />
          ) : (
             <VelocityMeter key="scroll" motionValue={smoothScroll} />
          )}
-      </motion.div>
+      </div>
    );
 }
