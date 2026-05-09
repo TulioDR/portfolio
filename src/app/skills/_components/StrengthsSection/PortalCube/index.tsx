@@ -11,25 +11,23 @@ export default function PortalCube({}: Props) {
       language.skills.strengths.strengthScreens.portalCube;
 
    return (
-      <>
-         <DragContextProvider>
-            <div className="order-6 sm:order-4 lg:order-3">
-               <AboutCard
-                  squareScreen
-                  content={<Content />}
-                  title={title1}
-                  text={text1}
-               />
-            </div>
-            <div className="order-7">
-               <AboutCard
-                  squareScreen
-                  content={<Content bottom />}
-                  title={title2}
-                  text={text2}
-               />
-            </div>
-         </DragContextProvider>
-      </>
+      <DragContextProvider>
+         <div className="order-6 sm:order-4 lg:order-3">
+            <AboutCard
+               squareScreen
+               content={<Content />}
+               title={title1}
+               text={text1}
+            />
+         </div>
+         <div className="order-7">
+            <AboutCard
+               squareScreen
+               content={<Content bottom />}
+               title={title2}
+               text={text2}
+            />
+         </div>
+      </DragContextProvider>
    );
 }

@@ -45,7 +45,7 @@ export default function StrengthsSection({}: Props) {
             </div>
          </div>
 
-         <div className="w-full gap-5 grid grid-cols-1 grid-rows-8 sm:grid-cols-2 sm:grid-rows-4 lg:grid-cols-3 lg:grid-rows-3">
+         <div className="w-full gap-5 grid grid-cols-1 grid-rows-7 sm:grid-cols-2 sm:grid-rows-4 lg:grid-cols-3 lg:grid-rows-3">
             <CPU />
             <LearningSpeed />
             <Eyes />

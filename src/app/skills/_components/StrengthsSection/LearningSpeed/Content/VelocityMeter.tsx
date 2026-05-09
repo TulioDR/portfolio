@@ -1,5 +1,5 @@
-import React from "react";
 import { MotionValue, motion, useTransform, useVelocity } from "framer-motion";
+import { useEffect } from "react";
 
 type Props = {
    motionValue: MotionValue<number>;
@@ -11,13 +11,17 @@ export default function VelocityMeter({ motionValue }: Props) {
    const rotate = useTransform(
       velocity,
       [-7000, 0, 7000],
-      ["180deg", "0deg", "180deg"]
+      ["180deg", "0deg", "180deg"],
    );
+
+   useEffect(() => {
+      console.log("rendered");
+   }, []);
 
    const velocityMarks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
    return (
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 sm:w-1/5 aspect-[2/1] overflow-hidden bg-white rounded-t-full">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 sm:w-1/5 aspect-2/1 overflow-hidden bg-white rounded-t-full">
          <div className="w-full h-full flex items-end">
             <motion.div
                style={{ rotate, clipPath: "polygon(0 50%, 100% 100%, 100% 0)" }}
