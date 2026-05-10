@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MotionValue, useInView, useMotionValue } from "framer-motion";
 import Pupil from "./Pupil";
 import useSmoothMotion from "@/hooks/useSmoothMotion";
 
 export default function Content() {
-   // const { isMobile } = useDeviceSizeContext();
    const isMobile = false;
 
    const element = useRef<HTMLDivElement>(null);
@@ -18,42 +17,56 @@ export default function Content() {
    const [isOnLeftSide, setIsOnLeftSide] = useState<boolean>(false);
    const [isOnRightSide, setIsOnRightSide] = useState<boolean>(false);
 
-   const getDistanceFromCenter = (e: React.MouseEvent<HTMLDivElement>) => {
-      const rect = element.current!.getBoundingClientRect();
-      const width = rect.width;
-      const radius = width / 2;
-      const centerX = rect.left + radius;
-      const centerY = rect.top + radius;
-      const x = e.clientX - centerX;
-      const y = e.clientY - centerY;
-      const distance = Math.sqrt(x * x + y * y);
-      const percentage = distance / radius;
-      distanceFromCenter.set(percentage);
-   };
-
    useEffect(() => {
-      const getRotationAngle = (event: MouseEvent) => {
-         if (!isInView) return;
-         const { clientX: x, clientY: y } = event;
-         const { left, width, top, height } =
-            element.current!.getBoundingClientRect();
-         const centerX = left + width / 2;
-         const centerY = top + height / 2;
+      const updateEyePosition = (e: PointerEvent) => {
+         if (!isInView || !element.current) return;
+
+         // Logic: If it's a touch, only move the eyes if the finger is actually on the screen (buttons > 0)
+         // If it's a mouse, it will always track.
+         if (e.pointerType === "touch" && e.buttons === 0) return;
+
+         const { clientX: x, clientY: y } = e;
+         const rect = element.current.getBoundingClientRect();
+         const centerX = rect.left + rect.width / 2;
+         const centerY = rect.top + rect.height / 2;
+         const radius = rect.width / 2;
+
+         // 1. Calculate Rotation
          const angleRad = Math.atan2(y - centerY, x - centerX);
          const angle = (angleRad * 180) / Math.PI;
          rotate.set(angle);
          rotateReverse.set(-angle);
-         if (-90 < angle && angle < 90) {
-            setIsOnRightSide(true);
-            setIsOnLeftSide(false);
-         } else {
-            setIsOnRightSide(false);
-            setIsOnLeftSide(true);
-         }
+
+         // 2. Calculate Distance (How far the pupil moves)
+         const dx = x - centerX;
+         const dy = y - centerY;
+         const distance = Math.sqrt(dx * dx + dy * dy);
+
+         // Clamp to 1 so the pupil doesn't fly out of the head
+         const percentage = Math.min(distance / radius, 1);
+         distanceFromCenter.set(percentage);
+
+         // 3. Side Detection
+         const isRight = -90 < angle && angle < 90;
+         setIsOnRightSide(isRight);
+         setIsOnLeftSide(!isRight);
       };
-      window.addEventListener("mousemove", getRotationAngle);
-      return () => window.removeEventListener("mousemove", getRotationAngle);
-   }, [rotate, rotateReverse, isInView]);
+
+      const handlePointerUp = () => {
+         distanceFromCenter.set(0);
+      };
+
+      // Use pointer events to cover mouse and touch simultaneously
+      window.addEventListener("pointermove", updateEyePosition);
+      window.addEventListener("pointerdown", updateEyePosition);
+      window.addEventListener("pointerup", handlePointerUp);
+
+      return () => {
+         window.removeEventListener("pointermove", updateEyePosition);
+         window.removeEventListener("pointerdown", updateEyePosition);
+         window.removeEventListener("pointerup", handlePointerUp);
+      };
+   }, [isInView, rotate, rotateReverse, distanceFromCenter]);
 
    const onMouseEnter = () => {
       setIsNear(true);
@@ -76,7 +89,6 @@ export default function Content() {
    return (
       <div
          ref={element}
-         onMouseMove={getDistanceFromCenter}
          onMouseEnter={onMouseEnter}
          onMouseLeave={onMouseLeave}
          className="aspect-square flex items-center w-full bg-primary"
