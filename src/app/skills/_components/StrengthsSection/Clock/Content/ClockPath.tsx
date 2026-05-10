@@ -1,12 +1,11 @@
-import React from "react";
-import { AnimationControls, MotionValue, motion } from "framer-motion";
+import { MotionValue, motion } from "framer-motion";
 
 type Props = {
-   animationControls: AnimationControls;
    pathLength: MotionValue<number>;
+   CIRCLE_SCOPE: string;
 };
 
-export default function ClockPath({ animationControls, pathLength }: Props) {
+export default function ClockPath({ pathLength, CIRCLE_SCOPE }: Props) {
    const strokeWidth = 8;
    return (
       <svg
@@ -17,8 +16,7 @@ export default function ClockPath({ animationControls, pathLength }: Props) {
             r="50%"
             cx="50%"
             cy="50%"
-            className="stroke-accent fill-transparent"
-            animate={animationControls}
+            className={`stroke-accent fill-transparent ${CIRCLE_SCOPE}`}
             style={{ pathLength, strokeWidth }}
          />
       </svg>

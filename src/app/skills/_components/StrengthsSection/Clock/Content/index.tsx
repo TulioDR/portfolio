@@ -1,26 +1,24 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
-   useAnimationControls,
    useMotionValue,
    useMotionValueEvent,
    motion,
+   useAnimate,
+   Transition,
 } from "framer-motion";
 import ClockHand from "./ClockHand";
 import HourMark from "./HourMark";
 import ClockV from "./ClockV";
 import ClockPath from "./ClockPath";
 import ClockCenter from "./ClockCenter";
-import GestureHandler from "@/components/GestureHandler";
 
-type Props = {};
-
-export default function Content({}: Props) {
-   const hourHandControl = useAnimationControls();
-   const minuteHandControl = useAnimationControls();
-   const circleControl = useAnimationControls();
+export default function Content() {
+   const CIRCLE_SCOPE = "circle";
+   const HOUR_SCOPE = "hour-hand";
+   const MINUTE_SCOPE = "minute-hand";
 
    const pathLength = useMotionValue(0);
-
+   const [scope, animate] = useAnimate();
    const [showV, setShowV] = useState<boolean>(false);
 
    useMotionValueEvent(pathLength, "change", (current) => {
@@ -40,17 +38,17 @@ export default function Content({}: Props) {
             duration = currentPathLength * MAX_DURATION;
          }
 
-         const transition = { duration, ease };
+         const transition: Transition = { duration, ease };
 
          const rotateHour = isStart ? "360deg" : "0deg";
          const rotateMinutes = isStart ? "4320deg" : "0deg";
-         const pathLengthAnimation = isStart ? 1 : 0;
+         const pathAnimation = isStart ? 1 : 0;
 
-         hourHandControl.start({ rotate: rotateHour, transition });
-         minuteHandControl.start({ rotate: rotateMinutes, transition });
-         circleControl.start({ pathLength: pathLengthAnimation, transition });
+         animate("." + CIRCLE_SCOPE, { pathLength: pathAnimation }, transition);
+         animate("." + HOUR_SCOPE, { rotate: rotateHour }, transition);
+         animate("." + MINUTE_SCOPE, { rotate: rotateMinutes }, transition);
       },
-      [hourHandControl, minuteHandControl, circleControl, pathLength],
+      [pathLength, animate, CIRCLE_SCOPE, HOUR_SCOPE, MINUTE_SCOPE],
    );
 
    const [isHovered, setIsHovered] = useState(false);
@@ -59,19 +57,23 @@ export default function Content({}: Props) {
       else isClockStarting(false);
    }, [isHovered, isClockStarting]);
 
+   const handlePointerEnter = () => {
+      setIsHovered(true);
+   };
+
+   const handlePointerLeave = () => {
+      setIsHovered(false);
+   };
+
    return (
-      <GestureHandler
-         onEnter={() => setIsHovered(true)}
-         onLeave={() => setIsHovered(false)}
-         el="div"
-         className="w-full h-full p-5 bg-white"
+      <motion.div
+         onPointerEnter={handlePointerEnter}
+         onPointerLeave={handlePointerLeave}
+         className="w-full h-full p-4 bg-white"
       >
-         <div className="w-full h-full relative">
+         <div ref={scope} className="w-full h-full relative">
             <ClockV showV={showV} />
-            <ClockPath
-               pathLength={pathLength}
-               animationControls={circleControl}
-            />
+            <ClockPath pathLength={pathLength} CIRCLE_SCOPE={CIRCLE_SCOPE} />
             <motion.div
                animate={{ opacity: showV ? 0 : 1 }}
                className="absolute top-0 left-0 w-full h-full"
@@ -79,11 +81,11 @@ export default function Content({}: Props) {
                {Array.from({ length: 12 }).map((_, index) => (
                   <HourMark key={index} hour={index + 1} />
                ))}
-               <ClockHand animationControls={hourHandControl} />
-               <ClockHand animationControls={minuteHandControl} minute />
+               <ClockHand SCOPE_CLASS={HOUR_SCOPE} />
+               <ClockHand SCOPE_CLASS={MINUTE_SCOPE} minute />
                <ClockCenter />
             </motion.div>
          </div>
-      </GestureHandler>
+      </motion.div>
    );
 }

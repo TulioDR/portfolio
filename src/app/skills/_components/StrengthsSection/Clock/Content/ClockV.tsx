@@ -1,4 +1,3 @@
-import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {
@@ -6,7 +5,7 @@ type Props = {
 };
 
 export default function ClockV({ showV }: Props) {
-   const SHORT_DURATION = 0.2;
+   const SHORT_DURATION = 0.1;
    const LONG_DURATION = SHORT_DURATION * 2;
    return (
       <AnimatePresence>
@@ -17,7 +16,7 @@ export default function ClockV({ showV }: Props) {
                exit={{ opacity: 0 }}
                className="absolute z-40 top-0 left-0 w-full h-full flex items-center justify-center"
             >
-               <div className="relative -rotate-45 aspect-[2/1] -translate-y-1/2 w-1/2">
+               <div className="relative -rotate-45 aspect-2/1 -translate-y-1/2 w-1/2">
                   <motion.div
                      initial={{ height: "0%" }}
                      animate={{ height: "100%" }}
