@@ -3,7 +3,7 @@ import { useState } from "react";
 import Pagination from "./Pagination";
 import Slides from "./Slides";
 import TrianglePagination from "./TrianglePagination";
-import useSkillsSlides from "@/app/skills/hooks/useSkillsSlides";
+import useSkillsSlides from "@/app/skills/_hooks/useSkillsSlides";
 
 type Props = {};
 

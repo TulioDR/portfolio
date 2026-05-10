@@ -52,6 +52,10 @@ export default interface SkillsTR {
          wandReveal: {
             title: string;
             text: string;
+            message1: string;
+            message2: string;
+            message3: string;
+            smallMessage1: string;
          };
          portalCube: {
             title1: string;

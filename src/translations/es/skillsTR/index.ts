@@ -61,6 +61,10 @@ const skillsTR: SkillsTR = {
          wandReveal: {
             title: "Me encanta resolver problemas y crear cosas",
             text: '"Los problemas no son signos de parada, son guías." - Robert H. Schuller',
+            message1: "Crea",
+            message2: "Resuelve",
+            message3: "Adapta",
+            smallMessage1: "Crea, resuelve, adapta.",
          },
          portalCube: {
             title1: "Me gusta pensar...",

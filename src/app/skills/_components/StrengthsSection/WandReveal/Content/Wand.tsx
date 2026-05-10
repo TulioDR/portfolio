@@ -1,4 +1,3 @@
-import React from "react";
 import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
 
 type Props = {
@@ -19,14 +18,14 @@ export default function Wand({ xPercentage, x, y, isOn }: Props) {
    return (
       <motion.div
          style={{ x: "-50%", top: smoothY, left: smoothX, rotateZ }}
-         className="absolute aspect-[1/12] w-12 flex flex-col z-20 rounded-2xl overflow-hidden shadow-lg pointer-events-none"
+         className="absolute aspect-1/12 w-12 flex flex-col z-20 rounded-2xl overflow-hidden shadow-lg pointer-events-none"
       >
          <div
-            className={`w-full h-1/5 duration-500 bg-gradient-to-r from-orange-700 via-accent to-orange-700 ${
+            className={`w-full h-1/5 duration-500 bg-linear-to-r from-orange-700 via-accent to-orange-700 ${
                isOn ? "brightness-100" : "brightness-50"
             }`}
          />
-         <div className="flex-1 w-full bg-gradient-to-r from-gray-500 via-about to-gray-500" />
+         <div className="flex-1 w-full bg-linear-to-r from-gray-500 via-about to-gray-500" />
       </motion.div>
    );
 }

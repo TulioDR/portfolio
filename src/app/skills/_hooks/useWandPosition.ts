@@ -1,10 +1,21 @@
 import { useMotionValue, useMotionValueEvent } from "framer-motion";
-import { useCallback, useEffect } from "react";
-import useMousePosition from "./useMousePosition";
+import { useCallback, useEffect, useRef } from "react";
 
 export default function useWandPosition() {
-   const { mouseX, mouseY, getMousePosition, mouseContainerRef } =
-      useMousePosition();
+   const mouseContainerRef = useRef<HTMLDivElement>(null);
+
+   const mouseX = useMotionValue(0);
+   const mouseY = useMotionValue(0);
+
+   // Get mouse position relative to container
+   const getPointerPosition = (e: React.PointerEvent<HTMLDivElement>) => {
+      if (!mouseContainerRef.current) return;
+      const { left, top } = mouseContainerRef.current.getBoundingClientRect();
+      const x = e.clientX - left;
+      const y = e.clientY - top;
+      mouseX.set(x);
+      mouseY.set(y);
+   };
 
    const wandX = useMotionValue(0);
    const wandY = useMotionValue(0);
@@ -38,7 +49,7 @@ export default function useWandPosition() {
 
    return {
       mouseContainerRef,
-      getMousePosition,
+      getPointerPosition,
       setInitialPosition,
       xPercentage,
       wandX,

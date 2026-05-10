@@ -4,14 +4,14 @@ import { motion, useSpring } from "framer-motion";
 
 import projects from "@/data/projects";
 import Wand from "./Wand";
-import useWandPosition from "@/app/skills/hooks/useWandPosition";
+import useWandPosition from "@/app/skills/_hooks/useWandPosition";
 
 type Props = {};
 
 export default function Content({}: Props) {
    const {
       mouseContainerRef,
-      getMousePosition,
+      getPointerPosition,
       setInitialPosition,
       xPercentage,
       wandX,
@@ -20,51 +20,44 @@ export default function Content({}: Props) {
 
    const smoothOptions = { damping: 20, stiffness: 100, mass: 0.5 };
    const smoothWandX = useSpring(wandX, smoothOptions);
-
    const [isHovered, setIsHovered] = useState(false);
 
-   const handleMouseEnter = () => setIsHovered(true);
-   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-      getMousePosition(e);
+   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+      if (e.pointerType === "mouse") {
+         getPointerPosition(e);
+      } else if (e.buttons > 0) {
+         getPointerPosition(e);
+      }
    };
-   const handleMouseLeave = () => {
+
+   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+      setIsHovered(true);
+      getPointerPosition(e);
+   };
+
+   const handlePointerEnter = (e: React.PointerEvent<HTMLDivElement>) => {
+      if (e.pointerType === "mouse") setIsHovered(true);
+   };
+
+   const handlePointerLeave = () => {
       setIsHovered(false);
       setInitialPosition();
    };
 
-   // const { isMobile } = useDeviceSizeContext();
-   const isMobile = false;
    return (
       <motion.div
          ref={mouseContainerRef}
-         onMouseEnter={handleMouseEnter}
-         onMouseMove={handleMouseMove}
-         onMouseLeave={handleMouseLeave}
-         className="w-full h-full relative flex items-center justify-center px-10 bg-primary"
+         onPointerMove={handlePointerMove}
+         onPointerEnter={handlePointerEnter}
+         onPointerDown={handlePointerDown} // Crucial for "Grab" feel
+         onPointerLeave={handlePointerLeave}
+         onPointerUp={handlePointerLeave} // Reset when finger lifts
+         className="w-full h-full relative flex items-center justify-center px-4 py-4 lg:px-10 bg-primary"
       >
          <Wand isOn={isHovered} xPercentage={xPercentage} x={wandX} y={wandY} />
-         <Card
-            tile1
-            smoothWandX={smoothWandX}
-            src={projects[0].showcaseImg}
-            alt="1"
-         />
-         {!isMobile && (
-            <>
-               <Card
-                  tile2
-                  smoothWandX={smoothWandX}
-                  src={projects[1].showcaseImg}
-                  alt="2"
-               />
-               <Card
-                  tile3
-                  smoothWandX={smoothWandX}
-                  src={projects[2].showcaseImg}
-                  alt="3"
-               />
-            </>
-         )}
+         <Card tile1 smoothWandX={smoothWandX} project={projects[0]} />
+         <Card tile2 smoothWandX={smoothWandX} project={projects[1]} />
+         <Card tile3 smoothWandX={smoothWandX} project={projects[2]} />
       </motion.div>
    );
 }

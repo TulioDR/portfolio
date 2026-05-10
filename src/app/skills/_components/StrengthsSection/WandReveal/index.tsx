@@ -1,4 +1,3 @@
-import React from "react";
 import AboutCard from "../../AboutCard";
 import Content from "./Content";
 import useLanguageContext from "@/context/LanguageContext";

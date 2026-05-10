@@ -1,3 +1,5 @@
+import useLanguageContext from "@/context/LanguageContext";
+import ProjectType from "@/types/ProjectType";
 import {
    MotionValue,
    useMotionValue,
@@ -6,16 +8,15 @@ import {
    useMotionTemplate,
    useTransform,
 } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
-import React, { useRef } from "react";
+import Image from "next/image";
+import { useRef } from "react";
 
 type Props = {
    tile1?: true;
    tile2?: true;
    tile3?: true;
    smoothWandX: MotionValue;
-   alt: string;
-   src: StaticImageData;
+   project: ProjectType;
 };
 
 export default function Card({
@@ -23,8 +24,7 @@ export default function Card({
    tile2,
    tile3,
    smoothWandX,
-   alt,
-   src,
+   project,
 }: Props) {
    const percentage = useMotionValue(0);
 
@@ -42,25 +42,39 @@ export default function Card({
    const blur = useTransform(percentage, [0, 0.8], [10, 0]);
    const filter = useMotionTemplate`blur(${blur}px)`;
 
+   const { language } = useLanguageContext();
+
+   const { message1, message2, message3, smallMessage1 } =
+      language.skills.strengths.strengthScreens.wandReveal;
+
    return (
       <motion.div
          ref={cardRef}
          className={`flex-1 relative aspect-square rounded-3xl overflow-hidden bg-[#353338] 
-            ${tile1 ? "rotate-2 top-0 z-[2]" : ""}
-            ${tile2 ? "-rotate-2 top-4 -ml-5 z-[1]" : ""}
-            ${tile3 ? "rotate-[5deg] top-2 -ml-5" : ""}
+            ${tile1 ? "rotate-2 top-0 z-2 " : ""}
+            ${tile2 ? "-rotate-2 top-4 -ml-5 z-1 hidden lg:block" : ""}
+            ${tile3 ? "rotate-[5deg] top-2 -ml-5 hidden lg:block" : ""}
          `}
       >
          <div className="w-full h-full flex items-center justify-center relative">
-            <span className="text-gray-500 text-2xl font-bold">Image</span>
+            {tile1 && (
+               <span className="text-gray-500 text-base w-min text-center font-bold lg:hidden">
+                  {smallMessage1}
+               </span>
+            )}
+            <span className="text-gray-500 text-2xl font-bold hidden lg:block">
+               {tile1 ? message1 : ""}
+               {tile2 ? message2 : ""}
+               {tile3 ? message3 : ""}
+            </span>
             <motion.div
                style={{ opacity, filter }}
                className="absolute top-0 left-0 w-full h-full z-10"
             >
                <Image
                   priority
-                  alt={alt}
-                  src={src}
+                  alt={project.title}
+                  src={project.showcaseImg}
                   fill
                   sizes="100%"
                   className="object-cover"
