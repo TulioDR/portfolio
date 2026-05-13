@@ -1,5 +1,7 @@
+import AboutPageContent from "./_components/AboutPageContent";
+
 type Props = {};
 
 export default function AboutPage({}: Props) {
-   return <div>page</div>;
+   return <AboutPageContent />;
 }

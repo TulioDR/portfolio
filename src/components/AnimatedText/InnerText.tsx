@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 type Props = {
@@ -27,7 +27,7 @@ export default function InnerText({ text, isInView }: Props) {
                .split("")
                .map((letter, index) => {
                   const randomChar = characters.charAt(
-                     Math.floor(Math.random() * characters.length)
+                     Math.floor(Math.random() * characters.length),
                   );
 
                   if (index <= counter) {
@@ -41,7 +41,7 @@ export default function InnerText({ text, isInView }: Props) {
                      else return "\xa0";
                   }
                })
-               .join("")
+               .join(""),
          );
       }, 10);
       return () => clearInterval(interval);
