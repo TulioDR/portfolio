@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import AnimatedText from "@/components/AnimatedText";
 import { usePathname } from "next/navigation";
-import usePageTransitionContext from "@/context/PageTransitionContext";
+import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 
 type Props = {
    subpage?: boolean;
@@ -32,16 +31,11 @@ export default function MenuItem({
       else setIsSelected(false);
    }, [pathname]);
 
-   const { startNavigation } = usePageTransitionContext();
-   const handleClick = () => {
-      startNavigation(href);
-   };
-
    return (
-      <motion.div
-         onMouseEnter={handleMouseEnter}
-         onMouseLeave={onMouseLeave}
-         onClick={handleClick}
+      <TransitionLink
+         href={href}
+         onPointerEnter={handleMouseEnter}
+         onPointerLeave={onMouseLeave}
          className={`w-full pl-4 h-16 flex items-center z-10
             ${subpage ? "text-text/80" : "text-white"}
             ${isSelected ? "bg-accent" : "hover:bg-text hover:text-black"}
@@ -57,6 +51,6 @@ export default function MenuItem({
                   : "text-sm xl:text-base 2xl:text-lg"
             }`}
          />
-      </motion.div>
+      </TransitionLink>
    );
 }

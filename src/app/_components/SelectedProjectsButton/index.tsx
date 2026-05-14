@@ -1,5 +1,4 @@
 import { useState } from "react";
-import GestureHandler from "@/components/GestureHandler";
 import AnimatedText from "@/components/AnimatedText";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProjectSlide from "./ProjectSlide";
@@ -7,7 +6,7 @@ import { Autoplay } from "swiper/modules";
 import useLanguageContext from "@/context/LanguageContext";
 import Tooltip from "../_screens/Large/HomeCard/Tooltip";
 import { SELECTED_PROJECTS } from "@/data/projects";
-import usePageTransitionContext from "@/context/PageTransitionContext";
+import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 
 type Props = {
    onMouseEnter?: () => void;
@@ -25,19 +24,15 @@ export default function SelectedProjectsButton({
    const { language } = useLanguageContext();
    const { selectedProjects } = language.home.panel;
 
-   const { startNavigation } = usePageTransitionContext();
+   const HREF = "/selected-projects";
 
-   const handleClick = () => {
-      startNavigation("/selected-projects");
-   };
-
-   const handleMouseEnter = () => {
+   const handleEnter = () => {
       onMouseEnter && onMouseEnter();
       setRestart((prev) => !prev);
       setIsHovered(true);
    };
 
-   const handleMouseLeave = () => {
+   const handleLeave = () => {
       onMouseLeave && onMouseLeave();
       setIsHovered(false);
    };
@@ -46,11 +41,10 @@ export default function SelectedProjectsButton({
       <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent p-1 pointer-events-auto">
          <div className="w-full h-full border-4 border-black rounded-lg overflow-hidden relative">
             {isHovered && <Tooltip number={number} />}
-            <GestureHandler
-               onEnter={handleMouseEnter}
-               onLeave={handleMouseLeave}
-               onClick={handleClick}
-               el="button"
+            <TransitionLink
+               href={HREF}
+               onPointerEnter={handleEnter}
+               onPointerLeave={handleLeave}
                className="absolute inset-0 bg-black/50 flex items-center pl-8 z-10 hover:bg-black active:bg-black cursor-pointer"
             >
                <AnimatedText
@@ -58,7 +52,7 @@ export default function SelectedProjectsButton({
                   text={selectedProjects}
                   className="text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-5xl text-left font-black uppercase w-min tracking-tighter pointer-events-none text-white"
                />
-            </GestureHandler>
+            </TransitionLink>
             <Swiper
                loop={true}
                autoplay={{ delay: 3000 }}

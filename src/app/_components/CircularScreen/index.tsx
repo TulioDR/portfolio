@@ -2,9 +2,9 @@ import { IconType } from "@/app/_types/IconType";
 import CircularScreenIcon from "./CircularScreenIcon";
 import CircularScreenAnimation from "./CircularScreenAnimation";
 import { useEffect, useState } from "react";
-import usePageTransitionContext from "@/context/PageTransitionContext";
 import NAV_ITEMS from "@/constants/NAV_ITEMS";
 import { usePathname } from "next/navigation";
+import usePageTransitionContext from "@/modules/pageTransition/context/PageTransitionContext";
 type Props = {
    selectedIcon: IconType;
 };

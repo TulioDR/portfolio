@@ -1,8 +1,8 @@
 "use client";
 
-import usePageTransitionContext from "@/context/PageTransitionContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import usePageTransitionContext from "../../context/PageTransitionContext";
 
 type Props = {
    children: React.ReactNode;

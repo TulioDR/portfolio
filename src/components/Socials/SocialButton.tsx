@@ -1,5 +1,4 @@
 import MainTooltip from "@/components/MainTooltip";
-import GestureHandler from "../GestureHandler";
 import { socialModel } from "@/constants/SOCIALS";
 import { useState } from "react";
 
@@ -34,11 +33,10 @@ export default function SocialButton({
    };
 
    return (
-      <GestureHandler
+      <button
          onClick={handleClick}
-         onEnter={onHoverStart}
-         onLeave={onHoverEnd}
-         el="button"
+         onPointerEnter={onHoverStart}
+         onPointerLeave={onHoverEnd}
          className={`aspect-square h-16 flex items-center justify-center text-3xl relative pointer-events-auto 
             ${
                white
@@ -61,6 +59,6 @@ export default function SocialButton({
             />
          )}
          <i aria-hidden className={`${social.icon}`}></i>
-      </GestureHandler>
+      </button>
    );
 }

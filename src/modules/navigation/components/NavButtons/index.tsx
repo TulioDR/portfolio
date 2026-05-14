@@ -2,7 +2,6 @@ import NavButton from "./NavButton";
 import useLanguageContext from "@/context/LanguageContext";
 import { CONTACT_ICON, HOME_ICON } from "@/constants/ICONS";
 import { usePathname } from "next/navigation";
-import usePageTransitionContext from "@/context/PageTransitionContext";
 
 type Props = {
    isMenuOpen: boolean;
@@ -15,13 +14,7 @@ export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
    const isNotHome = pathname !== "/";
    const isNotContact = pathname !== "/contact";
 
-   const { startNavigation } = usePageTransitionContext();
-
    const { toggleLanguage, language } = useLanguageContext();
-
-   const goToPage = (href: string) => {
-      startNavigation(href);
-   };
 
    const { backHome, quickNavigation, close, contactMe, translate } =
       language.navigation;
@@ -33,8 +26,15 @@ export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
                topLeft
                icon={HOME_ICON}
                show={isNotHome}
-               onClick={() => goToPage("/")}
                tooltip={backHome}
+               href="/"
+            />
+            <NavButton
+               bottomLeft
+               icon={CONTACT_ICON}
+               show={isSmall ? isNotContact : isNotHome && isNotContact}
+               tooltip={contactMe}
+               href="/contact"
             />
             <NavButton
                topRight
@@ -48,13 +48,6 @@ export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
                onClick={toggleLanguage}
                translate
                tooltip={translate}
-            />
-            <NavButton
-               bottomLeft
-               icon={CONTACT_ICON}
-               show={isSmall ? isNotContact : isNotHome && isNotContact}
-               onClick={() => goToPage("/contact")}
-               tooltip={contactMe}
             />
          </div>
       </div>

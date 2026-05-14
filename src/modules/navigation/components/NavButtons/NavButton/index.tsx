@@ -2,11 +2,12 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import TranslateIcon from "./TranslateIcon";
 import MainTooltip from "@/components/MainTooltip";
-import GestureHandler from "@/components/GestureHandler";
+import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
+import NavButtonContainer from "./NavButtonContainer";
 
 type Props = {
    icon: string;
-   onClick: () => void;
+   onClick?: () => void;
    topLeft?: true;
    topRight?: true;
    bottomRight?: true;
@@ -14,6 +15,7 @@ type Props = {
    show?: boolean;
    translate?: true;
    tooltip: string;
+   href?: string;
 };
 
 export default function NavButton({
@@ -26,32 +28,34 @@ export default function NavButton({
    show = true,
    translate,
    tooltip,
+   href,
 }: Props) {
    const [isHovered, setIsHovered] = useState<boolean>(false);
 
-   const onHoverStart = () => setIsHovered(true);
-   const onHoverEnd = () => setIsHovered(false);
+   const className = "relative w-full h-full flex items-center justify-center";
+   const Wrapper = ({ children }: { children: React.ReactNode }) =>
+      href ? (
+         <TransitionLink href={href} className={className}>
+            {children}
+         </TransitionLink>
+      ) : (
+         <button onClick={onClick} className={className}>
+            {children}
+         </button>
+      );
 
    return (
       <AnimatePresence>
          {show && (
-            <GestureHandler
-               initial={{ scale: 0 }}
-               animate={{ scale: 1 }}
-               exit={{ scale: 0 }}
-               transition={{ duration: 0.2 }}
-               onClick={onClick}
-               onEnter={onHoverStart}
-               onLeave={onHoverEnd}
-               className={`h-16 absolute flex items-center pointer-events-auto cursor-pointer justify-center aspect-square border border-line z-50 select-none
-                  ${isHovered ? "bg-white text-black" : "bg-black text-text"}
-                  ${topLeft ? "top-0 left-0" : ""}
-                  ${topRight ? "top-0 right-0" : ""}
-                  ${bottomRight ? "bottom-0 right-0" : ""}
-                  ${bottomLeft ? " bottom-0 left-0" : ""}
-               `}
+            <NavButtonContainer
+               isHovered={isHovered}
+               setIsHovered={setIsHovered}
+               topLeft={topLeft}
+               topRight={topRight}
+               bottomRight={bottomRight}
+               bottomLeft={bottomLeft}
             >
-               <div className="relative w-full h-full flex items-center justify-center">
+               <Wrapper>
                   {isHovered && (
                      <MainTooltip
                         key={tooltip}
@@ -62,8 +66,8 @@ export default function NavButton({
                   )}
                   <span className="material-symbols-outlined">{icon}</span>
                   {translate && <TranslateIcon />}
-               </div>
-            </GestureHandler>
+               </Wrapper>
+            </NavButtonContainer>
          )}
       </AnimatePresence>
    );

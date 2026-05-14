@@ -9,7 +9,7 @@ import { XL_MEDIA_QUERY } from "@/constants/MEDIA_QUERIES";
 import { useMediaQuery } from "react-responsive";
 import Large from "./_screens/Large";
 import Small from "./_screens/Small";
-import usePageTransitionContext from "@/context/PageTransitionContext";
+import usePageTransitionContext from "@/modules/pageTransition/context/PageTransitionContext";
 
 export default function Navigation() {
    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);

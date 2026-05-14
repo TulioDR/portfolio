@@ -27,7 +27,7 @@ export default function Small({}: Props) {
          </div>
          <div
             style={{ transform: `translateZ(${1}px)` }}
-            className="flex-1 w-full flex items-end sm:items-center justify-center gap-4"
+            className="flex-1 w-full flex items-center justify-center gap-4"
          >
             <div className="w-min text-center">
                <MyName />

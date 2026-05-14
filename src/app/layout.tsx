@@ -4,11 +4,11 @@ import "./globals.css";
 import "swiper/css";
 import { LanguageContextProvider } from "@/context/LanguageContext";
 import Script from "next/script";
-import AnimatedLayout from "@/components/AnimatedLayout";
 import Navigation from "@/modules/navigation/components/Navigation";
 import Preloader from "@/modules/preloader/components/Preloader";
-import { PageTransitionContextProvider } from "@/context/PageTransitionContext";
 import { PreloaderContextProvider } from "@/modules/preloader/context/PreloaderContext";
+import { PageTransitionContextProvider } from "@/modules/pageTransition/context/PageTransitionContext";
+import AnimatedLayout from "@/modules/pageTransition/components/AnimatedLayout";
 
 const kodeMono = Kode_Mono({
    subsets: ["latin"],

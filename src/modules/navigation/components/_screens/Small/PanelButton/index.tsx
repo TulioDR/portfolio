@@ -1,8 +1,7 @@
 import { useState } from "react";
 import AnimatedText from "@/components/AnimatedText";
 import Tooltip from "./Tooltip";
-import GestureHandler from "@/components/GestureHandler";
-import usePageTransitionContext from "@/context/PageTransitionContext";
+import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 
 type Props = {
    text: string;
@@ -22,14 +21,12 @@ export default function PanelButton({ text, href, number }: Props) {
    const handleLeave = () => {
       setIsHovered(false);
    };
-   const { startNavigation } = usePageTransitionContext();
-   const handleClick = () => startNavigation(href);
 
    return (
-      <GestureHandler
-         onEnter={handleEnter}
-         onLeave={handleLeave}
-         onClick={handleClick}
+      <TransitionLink
+         href={href}
+         onPointerEnter={handleEnter}
+         onPointerLeave={handleLeave}
          className={`rounded-sm relative py-1 px-2 select-none text-left ${
             isHovered ? "bg-black text-white" : "text-black"
          }`}
@@ -40,6 +37,6 @@ export default function PanelButton({ text, href, number }: Props) {
             text={text}
             className="text-4xl xl:text-5xl 2xl:text-7xl font-black uppercase tracking-tighter pointer-events-none"
          />
-      </GestureHandler>
+      </TransitionLink>
    );
 }

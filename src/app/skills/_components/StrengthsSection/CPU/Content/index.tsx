@@ -1,7 +1,6 @@
 import { useState } from "react";
 import CORE from "./CORE";
 import Cables from "./Cables";
-import GestureHandler from "@/components/GestureHandler";
 
 type Props = {};
 
@@ -12,10 +11,9 @@ export default function Content({}: Props) {
    const onMouseLeave = () => setIsHovered(false);
 
    return (
-      <GestureHandler
-         onEnter={onMouseEnter}
-         onLeave={onMouseLeave}
-         el="div"
+      <div
+         onPointerEnter={onMouseEnter}
+         onPointerLeave={onMouseLeave}
          className="w-full h-full relative bg-slate-800 flex items-center"
       >
          <Cables isHovered={isHovered} />
@@ -25,6 +23,6 @@ export default function Content({}: Props) {
             <Cables vertical reverse isHovered={isHovered} />
          </div>
          <Cables reverse isHovered={isHovered} />
-      </GestureHandler>
+      </div>
    );
 }

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Tooltip from "./Tooltip";
-import GestureHandler from "@/components/GestureHandler";
 import AnimatedText from "@/components/AnimatedText";
-import usePageTransitionContext from "@/context/PageTransitionContext";
+import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 
 type Props = {
    className?: string;
@@ -24,8 +23,6 @@ export default function HomeCard({
    const [restart, setRestart] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
 
-   const { startNavigation } = usePageTransitionContext();
-
    const handleEnter = () => {
       onMouseEnter();
       setRestart((prev) => !prev);
@@ -37,24 +34,19 @@ export default function HomeCard({
       setIsHovered(false);
    };
 
-   const handleClick = () => {
-      startNavigation(href);
-      // router.push(href);
-   };
-
    return (
       <div
          style={{ transformStyle: "preserve-3d" }}
          className={`relative w-full flex-1 ${className}`}
       >
-         <GestureHandler
-            onEnter={handleEnter}
-            onLeave={handleLeave}
-            el="button"
-            onClick={handleClick}
+         <TransitionLink
+            href={href}
+            onPointerEnter={handleEnter}
+            onPointerLeave={handleLeave}
             style={{ transform: `translateZ(${50}px)` }}
-            className={`w-full h-full rounded-sm flex items-center justify-center pointer-events-auto cursor-pointer shadow-lg
-               ${isHovered ? "bg-black text-white" : "text-black bg-white"}`}
+            className={`w-full h-full rounded-sm flex items-center justify-center pointer-events-auto shadow-lg
+               ${isHovered ? "bg-black text-white" : "text-black bg-white"}
+            `}
          >
             <AnimatedText
                restart={restart}
@@ -62,7 +54,7 @@ export default function HomeCard({
                className="text-4xl xl:text-4xl 2xl:text-5xl font-black uppercase tracking-tighter pointer-events-none"
             />
             {isHovered && <Tooltip number={number} />}
-         </GestureHandler>
+         </TransitionLink>
          <div className="absolute inset-0 bg-white rounded-sm opacity-60" />
       </div>
    );
