@@ -6,6 +6,7 @@ import { PROJECT_ANIMATION_DURATION } from "@/app/projects/_constants/DURATIONS"
 import ProjectCardBody from "@/app/projects/_components/ProjectCardBody";
 import useProjectTooltip from "@/app/projects/_hooks/useProjectTooltip";
 import ProjectTooltip from "@/app/projects/_components/ProjectTooltip";
+import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 
 type Props = {
    project: ProjectType;
@@ -16,7 +17,8 @@ export default function GridProjectCard({ project }: Props) {
       useProjectTooltip();
 
    return (
-      <div
+      <TransitionLink
+         href={`/projects/${project.link}`}
          onPointerMove={getMousePosition}
          onPointerLeave={endHover}
          className="w-full flex flex-col overflow-hidden"
@@ -35,12 +37,12 @@ export default function GridProjectCard({ project }: Props) {
                className="h-full aspect-square flex justify-center overflow-hidden"
             >
                <div className="h-full aspect-square relative shrink-0 border border-line overflow-hidden">
-                  <BackImage project={project} />
-                  <FrontImage project={project} />
+                  <BackImage project={project} isHovered={isHovered} />
+                  <FrontImage project={project} isHovered={isHovered} />
                </div>
             </motion.div>
          </div>
          <ProjectCardBody project={project} />
-      </div>
+      </TransitionLink>
    );
 }

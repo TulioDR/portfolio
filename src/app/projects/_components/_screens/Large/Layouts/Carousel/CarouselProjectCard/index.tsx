@@ -30,8 +30,9 @@ export default function CarouselProjectCard({
             onClick={handleClick}
             isSelected={isSelected}
          >
-            <BackImage project={project} />
+            <BackImage project={project} isSelected={isSelected} />
             <FrontImage
+               isSelected={isSelected}
                project={project}
                hoveredTitle={hoveredTitle}
                setHoveredTitle={setHoveredTitle}
