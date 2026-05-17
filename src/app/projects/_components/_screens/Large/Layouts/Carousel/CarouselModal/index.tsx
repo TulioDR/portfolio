@@ -6,6 +6,9 @@ import projects from "@/data/projects";
 import NavigationButton from "./NavigationButton";
 import ProjectType from "@/types/ProjectType";
 import ProjectCardBody from "@/app/projects/_components/ProjectCardBody";
+import ProjectTooltip from "@/app/projects/_components/ProjectTooltip";
+import useProjectTooltip from "@/app/projects/_hooks/useProjectTooltip";
+import { motion } from "framer-motion";
 
 type Props = {
    selectedProject: ProjectType;
@@ -38,22 +41,28 @@ export default function CarouselModal({
       setSelectedProject(projects[currentIndex + 1]);
    };
 
-   const [showPanel, setShowPanel] = useState<boolean>(false);
-   useEffect(() => {
-      const timer = setTimeout(() => setShowPanel(true), 500);
-      return () => clearTimeout(timer);
-   }, []);
+   const { getMousePosition, mouseX, mouseY, endHover, isHovered } =
+      useProjectTooltip();
 
-   if (!showPanel) return <></>;
    return (
-      <div className="fixed z-20 top-0 left-0 w-screen h-screen text-white pointer-events-none flex items-center overflow-hidden">
+      <div className="fixed z-20 top-0 left-0 w-screen h-screen text-white flex items-center overflow-hidden">
          <div className="flex h-[50svh] w-full">
             <NavigationButton left onClick={goPrev} disabled={isFirst} />
-            <div className="aspect-video h-full shrink-0 relative">
+            <motion.div
+               onPointerMove={getMousePosition}
+               onPointerLeave={endHover}
+               exit={{ pointerEvents: "none" }}
+               className="aspect-video h-full shrink-0 relative"
+            >
+               <ProjectTooltip
+                  showTooltip={isHovered}
+                  mouseX={mouseX}
+                  mouseY={mouseY}
+               />
                <div className="absolute top-full left-0 w-full">
                   <ProjectCardBody project={selectedProject} initial />
                </div>
-            </div>
+            </motion.div>
             <NavigationButton onClick={goNext} disabled={isLast} />
          </div>
          <ScrollAdvice />

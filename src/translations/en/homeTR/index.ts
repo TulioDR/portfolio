@@ -3,6 +3,7 @@ import HomeTR from "../../types/HomeTR";
 const homeTR: HomeTR = {
    title: "Portfolio",
    page: "Page",
+   recommended: "Recommended",
    preview: {
       skills: "Skills",
       strengths: "Strengths",

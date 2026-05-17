@@ -38,14 +38,14 @@ export default function SelectedProjectsButton({
    };
 
    return (
-      <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent p-1 pointer-events-auto">
-         <div className="w-full h-full border-4 border-black rounded-lg overflow-hidden relative">
+      <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent lg:p-1 pointer-events-auto">
+         <div className="w-full h-full border lg:border-4 border-white lg:border-black rounded lg:rounded-lg overflow-hidden relative">
             {isHovered && <Tooltip number={number} />}
             <TransitionLink
                href={HREF}
                onPointerEnter={handleEnter}
                onPointerLeave={handleLeave}
-               className="absolute inset-0 bg-black/50 flex items-center pl-8 z-10 hover:bg-black active:bg-black cursor-pointer"
+               className="absolute inset-0 bg-black/50 flex items-center pl-2 lg:pl-8 z-10 hover:bg-black active:bg-black cursor-pointer"
             >
                <AnimatedText
                   restart={restart}

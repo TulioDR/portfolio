@@ -4,15 +4,18 @@ import Image, { StaticImageData } from "next/image";
 type Props = {
    src: StaticImageData;
    alt: string;
-   isHovered: boolean;
+   isOpen: boolean;
 };
 
-export default function PanelBackImg({ src, alt, isHovered }: Props) {
+export default function PanelBackImg({ src, alt, isOpen }: Props) {
    return (
       <motion.div
          initial={false}
-         animate={{ scale: isHovered ? 1 : 1.5 }}
-         transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+         animate={{ scale: isOpen ? 1 : 1.5 }}
+         transition={{
+            duration: isOpen ? 1.5 : 0.2,
+            ease: [0.22, 1, 0.36, 1],
+         }}
          className="w-full h-full relative"
       >
          <Image

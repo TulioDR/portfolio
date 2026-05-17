@@ -18,11 +18,11 @@ export default function Large({}: Props) {
 
    return (
       <div className="w-full h-full bg-black/90 backdrop-blur p-8">
-         <div className="w-full flex pt-8 h-full border-y border-line">
+         <div className="w-full h-full flex border-y border-line">
             <div className="h-full w-16 border-x border-line"></div>
             <motion.div
                onMouseMove={getMousePosition}
-               className="flex flex-1 relative px-8 "
+               className="flex flex-1 relative px-8 pt-8"
             >
                <NavMenuItems
                   changeXAxisIndex={changeXAxisIndex}

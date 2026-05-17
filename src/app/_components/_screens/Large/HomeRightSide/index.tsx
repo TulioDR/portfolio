@@ -1,6 +1,5 @@
 import React from "react";
-import HomeCard from "../HomeCard/HomeCard";
-// import useLanguageContext from "@/context/LanguageContext";
+import HomeCard from "../HomeCard";
 import HomeNameAndSocials from "./HomeNameAndSocials";
 import { IconType } from "@/app/_types/IconType";
 import useLanguageContext from "@/context/LanguageContext";
@@ -27,6 +26,7 @@ export default function HomeRightSide({ setSelectedIcon }: Props) {
             number={4}
          />
          <HomeCard
+            recommended
             onMouseEnter={() => setSelectedIcon("stacks")}
             onMouseLeave={() => setSelectedIcon("home")}
             href="/projects"

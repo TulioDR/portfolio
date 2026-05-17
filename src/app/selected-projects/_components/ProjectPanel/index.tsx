@@ -1,64 +1,140 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
 import ProjectType from "@/types/ProjectType";
 import ProjectCardBody from "@/app/projects/_components/ProjectCardBody";
 import PanelBackImg from "./PanelBackImg";
-import PanelTitle from "./PanelTitle";
-import PanelBackground from "./PanelBackground";
-import PanelTop from "./PanelTop";
+import AnimatedText from "@/components/AnimatedText";
+import useProjectTooltip from "@/app/projects/_hooks/useProjectTooltip";
+import ProjectTooltip from "@/app/projects/_components/ProjectTooltip";
 
 type Props = {
    project: ProjectType;
-   isOpen: boolean;
-   openProject: () => void;
-   closeProject: () => void;
-   number: number;
+   topLeft?: true;
+   topRight?: true;
+   bottomLeft?: true;
+   bottomRight?: true;
 };
 
 export default function ProjectPanel({
    project,
-   openProject,
-   closeProject,
-   isOpen,
-   number,
+   topLeft,
+   topRight,
+   bottomLeft,
+   bottomRight,
 }: Props) {
+   const [isOpen, setIsOpen] = useState(false);
    const [showContent, setShowContent] = useState(false);
+   const [showTitle, setShowTitle] = useState(false);
+
+   const openProject = () => setIsOpen((prev) => !prev);
+
+   const [scope, animate] = useAnimate();
+
+   const ASPECT_RATIO = 16 / 9;
+   const INITIAL_HEIGHT = 12;
+   const INITIAL_WIDTH = INITIAL_HEIGHT * ASPECT_RATIO;
 
    useEffect(() => {
-      if (!isOpen) setShowContent(false);
-   }, [isOpen]);
+      let initialAnimation = null;
 
-   const onAnimationComplete = () => {
-      if (isOpen) setShowContent(true);
-   };
+      if (topLeft) initialAnimation = { top: 0, left: 0 };
+      if (topRight) initialAnimation = { top: 0, right: 0 };
+      if (bottomLeft) initialAnimation = { bottom: 0, left: 0 };
+      if (bottomRight) initialAnimation = { bottom: 0, right: 0 };
 
+      let finalAnimation = null;
+      if (topLeft) finalAnimation = { top: 32, left: 128 };
+      if (topRight) finalAnimation = { top: 32, right: 128 };
+      if (bottomLeft) finalAnimation = { bottom: 32, left: 128 };
+      if (bottomRight) finalAnimation = { bottom: 32, right: 128 };
+
+      const DURATION = 0.5;
+
+      const animations = async () => {
+         if (isOpen) {
+            await animate(
+               scope.current,
+               {
+                  height: "100%",
+                  width: "100%",
+                  zIndex: 10,
+                  ...initialAnimation,
+               },
+               { duration: DURATION, ease: [0.22, 1, 0.36, 1] },
+            );
+            setShowContent(true);
+         } else {
+            setShowContent(false);
+            await animate(
+               scope.current,
+               {
+                  height: `${INITIAL_HEIGHT}rem`,
+                  width: `${INITIAL_WIDTH}rem`,
+                  ...finalAnimation,
+               },
+               { duration: DURATION, ease: [0.22, 1, 0.36, 1] },
+            );
+            animate(scope.current, { zIndex: 0 });
+         }
+      };
+      animations();
+   }, [isOpen, INITIAL_HEIGHT, INITIAL_WIDTH]);
+
+   const { getMousePosition, mouseX, mouseY, endHover, isHovered } =
+      useProjectTooltip();
    return (
-      <motion.div
-         onHoverStart={openProject}
-         onHoverEnd={closeProject}
-         onClick={openProject}
-         animate={{ flex: isOpen ? 3 : 1 }}
-         transition={{ duration: 0.2 }}
-         onAnimationComplete={onAnimationComplete}
-         className="flex h-full relative overflow-hidden"
-      >
-         <PanelBackground isHovered={isOpen} />
+      <motion.div ref={scope} onClick={openProject} className={`absolute`}>
+         <div
+            onPointerEnter={() => setShowTitle(true)}
+            onPointerLeave={() => setShowTitle(false)}
+            className={`w-full h-full overflow-hidden border border-line bg-black relative
+               ${isOpen ? "" : "hover:border-white active:border-white"}
+            `}
+         >
+            {showContent && (
+               <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute z-20 inset-0 flex justify-center items-center"
+               >
+                  <div
+                     onPointerMove={getMousePosition}
+                     onPointerLeave={endHover}
+                     className="h-[50vh] aspect-video relative"
+                  >
+                     <PanelBackImg
+                        src={project.landingImg || project.showcaseImg}
+                        alt={project.link}
+                        isOpen={true}
+                     />
+                     <ProjectTooltip
+                        showTooltip={isHovered}
+                        mouseX={mouseX}
+                        mouseY={mouseY}
+                     />
+                     <div className="absolute top-full w-full left-0">
+                        <ProjectCardBody initial project={project} whiteLine />
+                     </div>
+                  </div>
+               </motion.div>
+            )}
 
-         <PanelTop number={number} isOpen={isOpen} />
+            <div
+               className={`z-10 absolute inset-0 bg-black/70 duration-200 ${isOpen ? "opacity-100" : "opacity-0"}`}
+            />
 
-         {showContent && (
-            <motion.div className="absolute inset-0 flex items-end p-4 lg:p-8 z-10">
-               <ProjectCardBody initial project={project} />
-            </motion.div>
+            <PanelBackImg
+               src={project.showcaseImg}
+               alt={project.link}
+               isOpen={isOpen}
+            />
+         </div>
+         {showTitle && !isOpen && (
+            <div className="absolute top-full left-0 w-full text-center">
+               <AnimatedText initial text={project.title} />
+            </div>
          )}
-
-         <PanelTitle isHovered={isOpen} title={project.title} />
-
-         <PanelBackImg
-            src={project.showcaseImg}
-            alt={project.link}
-            isHovered={isOpen}
-         />
       </motion.div>
    );
 }

@@ -1,44 +1,43 @@
 "use client";
 
 import { SELECTED_PROJECTS } from "@/data/projects";
-import ProjectPanel from "./ProjectPanel";
+import PageTitle from "@/components/PageTitle";
+import useLanguageContext from "@/context/LanguageContext";
+import PageDescription from "@/components/PageDescription";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import ProjectSelector from "./ProjectSelector";
+import SelectedProject from "./SelectedProject";
 
 type Props = {};
 
 export default function SelectedProjectsContent({}: Props) {
-   const [openedProject, setOpenedProject] = useState<number | null>(null);
+   const { language } = useLanguageContext();
+   const { title, description } = language.selectedProjects;
+
+   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
    return (
-      <div className="w-screen h-svh py-24 lg:py-32 px-4 lg:px-8 flex items-center justify-center">
-         <div className="overflow-hidden w-full h-full">
-            <motion.div
-               initial={{ x: "100%" }}
-               animate={{ x: "0%" }}
-               exit={{ x: "100%" }}
-               transition={{ duration: 0.4 }}
-               className="w-full h-full overflow-hidden"
-            >
-               <motion.div
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "0%" }}
-                  exit={{ x: "-100%" }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full h-full bg-line p-px flex flex-col lg:flex-row gap-px overflow-hidden"
-               >
-                  {SELECTED_PROJECTS.map((project, index) => (
-                     <ProjectPanel
-                        project={project}
-                        key={project.link}
-                        isOpen={openedProject === index}
-                        number={index + 1}
-                        openProject={() => setOpenedProject(index)}
-                        closeProject={() => setOpenedProject(null)}
-                     />
-                  ))}
-               </motion.div>
-            </motion.div>
+      <div className="w-full h-svh flex items-center justify-center overflow-hidden">
+         <div className="flex-2 h-full flex flex-col justify-center items-center relative">
+            <PageTitle title={title} className="w-min" />
+            <div className="lg:w-96">
+               <PageDescription text={description} />
+            </div>
+            <div className="absolute bottom-8 w-full h-32 flex justify-center gap-1">
+               {SELECTED_PROJECTS.map((project, index) => (
+                  <ProjectSelector
+                     key={project.title}
+                     project={project}
+                     onPointerEnter={() => setCurrentIndex(index)}
+                     isSelected={index === currentIndex}
+                  />
+               ))}
+            </div>
+         </div>
+         <div className="flex-1 h-full">
+            <div className="w-full h-full pr-8 flex items-center justify-center">
+               <SelectedProject currentIndex={currentIndex} />
+            </div>
          </div>
       </div>
    );

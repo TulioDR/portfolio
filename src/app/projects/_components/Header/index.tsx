@@ -3,8 +3,8 @@ import MouseIcon from "@/components/MouseIcon";
 import useLanguageContext from "@/context/LanguageContext";
 import MobileMouseIcon from "@/components/MouseIcon/MobileMouseIcon";
 import { MotionValue, motion, useTransform } from "framer-motion";
-import AnimatedText from "@/components/AnimatedText";
 import { PROJECT_ANIMATION_DURATION } from "../../_constants/DURATIONS";
+import PageDescription from "@/components/PageDescription";
 
 type Props = {
    showHeader?: boolean;
@@ -27,14 +27,12 @@ export default function Header({ showHeader = true, smoothScroll }: Props) {
             <motion.div
                exit={{ opacity: 0, scale: 0.8 }}
                transition={{ duration: PROJECT_ANIMATION_DURATION }}
-               className="relative flex flex-col items-center gap-2 lg:gap-4"
+               className="relative flex flex-col items-center"
             >
                <PageTitle title={title} />
-               <AnimatedText
-                  initial
-                  text={description}
-                  className="text-center text-xs sm:txt-sm px-4 sm:px-16 md:px-32 lg:px-0 w-145"
-               />
+               <div className="px-4 sm:px-16 md:px-32 lg:px-0 w-full lg:w-145">
+                  <PageDescription text={description} />
+               </div>
                <div className="absolute top-full left-0 flex justify-center w-full translate-y-4">
                   <MouseIcon />
                </div>

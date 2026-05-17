@@ -6,7 +6,8 @@ import useProjectsLenisScroll from "@/app/projects/_hooks/useProjectsLenisScroll
 import ListHeader from "./ListHeader";
 import ProjectsListSlider from "./ProjectsListSlider";
 import { motion } from "framer-motion";
-import useHoverPreview from "@/modules/HoverPreview/hooks/useHoverPreview";
+import useHoverPreview from "@/modules/hoverPreview/hooks/useHoverPreview";
+import ProjectTooltip from "@/app/projects/_components/ProjectTooltip";
 
 type Props = {
    currentScroll: MotionValue<number>;
@@ -26,6 +27,7 @@ export default function List({ currentScroll }: Props) {
             <motion.div
                onMouseMove={getMousePosition}
                onHoverEnd={() => changeYAxisIndex(null)}
+               exit={{ pointerEvents: "none" }}
                className="w-full flex flex-col"
             >
                {projects.map((project, index) => (
@@ -41,6 +43,11 @@ export default function List({ currentScroll }: Props) {
             mouseX={mouseX}
             mouseY={mouseY}
             yAxisIndex={yAxisIndex}
+         />
+         <ProjectTooltip
+            mouseX={mouseX}
+            mouseY={mouseY}
+            showTooltip={yAxisIndex !== null}
          />
       </ProjectsReactLenis>
    );

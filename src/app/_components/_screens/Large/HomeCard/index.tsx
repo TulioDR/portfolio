@@ -2,6 +2,7 @@ import { useState } from "react";
 import Tooltip from "./Tooltip";
 import AnimatedText from "@/components/AnimatedText";
 import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
+import RecommendedTooltip from "./RecommendedTooltip";
 
 type Props = {
    className?: string;
@@ -10,9 +11,11 @@ type Props = {
    onMouseEnter: () => void;
    onMouseLeave: () => void;
    number: number;
+   recommended?: true;
 };
 
 export default function HomeCard({
+   recommended,
    className = "",
    text,
    href,
@@ -48,6 +51,7 @@ export default function HomeCard({
                ${isHovered ? "bg-black text-white" : "text-black bg-white"}
             `}
          >
+            {recommended && <RecommendedTooltip />}
             <AnimatedText
                restart={restart}
                text={text}

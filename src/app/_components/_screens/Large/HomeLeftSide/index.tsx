@@ -1,5 +1,5 @@
 import React from "react";
-import HomeCard from "../HomeCard/HomeCard";
+import HomeCard from "../HomeCard";
 import HomeTitle from "./HomeTitle";
 import { IconType } from "@/app/_types/IconType";
 import useLanguageContext from "@/context/LanguageContext";

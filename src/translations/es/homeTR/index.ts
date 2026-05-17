@@ -3,6 +3,7 @@ import HomeTR from "@/translations/types/HomeTR";
 const homeTR: HomeTR = {
    title: "Portafolio",
    page: "Pág",
+   recommended: "Recomendado",
    preview: {
       skills: "Habilidades",
       strengths: "Fortalezas",

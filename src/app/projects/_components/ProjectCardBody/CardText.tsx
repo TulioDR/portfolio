@@ -27,8 +27,8 @@ export default function CardText({
                restart={restart}
                text={text}
                initial={initial}
-               className={`uppercase truncate font-thin 
-                  ${title ? " text-base md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl" : ""}
+               className={`uppercase truncate
+                  ${title ? " text-2xl xl:text-4xl 2xl:text-5xl font-black" : ""}
                   ${header ? "text-xs" : ""}
                   ${!title && !header ? "text-xs sm:text-sm md:text-base" : ""}
                `}

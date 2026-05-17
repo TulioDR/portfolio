@@ -4,14 +4,28 @@ import FrontImage from "./FrontImage";
 import { motion } from "framer-motion";
 import { PROJECT_ANIMATION_DURATION } from "@/app/projects/_constants/DURATIONS";
 import ProjectCardBody from "@/app/projects/_components/ProjectCardBody";
+import useProjectTooltip from "@/app/projects/_hooks/useProjectTooltip";
+import ProjectTooltip from "@/app/projects/_components/ProjectTooltip";
 
 type Props = {
    project: ProjectType;
 };
 
 export default function GridProjectCard({ project }: Props) {
+   const { getMousePosition, mouseX, mouseY, endHover, isHovered } =
+      useProjectTooltip();
+
    return (
-      <div className="w-full flex flex-col overflow-hidden">
+      <div
+         onPointerMove={getMousePosition}
+         onPointerLeave={endHover}
+         className="w-full flex flex-col overflow-hidden"
+      >
+         <ProjectTooltip
+            showTooltip={isHovered}
+            mouseX={mouseX}
+            mouseY={mouseY}
+         />
          <div className="w-full aspect-square flex justify-center">
             <motion.div
                initial={{ width: 0 }}

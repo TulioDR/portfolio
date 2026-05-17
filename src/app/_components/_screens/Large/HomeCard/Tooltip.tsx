@@ -1,6 +1,5 @@
 import AnimatedText from "@/components/AnimatedText";
 import useLanguageContext from "@/context/LanguageContext";
-import React from "react";
 
 type Props = {
    number: number;
@@ -12,7 +11,7 @@ export default function Tooltip({ number }: Props) {
 
    return (
       <div
-         className={`absolute top-1 left-2 text-accent rounded-sm pointer-events-none z-20`}
+         className={`absolute top-1 right-2 lg:right-auto lg:left-2 text-accent rounded-sm pointer-events-none z-20`}
       >
          <AnimatedText
             initial

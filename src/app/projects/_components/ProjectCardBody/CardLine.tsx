@@ -4,16 +4,21 @@ import { PROJECT_ANIMATION_DURATION } from "../../_constants/DURATIONS";
 type Props = {
    initial?: true;
    className?: string;
+   whiteLine?: true;
 };
 
-export default function CardLine({ className = "", initial }: Props) {
+export default function CardLine({
+   className = "",
+   initial,
+   whiteLine,
+}: Props) {
    return (
       <motion.div
          initial={{ width: initial ? 0 : "100%" }}
          animate={initial ? { width: "100%" } : undefined}
          exit={{ width: 0 }}
          transition={{ duration: PROJECT_ANIMATION_DURATION }}
-         className={`h-px bg-line ${className}`}
+         className={`h-px ${className} ${whiteLine ? "bg-white" : "bg-line"}`}
       />
    );
 }
