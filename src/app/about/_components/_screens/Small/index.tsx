@@ -15,9 +15,16 @@ export default function Small({}: Props) {
          <div className="w-full relative flex flex-col gap-16">
             <ScrollIndicator />
 
-            {PHASES.map((phase, index) => (
-               <Phase key={index} reverse={index % 2 !== 0} phase={phase} />
-            ))}
+            {PHASES.map((phase, index) => {
+               if (index !== 0)
+                  return (
+                     <Phase
+                        key={index}
+                        reverse={index % 2 !== 0}
+                        phase={phase}
+                     />
+                  );
+            })}
 
             <FinalMessage />
          </div>

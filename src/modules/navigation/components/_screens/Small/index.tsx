@@ -17,7 +17,7 @@ export default function Small({}: Props) {
             <PanelButton href="/about" text={aboutMe} number={4} />
             <PanelButton href="/contact" text={contact} number={5} />
          </div>
-         <div className="w-full md:w-96 h-32 overflow-hidden">
+         <div className="w-full md:w-96 h-22 sm:h-32 overflow-hidden px-4">
             <SelectedProjectsButton number={6} />
          </div>
       </div>

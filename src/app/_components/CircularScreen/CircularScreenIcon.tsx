@@ -16,7 +16,7 @@ export default function CircularScreenIcon({ index, selectedIcon }: Props) {
    // Index 0: 0.2 | Index 4: 1.0
    const opacityValue = 0.2 + (index / (total - 1)) * 0.8;
    // 3. TranslateZ: Positive values moving toward the screen
-   const zValue = index * 20;
+   const zValue = index * 15;
 
    return (
       <motion.div
