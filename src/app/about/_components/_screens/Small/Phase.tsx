@@ -2,10 +2,11 @@ import AnimatedText from "@/components/AnimatedText";
 import ScrollMark from "./ScrollMark";
 import { useEffect, useState } from "react";
 import useTextRestart from "@/hooks/useTextRestart";
+import PhaseType from "@/app/about/_types/PhaseType";
 
 type Props = {
    reverse: boolean;
-   phase: any;
+   phase: PhaseType;
 };
 
 export default function Phase({ reverse, phase }: Props) {
@@ -16,9 +17,6 @@ export default function Phase({ reverse, phase }: Props) {
    useEffect(() => {
       if (isPhaseActive) handleRestart();
    }, [isPhaseActive, handleRestart]);
-
-   const text =
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ullam unde fugit cum impedit quam omnis, dolorum atque suscipit laboriosam voluptas fuga nulla minus sunt est hic sequi expedita ex maiores quas doloremque culpa temporibus neque! Delectus autem nonexercitationem.";
 
    return (
       <div
@@ -42,8 +40,8 @@ export default function Phase({ reverse, phase }: Props) {
                ${reverse ? "pl-8 sm:pl-16 md:pl-20 text-right" : "pl-4 pr-8 sm:pr-16 md:pr-20"}
             `}
          >
-            <AnimatedText text={text} />
-            <AnimatedText text={text} />
+            <AnimatedText text={phase.desc1} />
+            <AnimatedText text={phase.desc2} />
          </div>
       </div>
    );

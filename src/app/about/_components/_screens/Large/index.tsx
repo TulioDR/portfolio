@@ -41,14 +41,10 @@ export default function Large({}: Props) {
 
    const handleNodeClick = (targetIndex: number) => {
       if (!lenis) return;
-
-      // Calculate the exact pixel height corresponding to that phase step
       const targetScrollPosition = window.innerHeight * targetIndex;
-
-      // Use Lenis's built-in scrollTo method with custom duration easing
       lenis.scrollTo(targetScrollPosition, {
          duration: 1.2,
-         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Clean Out-Expo spring effect
+         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
          immediate: false,
       });
    };
@@ -71,10 +67,10 @@ export default function Large({}: Props) {
             </CircleContainer>
             <TextContainer>
                {selectedPhase === 0 ? (
-                  <PageHeader />
+                  <PageHeader key="page-header" />
                ) : (
                   <SelectedPhase
-                     key={PHASES[selectedPhase].id}
+                     key={PHASES[selectedPhase].title}
                      phase={PHASES[selectedPhase]}
                   />
                )}

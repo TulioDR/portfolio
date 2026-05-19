@@ -1,6 +1,6 @@
 export default interface PhaseType {
-   id: number;
    icon: string;
    title: string;
-   desc: string;
+   desc1: string;
+   desc2: string;
 }

@@ -16,7 +16,7 @@ export default function Small({}: Props) {
             <ScrollIndicator />
 
             {PHASES.map((phase, index) => (
-               <Phase key={phase.id} reverse={index % 2 !== 0} phase={phase} />
+               <Phase key={index} reverse={index % 2 !== 0} phase={phase} />
             ))}
 
             <FinalMessage />

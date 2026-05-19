@@ -5,38 +5,33 @@ import { ABOUT_ICON } from "@/constants/ICONS";
 export default function useTimelinePhases() {
    const { language } = useLanguageContext();
 
-   const {} = language.about;
+   const { phase1, phase2, phase3, phase4 } = language.about;
 
    const PHASES: PhaseType[] = [
+      { icon: ABOUT_ICON, title: "first", desc1: "", desc2: "" },
       {
-         id: 1,
-         icon: ABOUT_ICON,
-         title: "",
-         desc: "",
+         icon: "workspace_premium",
+         title: phase1.title,
+         desc1: phase1.desc1,
+         desc2: phase1.desc2,
       },
       {
-         id: 2,
-         icon: "rocket",
-         title: "Discovery",
-         desc: "Understanding the core problems and user needs.",
+         icon: "engineering",
+         title: phase2.title,
+         desc1: phase2.desc1,
+         desc2: phase2.desc2,
       },
       {
-         id: 3,
+         icon: "terminal",
+         title: phase3.title,
+         desc1: phase3.desc1,
+         desc2: phase3.desc2,
+      },
+      {
          icon: "rocket_launch",
-         title: "Strategy",
-         desc: "Defining the technical architecture and roadmap.",
-      },
-      {
-         id: 4,
-         icon: "code",
-         title: "Execution",
-         desc: "Building the high-fidelity system with precision.",
-      },
-      {
-         id: 5,
-         icon: "function",
-         title: "Optimization",
-         desc: "Refining performance and scaling the solution.",
+         title: phase4.title,
+         desc1: phase4.desc1,
+         desc2: phase4.desc2,
       },
    ];
 
