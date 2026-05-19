@@ -1,9 +1,16 @@
-import { motion, MotionValue, useTransform } from "framer-motion";
+import PhaseType from "@/app/about/_types/PhaseType";
+import {
+   AnimatePresence,
+   motion,
+   MotionValue,
+   useTransform,
+} from "framer-motion";
 type Props = {
-   phase: any;
+   phase: PhaseType;
    rotateAngle: number;
    parentRotate: MotionValue<number>;
    isSelected: boolean;
+   onClick: () => void;
 };
 
 export default function RadialNode({
@@ -11,29 +18,40 @@ export default function RadialNode({
    rotateAngle,
    parentRotate,
    isSelected,
+   onClick,
 }: Props) {
    const counterRotate = useTransform(parentRotate, (r) => -r - rotateAngle);
 
    return (
       <motion.div
          style={{ rotate: rotateAngle }}
-         className="absolute inset-0 flex justify-end items-center"
+         className="absolute inset-0 flex justify-end items-center pointer-events-none"
       >
-         <motion.div className="flex items-center w-1/4 lg:gap-2 lg:px-2 xl:gap-4 xl:px-4 2xl:gap-8 2xl:px-8">
-            <div className="h-px flex-1 bg-line/20">
-               <motion.div
-                  initial={false}
-                  animate={{ width: isSelected ? "100%" : "0%" }}
-                  className="h-full bg-text"
-               />
-            </div>
-            <motion.div
+         <div className="flex justify-center w-1/4">
+            <motion.button
                style={{ rotate: counterRotate }}
-               className="text-base text-text uppercase"
+               onClick={onClick}
+               className={`text-text uppercase relative flex items-center justify-center rounded-full hover:bg-about active:bg-about pointer-events-auto p-8 cursor-pointer`}
             >
-               {phase.title}
-            </motion.div>
-         </motion.div>
+               <AnimatePresence>
+                  {isSelected && (
+                     <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{
+                           scale: 1,
+                           transition: { duration: 0.6, type: "spring" },
+                        }}
+                        exit={{ scale: 0, transition: { duration: 0.2 } }}
+                        className="absolute bg-accent inset-0 rounded-full"
+                     />
+                  )}
+               </AnimatePresence>
+
+               <span className="material-symbols-outlined text-9xl! relative!">
+                  {phase.icon}
+               </span>
+            </motion.button>
+         </div>
       </motion.div>
    );
 }

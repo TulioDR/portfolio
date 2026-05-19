@@ -1,15 +1,15 @@
-import React from "react";
 import Placeholder from "./Placeholder";
 import AnimatedText from "@/components/AnimatedText";
 import ErrorMessage from "./ErrorMessage";
 import { Field, FormikErrors, FormikTouched, useFormikContext } from "formik";
+import { motion } from "framer-motion";
 import {
-   InputNameModel,
-   ValuesModel,
-} from "@/modules/contact/models/ContactFormModel";
+   InputNameType,
+   ValuesType,
+} from "@/app/contact/_types/ContactFormType";
 
 type Props = {
-   name: InputNameModel;
+   name: InputNameType;
    title: string;
    placeholder: string;
    textarea?: true;
@@ -26,13 +26,17 @@ export default function ContactInput({
       touched,
       values,
    }: {
-      values: ValuesModel;
-      touched: FormikTouched<ValuesModel>;
-      errors: FormikErrors<ValuesModel>;
+      values: ValuesType;
+      touched: FormikTouched<ValuesType>;
+      errors: FormikErrors<ValuesType>;
    } = useFormikContext();
 
    return (
-      <div className="flex flex-col w-full h-full px-3 py-2 text-xs xl:text-sm 2xl:text-base">
+      <motion.div
+         exit={{ opacity: 0 }}
+         transition={{ duration: 0.4 }}
+         className="flex flex-col w-full h-full px-3 py-2 text-xs xl:text-sm 2xl:text-base"
+      >
          <AnimatedText text={title} initial />
 
          <div className="flex-1 w-full relative ">
@@ -50,6 +54,6 @@ export default function ContactInput({
          </div>
 
          <ErrorMessage errors={errors} touched={touched} name={name} />
-      </div>
+      </motion.div>
    );
 }

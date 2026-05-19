@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Kode_Mono, Inconsolata } from "next/font/google";
+import { Inconsolata, Kode_Mono } from "next/font/google";
 import "./globals.css";
 import "swiper/css";
 import { LanguageContextProvider } from "@/context/LanguageContext";
@@ -9,7 +9,8 @@ import Preloader from "@/modules/preloader/components/Preloader";
 import { PreloaderContextProvider } from "@/modules/preloader/context/PreloaderContext";
 import { PageTransitionContextProvider } from "@/modules/pageTransition/context/PageTransitionContext";
 import AnimatedLayout from "@/modules/pageTransition/components/AnimatedLayout";
-
+import { ViewTransition } from "react";
+import { MotionConfig } from "framer-motion";
 const kodeMono = Kode_Mono({
    subsets: ["latin"],
    variable: "--font-kode-mono",
@@ -32,30 +33,34 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <html lang="en">
-         <head>
-            <link
-               rel="stylesheet"
-               href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-            />
-         </head>
-         <body className={`${inconsolata.variable} antialiased`}>
-            <PreloaderContextProvider>
-               <LanguageContextProvider>
-                  <PageTransitionContextProvider>
-                     <Navigation />
-                     <Preloader />
-                     <AnimatedLayout>{children}</AnimatedLayout>
-                  </PageTransitionContextProvider>
-               </LanguageContextProvider>
-            </PreloaderContextProvider>
+      <ViewTransition>
+         <html lang="en">
+            <head>
+               <link
+                  rel="stylesheet"
+                  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+               />
+            </head>
+            <body className={`${kodeMono.variable} antialiased`}>
+               <PreloaderContextProvider>
+                  <LanguageContextProvider>
+                     <PageTransitionContextProvider>
+                        <Navigation />
+                        <Preloader />
+                        <MotionConfig transition={{ ease: [0.22, 1, 0.36, 1] }}>
+                           <AnimatedLayout>{children}</AnimatedLayout>
+                        </MotionConfig>
+                     </PageTransitionContextProvider>
+                  </LanguageContextProvider>
+               </PreloaderContextProvider>
 
-            <Script
-               src="https://kit.fontawesome.com/d2dfe56c5c.js"
-               crossOrigin="anonymous"
-               strategy="afterInteractive"
-            />
-         </body>
-      </html>
+               <Script
+                  src="https://kit.fontawesome.com/d2dfe56c5c.js"
+                  crossOrigin="anonymous"
+                  strategy="afterInteractive"
+               />
+            </body>
+         </html>
+      </ViewTransition>
    );
 }

@@ -1,5 +1,4 @@
 import AnimatedText from "@/components/AnimatedText";
-import React from "react";
 
 type Props = {
    placeholder: string;

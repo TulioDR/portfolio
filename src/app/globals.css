@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 body {
-   @apply font-inconsolata text-text bg-primary;
+   @apply font-kode-mono text-text bg-primary;
 }
 
 @theme {
@@ -15,11 +15,10 @@ body {
 
    /* This connects the Next.js variable to a Tailwind utility class */
    --font-kode-mono: var(--font-kode-mono), monospace;
-   /* If you want Kode Mono to be the default font for the whole site: */
-   /* --font-sans: var(--font-kode-mono), monospace; */
-
    --font-inconsolata: var(--font-inconsolata), monospace;
-   --font-sans: var(--font-inconsolata), monospace;
+
+   --font-sans: var(--font-kode-mono), monospace;
+   /* --font-sans: var(--font-inconsolata), monospace; */
 
    /* v4 automatically generates spacing scales if you use numbers */
    --spacing-tri-thickness: 2.5rem;
