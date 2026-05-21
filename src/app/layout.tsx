@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inconsolata, Kode_Mono } from "next/font/google";
+import { Inconsolata } from "next/font/google";
 import "./globals.css";
 import "swiper/css";
 import { LanguageContextProvider } from "@/context/LanguageContext";
@@ -11,11 +11,11 @@ import { PageTransitionContextProvider } from "@/modules/pageTransition/context/
 import AnimatedLayout from "@/modules/pageTransition/components/AnimatedLayout";
 import { ViewTransition } from "react";
 import { MotionConfig } from "framer-motion";
-const kodeMono = Kode_Mono({
-   subsets: ["latin"],
-   variable: "--font-kode-mono",
-   display: "swap",
-});
+// const kodeMono = Kode_Mono({
+//    subsets: ["latin"],
+//    variable: "--font-kode-mono",
+//    display: "swap",
+// });
 
 const inconsolata = Inconsolata({
    subsets: ["latin"],
@@ -41,7 +41,7 @@ export default function RootLayout({
                   href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
                />
             </head>
-            <body className={`${kodeMono.variable} antialiased`}>
+            <body className={`${inconsolata.variable} antialiased`}>
                <PreloaderContextProvider>
                   <LanguageContextProvider>
                      <PageTransitionContextProvider>

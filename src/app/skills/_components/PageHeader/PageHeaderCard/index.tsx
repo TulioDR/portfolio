@@ -24,7 +24,6 @@ export default function PageHeaderCard({
             y: "-50%",
             left: "50%",
             x: "-50%",
-            transformStyle: "preserve-3d",
          }}
          initial={{ y: "100%" }}
          animate={{ y: "-50%", scale: isCardHovered ? 1.2 : 1.1 }}

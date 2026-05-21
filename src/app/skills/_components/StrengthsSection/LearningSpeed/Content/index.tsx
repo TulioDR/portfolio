@@ -3,7 +3,7 @@ import { useMotionValue, useScroll, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import VelocityMeter from "./VelocityMeter";
 import { ALL_SKILLS } from "@/app/skills/_constants/SKILLS";
-import SkillCard from "../../../SkillsSection/SkillsSlider/Slides/CardContent/SkillSlide/SkillCard";
+import SpeedCard from "./SpeedCard";
 
 type Props = {};
 
@@ -51,7 +51,7 @@ export default function Content({}: Props) {
    };
 
    return (
-      <div className="w-full h-full bg-primary relative overflow-hidden">
+      <div className="w-full h-full bg-primary relative overflow-hidden bg-text">
          <motion.div
             onPointerMove={handleMouseMove}
             onPointerLeave={handleMouseLeave}
@@ -62,14 +62,13 @@ export default function Content({}: Props) {
             <motion.div
                ref={sliderRef}
                style={{ x: smoothMouse }}
-               className="min-w-max h-full flex gap-1 xl:gap-4 p-4"
+               className="min-w-max h-full flex gap-1 xl:gap-4 p-4 overflow-hidden"
             >
                {ALL_SKILLS.map((skill) => (
-                  <SkillCard
+                  <SpeedCard
                      key={skill.name}
-                     skill={skill}
-                     disableHover
-                     bigText
+                     logo={skill.logo}
+                     name={skill.name}
                   />
                ))}
             </motion.div>

@@ -13,7 +13,7 @@ export default function NamesAndSocials({}: Props) {
 
    if (!isMounted) return <></>;
    return createPortal(
-      <div className="w-full flex flex-col items-center justify-center gap-2 fixed bottom-4">
+      <div className="w-full flex flex-col items-center justify-center gap-2 fixed bottom-4 lg:hidden">
          <MyName />
          <Socials tooltipPosition="top" />
       </div>,

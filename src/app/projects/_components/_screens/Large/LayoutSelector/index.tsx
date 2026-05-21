@@ -10,7 +10,7 @@ type Props = {
 
 export default function LayoutSelector({ layout, changeLayout }: Props) {
    return (
-      <div className="flex fixed top-8 left-0 justify-center w-screen h-16 pointer-events-none z-10">
+      <div className="flex fixed top-4 left-0 justify-center w-screen h-16 pointer-events-none z-10">
          <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}

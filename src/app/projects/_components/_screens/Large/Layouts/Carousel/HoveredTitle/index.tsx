@@ -10,7 +10,7 @@ export default function HoveredTitle({ displayedTitle }: Props) {
    return (
       <AnimatePresence>
          {displayedTitle && (
-            <motion.div className="w-full fixed bottom-8 flex justify-center items-center uppercase h-16 text-xl font-bold">
+            <motion.div className="w-full fixed bottom-4 flex justify-center items-center uppercase h-16 text-xl font-bold">
                <div className="overflow-hidden">
                   <motion.div
                      exit={{ y: "-100%" }}

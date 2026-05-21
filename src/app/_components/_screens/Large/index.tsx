@@ -14,7 +14,7 @@ export default function Large({}: Props) {
    return (
       <motion.div
          style={{ transformStyle: "preserve-3d" }}
-         className="h-full w-full pointer-events-none gap-8 px-8 xl:py-32 2xl:py-8 hidden xl:flex"
+         className="h-full w-full pointer-events-none gap-8 px-8 xl:py-24 2xl:py-4 hidden xl:flex"
       >
          <HomeLeftSide setSelectedIcon={setSelectedIcon} />
          <CircularScreen selectedIcon={selectedIcon} />

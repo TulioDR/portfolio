@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-import Pagination from "./Pagination";
 import Slides from "./Slides";
-import TrianglePagination from "./TrianglePagination";
 import useSkillsSlides from "@/app/skills/_hooks/useSkillsSlides";
+import SlidesHandler from "./SlidesHandler";
 
 type Props = {};
 
@@ -29,20 +28,16 @@ export default function SkillsSlider({}: Props) {
    const { SKILL_SLIDES } = useSkillsSlides();
 
    return (
-      <div className="flex flex-col lg:flex-row w-full lg:h-main-height gap-4">
-         <div className="h-32 lg:h-full grid lg:grid-rows-3 gap-4">
-            <Pagination
+      <div className="flex flex-col lg:flex-row w-full lg:h-160 xl:h-150 gap-4">
+         <div className="flex-2 overflow-hidden h-full ">
+            <SlidesHandler
                activeIndex={activeIndex}
                handleNavigation={handleNavigation}
                SKILL_SLIDES={SKILL_SLIDES}
-            />
-            <TrianglePagination
-               SKILL_SLIDES={SKILL_SLIDES}
-               activeIndex={activeIndex}
                isForward={isForward}
             />
          </div>
-         <div className="flex-1 h-full overflow-hidden">
+         <div className="flex-5 overflow-hidden lg:h-full ">
             <Slides
                SKILL_SLIDES={SKILL_SLIDES}
                activeIndex={activeIndex}

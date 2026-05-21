@@ -88,6 +88,12 @@ export const ALL_TECH = {
       category: "main",
       link: "https://tailwindcss.com/",
    },
+   docker: {
+      name: "Docker",
+      logo: tailwindLogo,
+      category: "main",
+      link: "https://tailwindcss.com/",
+   },
    framerMotion: {
       name: "Framer Motion",
       logo: framerMotionLogo,

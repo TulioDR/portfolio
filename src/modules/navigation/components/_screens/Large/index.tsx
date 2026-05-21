@@ -17,27 +17,29 @@ export default function Large({}: Props) {
    } = useHoverPreview();
 
    return (
-      <div className="w-full h-full bg-black/90 backdrop-blur p-8">
-         <div className="w-full h-full flex border-y border-line">
-            <div className="h-full w-16 border-x border-line"></div>
-            <motion.div
-               onMouseMove={getMousePosition}
-               className="flex flex-1 relative px-8 pt-8"
-            >
-               <NavMenuItems
-                  changeXAxisIndex={changeXAxisIndex}
-                  changeYAxisIndex={changeYAxisIndex}
+      <div className="w-full h-full bg-black/90 backdrop-blur">
+         <div className="w-full h-full max-w-480 mx-auto p-4">
+            <div className="w-full h-full flex border-y border-line">
+               <div className="h-full w-16 border-x border-line"></div>
+               <motion.div
+                  onMouseMove={getMousePosition}
+                  className="flex flex-1 relative px-8 pt-8"
+               >
+                  <NavMenuItems
+                     changeXAxisIndex={changeXAxisIndex}
+                     changeYAxisIndex={changeYAxisIndex}
+                  />
+               </motion.div>
+
+               <NavMenuSlider
+                  mouseX={mouseX}
+                  mouseY={mouseY}
+                  xAxisIndex={xAxisIndex}
+                  yAxisIndex={yAxisIndex}
                />
-            </motion.div>
 
-            <NavMenuSlider
-               mouseX={mouseX}
-               mouseY={mouseY}
-               xAxisIndex={xAxisIndex}
-               yAxisIndex={yAxisIndex}
-            />
-
-            <div className="h-full w-16 border-x border-line"></div>
+               <div className="h-full w-16 border-x border-line"></div>
+            </div>
          </div>
       </div>
    );

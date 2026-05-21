@@ -23,9 +23,8 @@ export default function PageHeader({}: Props) {
    };
 
    return (
-      <div className="w-screen h-svh flex items-center justify-center relative pointer-events-none lg:pointer-events-auto">
+      <div className="w-full h-svh flex items-center justify-center relative pointer-events-none lg:pointer-events-auto">
          <motion.div
-            style={{ perspective: 3000 }}
             className={`absolute top-0 left-0 w-full h-full flex items-center justify-center duration-1000 ${isCardHovered ? "brightness-100" : "brightness-50"} `}
          >
             <PageHeaderCard

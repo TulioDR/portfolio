@@ -1,5 +1,7 @@
+import WorkPageContent from "./_components/WorkPageContent";
+
 type Props = {};
 
 export default function WorkPage({}: Props) {
-   return <div>page</div>;
+   return <WorkPageContent />;
 }

@@ -13,7 +13,7 @@ export default function Grid({ currentScroll }: Props) {
    return (
       <ProjectsReactLenis scrollRef={scrollRef}>
          <div className="h-screen w-full pointer-events-none"></div>
-         <div className="w-full grid grid-cols-2 gap-x-8 gap-y-16 2xl:gap-x-16 2xl:gap-y-32 -mt-32 min-h-max px-32 pb-8">
+         <div className="w-full grid grid-cols-2 gap-x-8 gap-y-16 2xl:gap-x-16 2xl:gap-y-32 -mt-36 min-h-max px-32 pb-8">
             {projects.map((project) => (
                <GridProjectCard key={project.title} project={project} />
             ))}

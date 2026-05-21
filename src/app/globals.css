@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 body {
-   @apply font-kode-mono text-text bg-primary;
+   @apply font-inconsolata text-text bg-primary;
 }
 
 @theme {
@@ -17,8 +17,8 @@ body {
    --font-kode-mono: var(--font-kode-mono), monospace;
    --font-inconsolata: var(--font-inconsolata), monospace;
 
-   --font-sans: var(--font-kode-mono), monospace;
-   /* --font-sans: var(--font-inconsolata), monospace; */
+   /* --font-sans: var(--font-kode-mono), monospace; */
+   --font-sans: var(--font-inconsolata), monospace;
 
    /* v4 automatically generates spacing scales if you use numbers */
    --spacing-tri-thickness: 2.5rem;

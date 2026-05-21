@@ -11,9 +11,9 @@ export default function TriangleSide({ index, isSelected, isForward }: Props) {
    return (
       <div
          className={`absolute inset-0 bg-gray-400 rounded-full overflow-hidden
-            ${index === 0 ? "-rotate-60 -translate-y-4 -translate-x-5 origin-left" : ""}
-            ${index === 1 ? "rotate-60 -translate-y-4 translate-x-5 origin-right" : ""}
-            ${index === 2 ? "translate-y-4" : ""}
+            ${index === 0 ? "-rotate-60 -translate-y-2 -translate-x-2 2xl:-translate-x-3 origin-left" : ""}
+            ${index === 1 ? "rotate-60 -translate-y-2 translate-x-2 2xl:translate-x-3 origin-right" : ""}
+            ${index === 2 ? "translate-y-2 2xl:translate-y-3" : ""}
          `}
       >
          <AnimatePresence custom={isForward}>

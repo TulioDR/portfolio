@@ -17,16 +17,18 @@ export default function CardContent({
    SKILL_SLIDES,
 }: Props) {
    return (
-      <Swiper
-         onSlideChange={({ activeIndex }) => setActiveIndex(activeIndex)}
-         className={`w-full lg:h-full `}
-      >
-         <HandleSwipe activeIndex={activeIndex} />
-         {SKILL_SLIDES.map((skills, index) => (
-            <SwiperSlide key={index}>
-               <SkillSlide skills={skills.skills} />
-            </SwiperSlide>
-         ))}
-      </Swiper>
+      <div className="w-full lg:h-full bg-text">
+         <Swiper
+            onSlideChange={({ activeIndex }) => setActiveIndex(activeIndex)}
+            className={`w-full lg:h-full `}
+         >
+            <HandleSwipe activeIndex={activeIndex} />
+            {SKILL_SLIDES.map((skills, index) => (
+               <SwiperSlide key={index}>
+                  <SkillSlide skills={skills.skills} />
+               </SwiperSlide>
+            ))}
+         </Swiper>
+      </div>
    );
 }

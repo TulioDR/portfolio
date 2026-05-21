@@ -22,7 +22,7 @@ export default function List({ currentScroll }: Props) {
    return (
       <ProjectsReactLenis scrollRef={scrollRef}>
          <div className="h-screen w-full pointer-events-none"></div>
-         <div className="w-full flex flex-col -mt-24 min-h-max px-32 z-10 pb-8">
+         <div className="w-full flex flex-col -mt-28 min-h-max px-32 z-10 pb-8">
             <ListHeader />
             <motion.div
                onMouseMove={getMousePosition}
