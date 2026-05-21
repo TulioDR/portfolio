@@ -19,7 +19,7 @@ export default function Container({ children }: Props) {
    }, [animate, LINE_SELECTOR]);
 
    return (
-      <motion.div ref={scope} className="h-svh w-screen p-8">
+      <motion.div ref={scope} className="h-svh w-screen p-4">
          <div className="flex w-full h-full relative">
             <AnimatedLine className="absolute left-0 top-0" />
             <AnimatedLine className="absolute left-0 bottom-0" />

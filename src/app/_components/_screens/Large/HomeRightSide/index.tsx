@@ -18,7 +18,7 @@ export default function HomeRightSide({ setSelectedIcon }: Props) {
          className="flex-1 h-full flex flex-col gap-4 py-24 shrink-0"
       >
          <HomeCard
-            className="-translate-x-8"
+            className="-translate-x-16"
             onMouseEnter={() => setSelectedIcon("support_agent")}
             onMouseLeave={() => setSelectedIcon("home")}
             href="/about"

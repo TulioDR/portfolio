@@ -20,37 +20,35 @@ export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
       language.navigation;
 
    return (
-      <div className="fixed top-0 left-0 z-50 w-screen h-svh pointer-events-none">
-         <div className="w-full h-full mx-auto max-w-480 p-4">
-            <div className="w-full h-full relative">
-               <NavButton
-                  topLeft
-                  icon={HOME_ICON}
-                  show={isNotHome}
-                  tooltip={backHome}
-                  href="/"
-               />
-               <NavButton
-                  bottomLeft
-                  icon={CONTACT_ICON}
-                  show={isSmall ? isNotContact : isNotHome && isNotContact}
-                  tooltip={contactMe}
-                  href="/contact"
-               />
-               <NavButton
-                  topRight
-                  icon={isMenuOpen ? "close" : "menu"}
-                  onClick={toggleMenu}
-                  tooltip={isMenuOpen ? close : quickNavigation}
-               />
-               <NavButton
-                  bottomRight
-                  icon={"translate"}
-                  onClick={toggleLanguage}
-                  translate
-                  tooltip={translate}
-               />
-            </div>
+      <div className="fixed top-0 left-0 z-50 w-screen h-svh pointer-events-none p-4">
+         <div className="w-full h-full relative">
+            <NavButton
+               topLeft
+               icon={HOME_ICON}
+               show={isNotHome}
+               tooltip={backHome}
+               href="/"
+            />
+            <NavButton
+               bottomLeft
+               icon={CONTACT_ICON}
+               show={isSmall ? isNotContact : isNotHome && isNotContact}
+               tooltip={contactMe}
+               href="/contact"
+            />
+            <NavButton
+               topRight
+               icon={isMenuOpen ? "close" : "menu"}
+               onClick={toggleMenu}
+               tooltip={isMenuOpen ? close : quickNavigation}
+            />
+            <NavButton
+               bottomRight
+               icon={"translate"}
+               onClick={toggleLanguage}
+               translate
+               tooltip={translate}
+            />
          </div>
       </div>
    );

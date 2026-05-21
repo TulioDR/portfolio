@@ -5,7 +5,7 @@ type Props = {};
 export default function HomeTitle({}: Props) {
    return (
       <div className="w-full flex-1 relative">
-         <div className="absolute inset-0 flex items-center translate-x-8">
+         <div className="absolute inset-0 flex items-center translate-x-16">
             <HomeTitleText />
          </div>
       </div>

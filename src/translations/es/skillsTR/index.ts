@@ -4,6 +4,7 @@ const skillsTR: SkillsTR = {
    title: "Habilidades & Fortalezas",
    keywords: "Palabras clave",
    skills: {
+      description: "Descripción",
       sectionTitle: "Mis Habilidades",
       subtitle1: "Secciones",
       paragraph1:

@@ -55,7 +55,7 @@ export default function HomeCard({
             <AnimatedText
                restart={restart}
                text={text}
-               className="text-4xl xl:text-4xl 2xl:text-5xl font-black uppercase pointer-events-none"
+               className="text-4xl xl:text-4xl 2xl:text-[3vw] font-black uppercase pointer-events-none"
             />
             {isHovered && <Tooltip number={number} />}
          </TransitionLink>

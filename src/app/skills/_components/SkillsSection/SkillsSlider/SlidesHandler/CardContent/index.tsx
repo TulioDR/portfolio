@@ -2,6 +2,7 @@ import { SkillSlideType } from "@/app/skills/_types/SkillType";
 import TrianglePagination from "./TrianglePagination";
 import AnimatedText from "@/components/AnimatedText";
 import PaginationButton from "./PaginationButton";
+import useLanguageContext from "@/context/LanguageContext";
 
 type Props = {
    activeIndex: number;
@@ -17,6 +18,9 @@ export default function CardContent({
    isForward,
 }: Props) {
    const currentText = SKILL_SLIDES[activeIndex].description;
+
+   const { language } = useLanguageContext();
+   const { description } = language.skills.skills;
 
    return (
       <div className="w-full h-full bg-text flex flex-col p-4 gap-4">
@@ -40,7 +44,7 @@ export default function CardContent({
             </div>
          </div>
          <div className="text-black">
-            <div className="font-black text-lg">Description</div>
+            <AnimatedText className="text-lg font-black" text={description} />
             <AnimatedText className="text-sm" text={currentText} />
          </div>
       </div>

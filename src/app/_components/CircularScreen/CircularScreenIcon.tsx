@@ -20,7 +20,6 @@ export default function CircularScreenIcon({ index, selectedIcon }: Props) {
 
    return (
       <motion.div
-         key={index}
          style={{
             transform: `translateZ(${zValue}px) scale(${scaleValue})`,
             opacity: opacityValue,
@@ -29,7 +28,7 @@ export default function CircularScreenIcon({ index, selectedIcon }: Props) {
          className="absolute inset-0 flex items-center justify-center pointer-events-none"
       >
          <span
-            className={`material-symbols-outlined text-9xl! lg:text-[10rem] xl:text-[15rem] 2xl:text-[20rem]! text-white ${
+            className={`material-symbols-outlined text-[30vw]! md:text-[20vw]! text-white ${
                isTop ? "drop-shadow-2xl" : ""
             }`}
          >

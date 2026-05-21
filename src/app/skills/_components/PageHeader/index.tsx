@@ -36,7 +36,7 @@ export default function PageHeader({}: Props) {
          <motion.div
             animate={{ opacity: isCardHovered ? 0.1 : 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full px-4 lg:px-main-spacing flex justify-center z-10 relative pointer-events-none"
+            className="w-full px-4 lg:px-24 flex justify-center z-10 relative pointer-events-none"
          >
             <PageTitle title={title} />
             <div className="absolute top-full left-0 w-full flex justify-center translate-y-3">

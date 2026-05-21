@@ -2,6 +2,7 @@ export default interface SkillsTR {
    title: string;
    keywords: string;
    skills: {
+      description: string;
       sectionTitle: string;
       subtitle1: string;
       subtitle2: string;

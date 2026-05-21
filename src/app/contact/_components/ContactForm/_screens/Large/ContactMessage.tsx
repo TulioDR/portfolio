@@ -10,7 +10,7 @@ export default function ContactMessage({}: Props) {
       language.contact.placeholders;
    return (
       <div className="w-1/2 flex flex-col">
-         <div className="w-full h-main-spacing relative">
+         <div className="w-full h-32 relative">
             <AnimatedLine className="absolute bottom-0" />
             <ContactInput
                name="subject"

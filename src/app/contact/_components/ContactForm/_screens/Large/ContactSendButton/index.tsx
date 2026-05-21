@@ -38,7 +38,7 @@ export default function ContactSendButton({ sentStatus, isLoading }: Props) {
          exit={{ pointerEvents: "none", opacity: 0 }}
          onHoverStart={onHoverStart}
          transition={{ duration: 0.4 }}
-         className={`w-full h-16 xl:h-main-spacing relative flex items-center justify-center overflow-hidden uppercase text-4xl font-black  
+         className={`w-full h-16 xl:h-32 relative flex items-center justify-center overflow-hidden uppercase text-4xl font-black  
             ${
                disableButton
                   ? "pointer-events-none text-black bg-linear-to-r from-accent to-light-accent"

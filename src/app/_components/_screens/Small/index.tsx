@@ -9,7 +9,7 @@ export default function Small({}: Props) {
       <>
          <div
             style={{ transformStyle: "preserve-3d" }}
-            className="h-full w-full flex flex-col justify-center gap-4 px-4 pb-16 xl:hidden"
+            className="h-full w-full flex flex-col justify-center items-center gap-4 px-4 pb-16 xl:hidden"
          >
             <div className="w-full text-center">
                <HomeTitleText />

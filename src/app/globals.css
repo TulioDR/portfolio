@@ -19,22 +19,6 @@ body {
 
    /* --font-sans: var(--font-kode-mono), monospace; */
    --font-sans: var(--font-inconsolata), monospace;
-
-   /* v4 automatically generates spacing scales if you use numbers */
-   --spacing-tri-thickness: 2.5rem;
-   --spacing-15: 3.75rem;
-   --spacing-30: 7.5rem;
-   --spacing-35: 8.75rem;
-   --spacing-main-spacing: 8rem;
-   --spacing-main-spacing-mobile: 1.5rem;
-
-   /* --- Height --- */
-   --height-main-height: calc(100vh - 16rem);
-   --height-main-height-mobile: calc(100vh - 3rem);
-
-   /* --- Width --- */
-   --width-main-width: calc(100vw - 16rem);
-   --width-main-width-mobile: calc(100vw - 3rem);
 }
 
 :root::-webkit-scrollbar {

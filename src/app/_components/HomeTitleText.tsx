@@ -9,7 +9,7 @@ export default function HomeTitleText({}: Props) {
    return (
       <AnimatedText
          text={title}
-         className="font-black uppercase text-black text-6xl sm:text-6xl md:text-6xl lg:text-6xl xl:text-7xl 2xl:text-8xl"
+         className="font-black uppercase text-black text-[15vw]! md:text-[10vw]! xl:text-[5vw]!"
       />
    );
 }
