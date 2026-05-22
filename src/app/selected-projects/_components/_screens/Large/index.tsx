@@ -1,12 +1,12 @@
 "use client";
 
 import { SELECTED_PROJECTS } from "@/data/projects";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/Typography/PageTitle";
 import useLanguageContext from "@/context/LanguageContext";
-import PageDescription from "@/components/PageDescription";
 import { useState } from "react";
 import ProjectSelector from "./ProjectSelector";
 import SelectedProject from "./SelectedProject";
+import PageDescription from "@/components/Typography/PageDescription";
 
 type Props = {};
 

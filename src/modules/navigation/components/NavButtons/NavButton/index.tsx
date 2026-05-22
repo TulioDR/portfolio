@@ -1,7 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
 import TranslateIcon from "./TranslateIcon";
-import MainTooltip from "@/components/MainTooltip";
 import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import NavButtonContainer from "./NavButtonContainer";
 
@@ -30,9 +28,8 @@ export default function NavButton({
    tooltip,
    href,
 }: Props) {
-   const [isHovered, setIsHovered] = useState<boolean>(false);
-
-   const className = "relative w-full h-full flex items-center justify-center";
+   const className =
+      "relative w-full h-full flex items-center justify-center cursor-pointer";
    const Wrapper = ({ children }: { children: React.ReactNode }) =>
       href ? (
          <TransitionLink href={href} className={className}>
@@ -48,22 +45,13 @@ export default function NavButton({
       <AnimatePresence>
          {show && (
             <NavButtonContainer
-               isHovered={isHovered}
-               setIsHovered={setIsHovered}
                topLeft={topLeft}
                topRight={topRight}
                bottomRight={bottomRight}
                bottomLeft={bottomLeft}
+               tooltip={tooltip}
             >
                <Wrapper>
-                  {isHovered && (
-                     <MainTooltip
-                        key={tooltip}
-                        text={tooltip}
-                        left={topRight || bottomRight}
-                        right={topLeft || bottomLeft}
-                     />
-                  )}
                   <span className="material-symbols-outlined">{icon}</span>
                   {translate && <TranslateIcon />}
                </Wrapper>

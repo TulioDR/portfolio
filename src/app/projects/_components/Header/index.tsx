@@ -1,10 +1,10 @@
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/Typography/PageTitle";
 import MouseIcon from "@/components/MouseIcon";
 import useLanguageContext from "@/context/LanguageContext";
 import MobileMouseIcon from "@/components/MouseIcon/MobileMouseIcon";
 import { MotionValue, motion, useTransform } from "framer-motion";
 import { PROJECT_ANIMATION_DURATION } from "../../_constants/DURATIONS";
-import PageDescription from "@/components/PageDescription";
+import PageDescription from "@/components/Typography/PageDescription";
 
 type Props = {
    showHeader?: boolean;

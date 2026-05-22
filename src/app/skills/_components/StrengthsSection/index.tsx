@@ -1,5 +1,5 @@
 import Clock from "./Clock";
-import Subtitle from "@/components/Subtitle";
+import Subtitle from "@/components/Typography/Subtitle";
 import Example from "./Example";
 import LearningSpeed from "./LearningSpeed";
 import Eyes from "./Eyes";

@@ -32,7 +32,7 @@ export default function CardContent({
                   SKILL_SLIDES={SKILL_SLIDES}
                />
             </div>
-            <div className="flex lg:flex-col w-full xl:w-36 gap-1">
+            <div className="flex lg:flex-col w-full xl:w-36 2xl:w-50 gap-1">
                {SKILL_SLIDES.map((slide, index) => (
                   <PaginationButton
                      isActive={activeIndex === index}

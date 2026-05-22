@@ -1,4 +1,3 @@
-import PageTitle from "@/components/PageTitle";
 import Input from "./Input";
 import useLanguageContext from "@/context/LanguageContext";
 import { Form, Formik } from "formik";
@@ -10,6 +9,7 @@ import { ValuesType } from "@/app/contact/_types/ContactFormType";
 import useFormValidation from "@/app/contact/_hooks/useFormValidation";
 import useFormSubmit from "@/app/contact/_hooks/useFormSubmit";
 import ValidateOnLanguageChange from "../../ValidateOnLanguageChange";
+import PageTitle from "@/components/Typography/PageTitle";
 
 type Props = {};
 

@@ -1,4 +1,4 @@
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/Typography/PageTitle";
 import useLanguageContext from "@/context/LanguageContext";
 import MobileMouseIcon from "@/components/MouseIcon/MobileMouseIcon";
 import MouseIcon from "@/components/MouseIcon";

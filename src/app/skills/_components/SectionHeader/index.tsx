@@ -1,5 +1,5 @@
 import AnimatedText from "@/components/AnimatedText";
-import Paragraph from "@/components/Paragraph";
+import Paragraph from "@/components/Typography/Paragraph";
 import useLanguageContext from "@/context/LanguageContext";
 
 type Props = {

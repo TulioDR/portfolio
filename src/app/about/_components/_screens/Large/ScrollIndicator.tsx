@@ -14,7 +14,7 @@ export default function ScrollIndicator({
    handleNodeClick,
 }: Props) {
    return (
-      <div className="w-16 h-svh fixed top-0 right-8 py-32">
+      <div className="w-16 h-svh fixed top-0 right-4 py-24">
          <div className="h-full relative w-full flex justify-center">
             <div className="absolute inset-0 flex justify-center py-4">
                <div className="w-0.5 bg-line/20 h-full">

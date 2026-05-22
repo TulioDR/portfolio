@@ -1,4 +1,4 @@
-import AnimatedText from "./AnimatedText";
+import AnimatedText from "../AnimatedText";
 
 type Props = {
    text: string;

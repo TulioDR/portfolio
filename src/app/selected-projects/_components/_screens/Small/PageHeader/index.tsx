@@ -1,6 +1,6 @@
 import MouseIcon from "@/components/MouseIcon";
-import PageDescription from "@/components/PageDescription";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/Typography/PageTitle";
+import PageDescription from "@/components/Typography/PageDescription";
 import useLanguageContext from "@/context/LanguageContext";
 
 type Props = {};

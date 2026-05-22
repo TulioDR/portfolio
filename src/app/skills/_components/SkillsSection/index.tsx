@@ -1,4 +1,4 @@
-import Subtitle from "@/components/Subtitle";
+import Subtitle from "@/components/Typography/Subtitle";
 import SectionHeader from "../SectionHeader";
 import useLanguageContext from "@/context/LanguageContext";
 import SkillsSlider from "./SkillsSlider";

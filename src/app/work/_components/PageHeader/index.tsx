@@ -1,5 +1,5 @@
 import MouseIcon from "@/components/MouseIcon";
-import PageTitle from "@/components/PageTitle";
+import PageTitle from "@/components/Typography/PageTitle";
 
 type Props = {};
 

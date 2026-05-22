@@ -1,4 +1,6 @@
+import MainTooltip from "@/components/MainTooltip";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 type Props = {
    children: React.ReactNode;
@@ -6,19 +8,18 @@ type Props = {
    topRight?: true;
    bottomRight?: true;
    bottomLeft?: true;
-   isHovered: boolean;
-   setIsHovered: React.Dispatch<React.SetStateAction<boolean>>;
+   tooltip: string;
 };
 
 export default function NavButtonContainer({
    children,
-   setIsHovered,
    topLeft,
    topRight,
    bottomRight,
    bottomLeft,
-   isHovered,
+   tooltip,
 }: Props) {
+   const [isHovered, setIsHovered] = useState<boolean>(false);
    const onHoverStart = () => setIsHovered(true);
    const onHoverEnd = () => setIsHovered(false);
 
@@ -38,6 +39,14 @@ export default function NavButtonContainer({
             ${bottomLeft ? " bottom-0 left-0" : ""}
          `}
       >
+         {isHovered && (
+            <MainTooltip
+               key={tooltip}
+               text={tooltip}
+               left={topRight || bottomRight}
+               right={topLeft || bottomLeft}
+            />
+         )}
          {children}
       </motion.div>
    );

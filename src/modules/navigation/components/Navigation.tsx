@@ -3,13 +3,18 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-import NavButtons from "./NavButtons";
 import AnimationContainer from "./AnimationContainer";
 import { XL_MEDIA_QUERY } from "@/constants/MEDIA_QUERIES";
-import { useMediaQuery } from "react-responsive";
 import Large from "./_screens/Large";
 import Small from "./_screens/Small";
 import usePageTransitionContext from "@/modules/pageTransition/context/PageTransitionContext";
+import AdaptiveClient from "@/components/AdaptiveClient";
+import dynamic from "next/dynamic";
+
+const NoSSRNavButtons = dynamic(() => import("./NavButtons"), {
+   ssr: false,
+   loading: () => null,
+});
 
 export default function Navigation() {
    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -20,27 +25,20 @@ export default function Navigation() {
       setIsMenuOpen(false);
    }, [targetRoute]);
 
-   const isSmall = useMediaQuery({ maxWidth: XL_MEDIA_QUERY });
-
-   const [isSmallPage, setIsSmallPage] = useState<boolean>(false);
-   useEffect(() => {
-      setIsSmallPage(isSmall);
-   }, [isSmall]);
-
    return (
       <>
          <AnimatePresence>
             {isMenuOpen && (
                <AnimationContainer>
-                  {isSmall ? <Small /> : <Large />}
+                  <AdaptiveClient
+                     small={<Small />}
+                     large={<Large />}
+                     breakpoint={XL_MEDIA_QUERY}
+                  />
                </AnimationContainer>
             )}
          </AnimatePresence>
-         <NavButtons
-            isSmall={isSmallPage}
-            isMenuOpen={isMenuOpen}
-            toggleMenu={toggleMenu}
-         />
+         <NoSSRNavButtons isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
       </>
    );
 }

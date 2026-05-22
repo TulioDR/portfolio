@@ -2,14 +2,17 @@ import NavButton from "./NavButton";
 import useLanguageContext from "@/context/LanguageContext";
 import { CONTACT_ICON, HOME_ICON } from "@/constants/ICONS";
 import { usePathname } from "next/navigation";
+import { XL_MEDIA_QUERY } from "@/constants/MEDIA_QUERIES";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {
    isMenuOpen: boolean;
    toggleMenu: () => void;
-   isSmall: boolean;
 };
 
-export default function NavButtons({ isMenuOpen, toggleMenu, isSmall }: Props) {
+export default function NavButtons({ isMenuOpen, toggleMenu }: Props) {
+   const isSmall = useMediaQuery({ maxWidth: XL_MEDIA_QUERY });
+
    const pathname = usePathname();
    const isNotHome = pathname !== "/";
    const isNotContact = pathname !== "/contact";
