@@ -10,12 +10,6 @@ import { PreloaderContextProvider } from "@/modules/preloader/context/PreloaderC
 import { PageTransitionContextProvider } from "@/modules/pageTransition/context/PageTransitionContext";
 import AnimatedLayout from "@/modules/pageTransition/components/AnimatedLayout";
 import { ViewTransition } from "react";
-import { MotionConfig } from "framer-motion";
-// const kodeMono = Kode_Mono({
-//    subsets: ["latin"],
-//    variable: "--font-kode-mono",
-//    display: "swap",
-// });
 
 const inconsolata = Inconsolata({
    subsets: ["latin"],
@@ -47,9 +41,7 @@ export default function RootLayout({
                      <PageTransitionContextProvider>
                         <Navigation />
                         <Preloader />
-                        <MotionConfig transition={{ ease: [0.22, 1, 0.36, 1] }}>
-                           <AnimatedLayout>{children}</AnimatedLayout>
-                        </MotionConfig>
+                        <AnimatedLayout>{children}</AnimatedLayout>
                      </PageTransitionContextProvider>
                   </LanguageContextProvider>
                </PreloaderContextProvider>

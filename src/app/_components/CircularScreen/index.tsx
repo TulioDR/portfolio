@@ -34,13 +34,13 @@ export default function CircularScreen({
             style={{ z: -25 }}
             initial={false}
             animate={{ scale: startAnimations ? 1 : 0 }}
-            className="absolute -inset-15 xl:inset-[-40%] rounded-full border-2 border-accent"
+            className="absolute -inset-15 xl:inset-[-30%] rounded-full border-2 border-accent"
          />
          <motion.div
             style={{ z: -75 }}
             initial={false}
             animate={{ scale: startAnimations ? 1 : 0 }}
-            className="absolute inset-[-20%] rounded-full border-2 border-black"
+            className="absolute inset-[-60%] rounded-full border-2 border-black"
          />
          <motion.div
             style={{ z: -50 }}

@@ -25,9 +25,9 @@ export default function HomeCard({
    onMouseLeave,
    number,
 }: Props) {
+   const [scope, animate] = useAnimate();
    const [restart, setRestart] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
-   const [scope, animate] = useAnimate();
 
    const handleEnter = () => {
       onMouseEnter();
