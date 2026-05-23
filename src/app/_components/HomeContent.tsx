@@ -29,7 +29,7 @@ export default function HomeContent() {
                rotateX: rotateX,
                rotateY: rotateY,
             }}
-            className="h-full w-full"
+            className="w-full h-full pointer-events-none"
          >
             <Large />
             <Small />

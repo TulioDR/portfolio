@@ -1,7 +1,9 @@
 import HomeTR from "../../types/HomeTR";
 
 const homeTR: HomeTR = {
-   title: "Portfolio",
+   title: "Software Engineer",
+   title1: "Software",
+   title2: "Engineer",
    page: "Page",
    recommended: "Recommended",
    preview: {

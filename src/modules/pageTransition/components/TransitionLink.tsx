@@ -4,7 +4,7 @@ import usePageTransitionContext from "../context/PageTransitionContext";
 
 type Props = LinkProps &
    ComponentPropsWithoutRef<"a"> & {
-      children: React.ReactNode;
+      children?: React.ReactNode;
    };
 
 export default function TransitionLink({ children, href, ...rest }: Props) {

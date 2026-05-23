@@ -26,17 +26,16 @@ export default function CircularScreen({ selectedIcon }: Props) {
          style={{ transformStyle: "preserve-3d" }}
          className="h-full aspect-square relative"
       >
-         <div
-            style={{ transform: `translateZ(${50}px)` }}
-            className="absolute -inset-40 rounded-full border-2 border-accent"
+         <motion.div
+            style={{ z: -25 }}
+            className="absolute -inset-15 xl:inset-[-40%] rounded-full border-2 border-accent"
          />
-
-         <div
-            style={{ transform: `translateZ(${-100}px)` }}
-            className="absolute -inset-96 rounded-full border-2 border-black"
+         <motion.div
+            style={{ z: -75 }}
+            className="absolute inset-[-20%] rounded-full border-2 border-black"
          />
-         <div
-            style={{ transform: `translateZ(${-50}px)` }}
+         <motion.div
+            style={{ z: -50 }}
             className="absolute inset-0 rounded-full bg-gray-100 shadow-xl"
          />
 

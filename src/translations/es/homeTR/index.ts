@@ -1,7 +1,9 @@
 import HomeTR from "@/translations/types/HomeTR";
 
 const homeTR: HomeTR = {
-   title: "Portafolio",
+   title: "Ingeniero de Software",
+   title1: "Ingeniero",
+   title2: "de Software",
    page: "Pág",
    recommended: "Recomendado",
    preview: {

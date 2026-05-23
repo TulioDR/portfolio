@@ -5,11 +5,17 @@ type Props = {};
 
 export default function HomeTitleText({}: Props) {
    const { language } = useLanguageContext();
-   const { title } = language.home;
+   const { title1, title2 } = language.home;
    return (
-      <AnimatedText
-         text={title}
-         className="font-black uppercase text-black text-[15vw]! md:text-[10vw]! xl:text-[5vw]!"
-      />
+      <div
+         style={{
+            textShadow:
+               "-1px -1px 0 #e5e7eb, 1px -1px 0 #e5e7eb, -1px 1px 0 #e5e7eb, 1px 1px 0 #e5e7eb",
+         }}
+         className="flex flex-col items-center xl:items-start font-black uppercase text-black text-[12vw] md:text-[7vw] xl:text-[5vw] 2xl:xl:text-[6vw] leading-[0.9]"
+      >
+         <AnimatedText text={title1} className="w-max" />
+         <AnimatedText text={title2} className="w-max" />
+      </div>
    );
 }

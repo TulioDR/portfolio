@@ -1,5 +1,7 @@
 export default interface HomeTR {
    title: string;
+   title1: string;
+   title2: string;
    page: string;
    recommended: string;
    preview: {

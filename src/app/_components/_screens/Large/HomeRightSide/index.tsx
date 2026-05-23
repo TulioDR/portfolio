@@ -1,8 +1,9 @@
 import React from "react";
 import HomeCard from "../HomeCard";
-import HomeNameAndSocials from "./HomeNameAndSocials";
 import { IconType } from "@/app/_types/IconType";
 import useLanguageContext from "@/context/LanguageContext";
+import { motion } from "framer-motion";
+import HomeNameAndSocials from "@/app/_components/HomeNameAndSocials";
 
 type Props = {
    setSelectedIcon: React.Dispatch<React.SetStateAction<IconType>>;
@@ -15,7 +16,7 @@ export default function HomeRightSide({ setSelectedIcon }: Props) {
    return (
       <div
          style={{ transformStyle: "preserve-3d" }}
-         className="flex-1 h-full flex flex-col gap-4 py-24 shrink-0"
+         className="flex-1 h-full flex flex-col gap-4"
       >
          <HomeCard
             className="-translate-x-16"
@@ -40,7 +41,11 @@ export default function HomeRightSide({ setSelectedIcon }: Props) {
             text={contact}
             number={6}
          />
-         <HomeNameAndSocials />
+         <motion.div style={{ z: 1 }} className=" w-full flex-1 relative ">
+            <div className="absolute inset-0 -translate-x-16 flex items-center justify-end">
+               <HomeNameAndSocials />
+            </div>
+         </motion.div>
       </div>
    );
 }

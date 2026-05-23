@@ -2,7 +2,13 @@ type Props = {};
 
 export default function MyName({}: Props) {
    return (
-      <span className="text-3xl lg:text-2xl xl:text-2xl 2xl:text-6xl text-center font-black text-black w-max">
+      <span
+         style={{
+            textShadow:
+               "-1px -1px 0 #e5e7eb, 1px -1px 0 #e5e7eb, -1px 1px 0 #e5e7eb, 1px 1px 0 #e5e7eb",
+         }}
+         className="text-[2.40rem] text-center font-black  text-black w-max"
+      >
          {`Tulio Ruzo `}
       </span>
    );

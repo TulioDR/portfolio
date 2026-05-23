@@ -1,13 +1,14 @@
 import HomeTitleText from "@/app/_components/HomeTitleText";
+import { motion } from "framer-motion";
 
 type Props = {};
 
 export default function HomeTitle({}: Props) {
    return (
-      <div className="w-full flex-1 relative">
+      <motion.div style={{ z: 10 }} className=" flex-1 relative  ">
          <div className="absolute inset-0 flex items-center translate-x-16">
             <HomeTitleText />
          </div>
-      </div>
+      </motion.div>
    );
 }

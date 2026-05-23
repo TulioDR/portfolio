@@ -1,7 +1,6 @@
 import { createPortal } from "react-dom";
-import MyName from "../../MyName";
-import Socials from "@/components/Socials";
 import { useEffect, useState } from "react";
+import HomeNameAndSocials from "../../HomeNameAndSocials";
 
 type Props = {};
 
@@ -13,9 +12,8 @@ export default function NamesAndSocials({}: Props) {
 
    if (!isMounted) return <></>;
    return createPortal(
-      <div className="w-full flex flex-col items-center justify-center gap-2 fixed bottom-4 lg:hidden">
-         <MyName />
-         <Socials tooltipPosition="top" />
+      <div className="w-full flex justify-center fixed bottom-4 xl:hidden">
+         <HomeNameAndSocials />
       </div>,
       document.body || undefined,
    );
