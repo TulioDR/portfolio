@@ -14,8 +14,8 @@ export default function HomeTitleText({}: Props) {
          }}
          className="flex flex-col items-center xl:items-start font-black uppercase text-black text-[12vw] md:text-[7vw] xl:text-[5vw] 2xl:xl:text-[6vw] leading-[0.9]"
       >
-         <AnimatedText text={title1} className="w-max" />
-         <AnimatedText text={title2} className="w-max" />
+         <AnimatedText initial text={title1} className="w-max" />
+         <AnimatedText initial text={title2} className="w-max" />
       </div>
    );
 }

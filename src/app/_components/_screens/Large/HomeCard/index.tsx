@@ -3,7 +3,8 @@ import Tooltip from "./Tooltip";
 import AnimatedText from "@/components/AnimatedText";
 import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import RecommendedTooltip from "./RecommendedTooltip";
-import { motion } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
+import { HOME_CARD_SELECTOR } from "@/app/_constants/ANIMATION_CLASSNAMES";
 
 type Props = {
    className?: string;
@@ -26,29 +27,33 @@ export default function HomeCard({
 }: Props) {
    const [restart, setRestart] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
+   const [scope, animate] = useAnimate();
 
    const handleEnter = () => {
       onMouseEnter();
       setRestart((prev) => !prev);
       setIsHovered(true);
+      animate("." + HOME_CARD_SELECTOR, { z: -49 });
    };
 
    const handleLeave = () => {
       onMouseLeave();
       setIsHovered(false);
+      animate("." + HOME_CARD_SELECTOR, { z: 0 });
    };
 
    return (
       <div
+         ref={scope}
          style={{ transformStyle: "preserve-3d" }}
          className={`relative flex-1 ${className}`}
       >
          <motion.div
-            animate={{ z: isHovered ? -49 : 0 }}
-            className="w-full h-full"
+            initial={{ z: -49 }}
+            className={`w-full h-full ${HOME_CARD_SELECTOR}`}
          >
             <div
-               className={`w-full h-full rounded-sm flex items-center justify-center  shadow-lg
+               className={`w-full h-full rounded-sm flex items-center justify-center shadow-lg
                ${isHovered ? "bg-black text-white" : "text-black bg-white"}
             `}
             >

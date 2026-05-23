@@ -2,9 +2,11 @@ import HomeTitleText from "../../HomeTitleText";
 import CircularScreen from "../../CircularScreen";
 import NamesAndSocials from "./NamesAndSocials";
 
-type Props = {};
+type Props = {
+   startAnimations: boolean;
+};
 
-export default function Small({}: Props) {
+export default function Small({ startAnimations }: Props) {
    return (
       <>
          <div
@@ -18,7 +20,10 @@ export default function Small({}: Props) {
                style={{ transformStyle: "preserve-3d" }}
                className="w-full sm:w-[70vw] md:w-[60vw] lg:w-[50vw] shrink-0"
             >
-               <CircularScreen selectedIcon="home" />
+               <CircularScreen
+                  startAnimations={startAnimations}
+                  selectedIcon="home"
+               />
             </div>
          </div>
          <NamesAndSocials />

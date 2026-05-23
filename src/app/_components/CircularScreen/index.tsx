@@ -6,9 +6,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
 type Props = {
    selectedIcon: IconType;
+   startAnimations: boolean;
 };
 
-export default function CircularScreen({ selectedIcon }: Props) {
+export default function CircularScreen({
+   selectedIcon,
+   startAnimations,
+}: Props) {
    const { targetRoute } = usePageTransitionContext();
    const { isLoaded } = usePreloaderContext();
 
@@ -28,10 +32,14 @@ export default function CircularScreen({ selectedIcon }: Props) {
       >
          <motion.div
             style={{ z: -25 }}
+            initial={false}
+            animate={{ scale: startAnimations ? 1 : 0 }}
             className="absolute -inset-15 xl:inset-[-40%] rounded-full border-2 border-accent"
          />
          <motion.div
             style={{ z: -75 }}
+            initial={false}
+            animate={{ scale: startAnimations ? 1 : 0 }}
             className="absolute inset-[-20%] rounded-full border-2 border-black"
          />
          <motion.div
