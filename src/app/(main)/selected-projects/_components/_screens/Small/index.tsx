@@ -5,6 +5,7 @@ import SelectedProject from "./SelectedProject";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import NavigationButton from "./NavigationButton";
+import { MAIN_EASING } from "@/constants/TRANSITIONS";
 
 type Props = {};
 
@@ -33,7 +34,7 @@ export default function Small({}: Props) {
                      }}
                      animate={{
                         x: `-${(currentIndex / SELECTED_PROJECTS.length) * 100}%`,
-                        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                        transition: { duration: 0.5, ease: MAIN_EASING },
                      }}
                      className="absolute top-0 left-0 h-full flex"
                   >

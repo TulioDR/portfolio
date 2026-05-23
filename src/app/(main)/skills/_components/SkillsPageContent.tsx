@@ -16,7 +16,7 @@ export default function SkillsPageContent({}: Props) {
    return (
       <ReactLenis root>
          <div className="w-full overflow-hidden">
-            <PageHeader />
+            <PageHeader isLoaded={isLoaded} />
             {/* This y value is the same as the -mt-36 in the className */}
             <motion.div
                initial={{ y: "9rem" }}

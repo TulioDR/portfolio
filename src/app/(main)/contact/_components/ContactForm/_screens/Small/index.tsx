@@ -3,13 +3,14 @@ import useLanguageContext from "@/context/LanguageContext";
 import { Form, Formik } from "formik";
 import SendButton from "./SendButton";
 import StatusModal from "./StatusModal";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Socials from "@/components/Socials";
 import { ValuesType } from "@/app/(main)/contact/_types/ContactFormType";
 import useFormValidation from "@/app/(main)/contact/_hooks/useFormValidation";
 import useFormSubmit from "@/app/(main)/contact/_hooks/useFormSubmit";
 import ValidateOnLanguageChange from "../../ValidateOnLanguageChange";
 import PageTitle from "@/components/Typography/PageTitle";
+import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
 
 type Props = {};
 
@@ -48,9 +49,13 @@ export default function Small({}: Props) {
          >
             <ValidateOnLanguageChange />
             <PageTitle title="Contact me" className="text-left" />
-            <div className="w-full flex justify-center">
+            <motion.div
+               animate={{ scale: 1, transition: ENTER_EASE }}
+               exit={{ scale: 0.8, transition: EXIT_EASE }}
+               className="w-full flex justify-center"
+            >
                <Socials tooltipPosition="top" className="gap-4" white />
-            </div>
+            </motion.div>
 
             <div className="w-full grid gap-5 md:grid-cols-2">
                <Input name="name" placeholder={nameTitle} />

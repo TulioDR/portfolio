@@ -1,3 +1,4 @@
+import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
 import { motion, MotionValue } from "framer-motion";
 
 type Props = {
@@ -14,7 +15,12 @@ export default function ScrollIndicator({
    handleNodeClick,
 }: Props) {
    return (
-      <div className="w-16 h-svh fixed top-0 right-4 py-24">
+      <motion.div
+         initial={{ scale: 0.8, opacity: 0 }}
+         animate={{ scale: 1, opacity: 1, transition: ENTER_EASE }}
+         exit={{ scale: 0.8, transition: EXIT_EASE }}
+         className="w-16 h-svh fixed top-0 right-4 py-24"
+      >
          <div className="h-full relative w-full flex justify-center">
             <div className="absolute inset-0 flex justify-center py-4">
                <div className="w-0.5 bg-line/20 h-full">
@@ -44,6 +50,6 @@ export default function ScrollIndicator({
                ))}
             </div>
          </div>
-      </div>
+      </motion.div>
    );
 }

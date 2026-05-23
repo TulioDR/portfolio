@@ -2,7 +2,7 @@ import { stagger, useAnimate } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLenis } from "lenis/react";
 import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
-import { PROJECT_ANIMATION_DURATION } from "../_constants/DURATIONS";
+import { ENTER_EASE } from "@/constants/TRANSITIONS";
 
 export default function useInitialScrollAnimation(isInitialAnimation: boolean) {
    const [showHeader, setShowHeader] = useState(false);
@@ -14,11 +14,7 @@ export default function useInitialScrollAnimation(isInitialAnimation: boolean) {
    useEffect(() => {
       if (!isInitialAnimation) {
          const quickAnimation = async () => {
-            animate(
-               ".project-card-container",
-               { height: "100%" },
-               { duration: PROJECT_ANIMATION_DURATION },
-            );
+            animate(".project-card-container", { height: "100%" }, ENTER_EASE);
             setShowHeader(true);
          };
          quickAnimation();
@@ -39,20 +35,14 @@ export default function useInitialScrollAnimation(isInitialAnimation: boolean) {
             ".project-card-container",
             { height: "100%" },
             {
-               duration: PROJECT_ANIMATION_DURATION,
+               ...ENTER_EASE,
                delay: stagger(0.1, { from: "last" }),
             },
          );
          setShowHeader(true);
       };
       startAnimation();
-   }, [
-      lenis,
-      isLoaded,
-      animate,
-      isInitialAnimation,
-      PROJECT_ANIMATION_DURATION,
-   ]);
+   }, [lenis, isLoaded, animate, isInitialAnimation, ENTER_EASE]);
 
    // function easingFunction(x: number): number {
    //    return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2;

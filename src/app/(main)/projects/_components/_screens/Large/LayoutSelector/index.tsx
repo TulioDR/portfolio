@@ -1,6 +1,6 @@
-import { PROJECT_ANIMATION_DURATION } from "@/app/(main)/projects/_constants/DURATIONS";
 import LayoutSelectorButton from "./LayoutSelectorButton";
 import { LayoutType } from "@/app/(main)/projects/_types/LayoutType";
+import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
 import { motion } from "framer-motion";
 
 type Props = {
@@ -13,9 +13,8 @@ export default function LayoutSelector({ layout, changeLayout }: Props) {
       <div className="flex fixed top-4 left-0 justify-center w-screen h-16 pointer-events-none z-10">
          <motion.div
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0 }}
-            transition={{ duration: PROJECT_ANIMATION_DURATION }}
+            animate={{ scale: 1, transition: ENTER_EASE }}
+            exit={{ scale: 0, transition: EXIT_EASE }}
             className="bg-text flex h-full p-1 rounded border border-primary"
          >
             <LayoutSelectorButton

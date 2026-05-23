@@ -5,7 +5,7 @@ import WorkCard from "./WorkCard";
 import ReactLenis from "lenis/react";
 import { motion } from "framer-motion";
 import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
-import { ENTER_EASE, EXIT_DURATION } from "@/constants/TRANSITIONS";
+import { ENTER_EASE } from "@/constants/TRANSITIONS";
 
 type Props = {};
 
@@ -13,11 +13,7 @@ export default function WorkPageContent({}: Props) {
    const { isLoaded } = usePreloaderContext();
    return (
       <ReactLenis root>
-         <motion.div
-            exit={{ opacity: 0 }}
-            transition={{ duration: EXIT_DURATION }}
-            className="px-4 lg:px-24 pb-24 lg:pb-4"
-         >
+         <div className="px-4 lg:px-24 pb-24 lg:pb-4">
             <PageHeader isLoaded={isLoaded} />
             <motion.div
                initial={{ y: "9rem" }}
@@ -29,7 +25,7 @@ export default function WorkPageContent({}: Props) {
                   <WorkCard key={index} />
                ))}
             </motion.div>
-         </motion.div>
+         </div>
       </ReactLenis>
    );
 }

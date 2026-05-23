@@ -1,6 +1,6 @@
 type Props = {};
 
-import { PROJECT_ANIMATION_DURATION } from "@/app/(main)/projects/_constants/DURATIONS";
+import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
 import { motion } from "framer-motion";
 
 export default function CarouselMarks({}: Props) {
@@ -10,9 +10,8 @@ export default function CarouselMarks({}: Props) {
             <div className="h-6 w-px flex items-start">
                <motion.div
                   initial={{ height: "0%" }}
-                  animate={{ height: "100%" }}
+                  animate={{ height: "100%", transition: ENTER_EASE }}
                   exit={{ height: "0%" }}
-                  transition={{ duration: PROJECT_ANIMATION_DURATION }}
                   className="w-full bg-line"
                />
             </div>
@@ -21,9 +20,8 @@ export default function CarouselMarks({}: Props) {
             <div className="h-6 w-px flex items-end">
                <motion.div
                   initial={{ height: "0%" }}
-                  animate={{ height: "100%" }}
-                  exit={{ height: "0%" }}
-                  transition={{ duration: PROJECT_ANIMATION_DURATION }}
+                  animate={{ height: "100%", transition: ENTER_EASE }}
+                  exit={{ height: "0%", transition: EXIT_EASE }}
                   className="w-full bg-line"
                />
             </div>

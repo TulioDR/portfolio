@@ -1,9 +1,9 @@
-import ProjectCardBody from "@/app/projects/_components/ProjectCardBody";
+import ProjectCardBody from "@/app/(main)/projects/_components/ProjectCardBody";
 import { SELECTED_PROJECTS } from "@/data/projects";
 import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import { motion } from "framer-motion";
-import ProjectTooltip from "@/app/projects/_components/ProjectTooltip";
-import useProjectTooltip from "@/app/projects/_hooks/useProjectTooltip";
+import ProjectTooltip from "@/app/(main)/projects/_components/ProjectTooltip";
+import useProjectTooltip from "@/app/(main)/projects/_hooks/useProjectTooltip";
 import SelectedProjectImage from "./SelectedProjectImage";
 
 type Props = {

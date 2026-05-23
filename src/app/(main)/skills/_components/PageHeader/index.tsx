@@ -3,15 +3,14 @@ import useLanguageContext from "@/context/LanguageContext";
 import MobileMouseIcon from "@/components/MouseIcon/MobileMouseIcon";
 import MouseIcon from "@/components/MouseIcon";
 import PageHeaderCard from "./PageHeaderCard";
-import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
 
-type Props = {};
+type Props = {
+   isLoaded: boolean;
+};
 
-export default function PageHeader({}: Props) {
+export default function PageHeader({ isLoaded }: Props) {
    const { language } = useLanguageContext();
    const { title } = language.skills;
-
-   const { isLoaded } = usePreloaderContext();
 
    return (
       <div className="w-full h-svh flex items-center justify-center relative pointer-events-none lg:pointer-events-auto">

@@ -1,5 +1,5 @@
-import { PROJECT_ANIMATION_DURATION } from "@/app/(main)/projects/_constants/DURATIONS";
 import AnimatedText from "@/components/AnimatedText";
+import { EXIT_EASE } from "@/constants/TRANSITIONS";
 import { motion } from "framer-motion";
 
 type Props = {
@@ -19,10 +19,7 @@ export default function CardText({
 }: Props) {
    return (
       <div className="overflow-hidden">
-         <motion.div
-            exit={{ y: "-100%" }}
-            transition={{ duration: PROJECT_ANIMATION_DURATION }}
-         >
+         <motion.div exit={{ y: "-100%" }} transition={EXIT_EASE}>
             <AnimatedText
                restart={restart}
                text={text}

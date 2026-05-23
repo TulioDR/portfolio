@@ -1,5 +1,5 @@
 import { CARD_ASPECT_RATIO } from "@/app/(main)/projects/_constants/ASPECT_RATIO";
-import { PROJECT_ANIMATION_DURATION } from "@/app/(main)/projects/_constants/DURATIONS";
+import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
 import { motion, useMotionValue, useAnimate } from "framer-motion";
 
 import { useEffect } from "react";
@@ -18,11 +18,8 @@ export default function Container({
 }: Props) {
    const INITIAL_Z_INDEX = 10;
    const FINAL_Z_INDEX = 15;
-   const OPEN_DURATION = 0.6;
-   const CLOSE_DURATION = PROJECT_ANIMATION_DURATION;
 
    const zIndex = useMotionValue<number>(INITIAL_Z_INDEX);
-   const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
    const [scope, animate] = useAnimate();
 
@@ -30,26 +27,18 @@ export default function Container({
       const controls = animate(
          zIndex,
          isSelected ? FINAL_Z_INDEX : INITIAL_Z_INDEX,
-         { duration: isSelected ? OPEN_DURATION : CLOSE_DURATION, ease: EASE },
+         isSelected ? ENTER_EASE : { duration: 0.2 },
       );
       return () => controls.stop();
    }, [isSelected]);
 
    useEffect(() => {
       if (isSelected) {
-         animate(
-            ".size-changer",
-            { width: "calc(100vw + 4px)" },
-            { duration: OPEN_DURATION, ease: EASE },
-         );
+         animate(".size-changer", { width: "calc(100vw + 4px)" }, ENTER_EASE);
       } else {
-         animate(
-            ".size-changer",
-            { width: "100%" },
-            { duration: CLOSE_DURATION, ease: EASE },
-         );
+         animate(".size-changer", { width: "100%" }, { duration: 0.2 });
       }
-   }, [isSelected, EASE]);
+   }, [isSelected, ENTER_EASE, EXIT_EASE]);
 
    return (
       <div
@@ -67,7 +56,7 @@ export default function Container({
             <motion.div
                initial={{ height: 0 }}
                exit={{ height: 0 }}
-               transition={{ duration: PROJECT_ANIMATION_DURATION }}
+               transition={EXIT_EASE}
                className="w-full project-card-container shrink-0 overflow-hidden flex items-center justify-center"
             >
                <div className="h-full w-full flex items-center justify-center bg-black border border-line relative overflow-hidden">

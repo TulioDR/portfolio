@@ -1,5 +1,5 @@
+import { EXIT_EASE, ENTER_EASE } from "@/constants/TRANSITIONS";
 import { motion } from "framer-motion";
-import { PROJECT_ANIMATION_DURATION } from "../../_constants/DURATIONS";
 
 type Props = {
    initial?: true;
@@ -15,9 +15,10 @@ export default function CardLine({
    return (
       <motion.div
          initial={{ width: initial ? 0 : "100%" }}
-         animate={initial ? { width: "100%" } : undefined}
-         exit={{ width: 0 }}
-         transition={{ duration: PROJECT_ANIMATION_DURATION }}
+         animate={
+            initial ? { width: "100%", transition: ENTER_EASE } : undefined
+         }
+         exit={{ width: 0, transition: EXIT_EASE }}
          className={`h-px ${className} ${whiteLine ? "bg-white" : "bg-line"}`}
       />
    );

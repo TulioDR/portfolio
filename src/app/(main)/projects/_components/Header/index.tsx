@@ -3,15 +3,15 @@ import MouseIcon from "@/components/MouseIcon";
 import useLanguageContext from "@/context/LanguageContext";
 import MobileMouseIcon from "@/components/MouseIcon/MobileMouseIcon";
 import { MotionValue, motion, useTransform } from "framer-motion";
-import { PROJECT_ANIMATION_DURATION } from "../../_constants/DURATIONS";
 import PageDescription from "@/components/Typography/PageDescription";
+import { EXIT_EASE } from "@/constants/TRANSITIONS";
 
 type Props = {
-   showHeader?: boolean;
+   showHeader: boolean;
    smoothScroll: MotionValue<number>;
 };
 
-export default function Header({ showHeader = true, smoothScroll }: Props) {
+export default function Header({ showHeader, smoothScroll }: Props) {
    const { language } = useLanguageContext();
    const { title, description } = language.projects;
 
@@ -25,8 +25,8 @@ export default function Header({ showHeader = true, smoothScroll }: Props) {
       >
          {showHeader && (
             <motion.div
-               exit={{ opacity: 0, scale: 0.8 }}
-               transition={{ duration: PROJECT_ANIMATION_DURATION }}
+               exit={{ scale: 0.8 }}
+               transition={EXIT_EASE}
                className="relative flex flex-col items-center"
             >
                <PageTitle title={title} />

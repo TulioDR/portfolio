@@ -1,4 +1,4 @@
-import ProjectCardBody from "@/app/projects/_components/ProjectCardBody";
+import ProjectCardBody from "@/app/(main)/projects/_components/ProjectCardBody";
 import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import ProjectType from "@/types/ProjectType";
 import Image from "next/image";
