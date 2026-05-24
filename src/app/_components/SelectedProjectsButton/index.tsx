@@ -6,7 +6,8 @@ import { Autoplay } from "swiper/modules";
 import useLanguageContext from "@/context/LanguageContext";
 import Tooltip from "../_screens/Large/HomeCard/Tooltip";
 import { SELECTED_PROJECTS } from "@/data/projects";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
+import useHomeContext from "@/app/_context/HomeContext";
+import Link from "next/link";
 
 type Props = {
    onMouseEnter?: () => void;
@@ -25,6 +26,13 @@ export default function SelectedProjectsButton({
    const { selectedProjects } = language.home.panel;
 
    const HREF = "/selected-projects";
+   const { exitAnimation } = useHomeContext();
+
+   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      console.log("clicked");
+      e.preventDefault();
+      exitAnimation(HREF);
+   };
 
    const handleEnter = () => {
       onMouseEnter && onMouseEnter();
@@ -38,21 +46,22 @@ export default function SelectedProjectsButton({
    };
 
    return (
-      <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent lg:p-1 pointer-events-auto">
+      <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent lg:p-1 ">
          <div className="w-full h-full border lg:border-4 border-white lg:border-black rounded lg:rounded-lg overflow-hidden relative">
             {isHovered && <Tooltip number={number} />}
-            <TransitionLink
+            <Link
                href={HREF}
+               onClick={handleClick}
                onPointerEnter={handleEnter}
                onPointerLeave={handleLeave}
-               className="absolute inset-0 bg-black/50 flex items-center pl-2 lg:pl-8 z-10 hover:bg-black active:bg-black cursor-pointer"
+               className="absolute inset-0 bg-black/50 flex items-center pl-2 lg:pl-8 z-10 hover:bg-black active:bg-black cursor-pointer pointer-events-auto"
             >
                <AnimatedText
                   restart={restart}
                   text={selectedProjects}
                   className="text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-5xl text-left font-black uppercase w-min tracking-tighter pointer-events-none text-white"
                />
-            </TransitionLink>
+            </Link>
             <Swiper
                loop={true}
                autoplay={{ delay: 3000 }}

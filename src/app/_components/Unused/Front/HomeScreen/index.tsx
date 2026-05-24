@@ -27,7 +27,6 @@ export default function HomeScreen({ selectedNav, showContent }: Props) {
             <motion.div
                initial={{ opacity: 0 }}
                animate={{ opacity: showContent ? 1 : 0 }}
-               exit={{ opacity: 0 }}
                transition={{ duration: 0.2 }}
                className="h-[50svh] w-[50svw] relative"
             >

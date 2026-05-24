@@ -1,29 +1,14 @@
 import { IconType } from "@/app/_types/IconType";
 import CircularScreenIcon from "./CircularScreenIcon";
-import NAV_ITEMS from "@/constants/NAV_ITEMS";
-import usePageTransitionContext from "@/modules/pageTransition/context/PageTransitionContext";
-import { AnimatePresence, motion } from "framer-motion";
-import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
+import CircularScreenAnimation from "./CircularScreenAnimation";
+import { motion } from "framer-motion";
+import { CIRCULAR_SELECTOR } from "@/app/_constants/ANIMATION_CLASSNAMES";
 type Props = {
    selectedIcon: IconType;
-   startAnimations: boolean;
 };
 
-export default function CircularScreen({
-   selectedIcon,
-   startAnimations,
-}: Props) {
-   const { targetRoute } = usePageTransitionContext();
-   const { isLoaded } = usePreloaderContext();
-
+export default function CircularScreen({ selectedIcon }: Props) {
    let currentIcon: IconType = selectedIcon;
-
-   if (targetRoute) {
-      const navItem = NAV_ITEMS.find((item) => item.link === targetRoute);
-      if (navItem) {
-         currentIcon = navItem.icon;
-      }
-   }
 
    return (
       <div
@@ -31,16 +16,14 @@ export default function CircularScreen({
          className="h-full aspect-square relative"
       >
          <motion.div
-            style={{ z: -25 }}
-            initial={false}
-            animate={{ scale: startAnimations ? 1 : 0 }}
-            className="absolute -inset-15 xl:inset-[-30%] rounded-full border-2 border-accent"
+            initial={{ scale: 0 }}
+            style={{ z: -45 }}
+            className={`absolute -inset-15 xl:inset-[-30%] rounded-full border-2 border-accent ${CIRCULAR_SELECTOR}`}
          />
          <motion.div
+            initial={{ scale: 0 }}
             style={{ z: -75 }}
-            initial={false}
-            animate={{ scale: startAnimations ? 1 : 0 }}
-            className="absolute inset-[-60%] rounded-full border-2 border-black"
+            className={`absolute inset-[-60%] rounded-full border-2 border-black ${CIRCULAR_SELECTOR}`}
          />
          <motion.div
             style={{ z: -50 }}
@@ -59,25 +42,15 @@ export default function CircularScreen({
                   style={{ transformStyle: "preserve-3d" }}
                   className="w-full h-full rounded-full border border-slate-700 relative"
                >
-                  <AnimatePresence propagate>
-                     <motion.div
-                        key={currentIcon}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: isLoaded ? 1 : 0 }}
-                        exit={{ scale: 0 }}
-                        transition={{ duration: 0.1 }}
-                        style={{ transformStyle: "preserve-3d" }}
-                        className="absolute inset-0 flex items-center justify-center"
-                     >
-                        {Array.from({ length: 5 }).map((_, index) => (
-                           <CircularScreenIcon
-                              key={index}
-                              index={index}
-                              selectedIcon={currentIcon}
-                           />
-                        ))}
-                     </motion.div>
-                  </AnimatePresence>
+                  <CircularScreenAnimation selectedIcon={currentIcon}>
+                     {Array.from({ length: 5 }).map((_, index) => (
+                        <CircularScreenIcon
+                           key={index}
+                           index={index}
+                           selectedIcon={currentIcon}
+                        />
+                     ))}
+                  </CircularScreenAnimation>
                </div>
             </div>
          </div>

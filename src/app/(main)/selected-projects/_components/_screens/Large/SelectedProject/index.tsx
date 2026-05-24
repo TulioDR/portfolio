@@ -1,10 +1,10 @@
 import ProjectCardBody from "@/app/(main)/projects/_components/ProjectCardBody";
 import { SELECTED_PROJECTS } from "@/data/projects";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import { motion } from "framer-motion";
 import ProjectTooltip from "@/app/(main)/projects/_components/ProjectTooltip";
 import useProjectTooltip from "@/app/(main)/projects/_hooks/useProjectTooltip";
 import SelectedProjectImage from "./SelectedProjectImage";
+import Link from "next/link";
 
 type Props = {
    currentIndex: number;
@@ -16,7 +16,7 @@ export default function SelectedProject({ currentIndex }: Props) {
    const { getMousePosition, mouseX, mouseY, endHover, isHovered } =
       useProjectTooltip();
    return (
-      <TransitionLink
+      <Link
          onPointerMove={getMousePosition}
          onPointerLeave={endHover}
          href={`/projects/${project.link}`}
@@ -45,6 +45,6 @@ export default function SelectedProject({ currentIndex }: Props) {
             </motion.div>
          </div>
          <ProjectCardBody initial project={project} />
-      </TransitionLink>
+      </Link>
    );
 }

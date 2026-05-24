@@ -10,7 +10,7 @@ import useFormValidation from "@/app/(main)/contact/_hooks/useFormValidation";
 import useFormSubmit from "@/app/(main)/contact/_hooks/useFormSubmit";
 import ValidateOnLanguageChange from "../../ValidateOnLanguageChange";
 import PageTitle from "@/components/Typography/PageTitle";
-import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
+import { ENTER_EASE } from "@/constants/TRANSITIONS";
 
 type Props = {};
 
@@ -51,7 +51,6 @@ export default function Small({}: Props) {
             <PageTitle title="Contact me" className="text-left" />
             <motion.div
                animate={{ scale: 1, transition: ENTER_EASE }}
-               exit={{ scale: 0.8, transition: EXIT_EASE }}
                className="w-full flex justify-center"
             >
                <Socials tooltipPosition="top" className="gap-4" white />

@@ -1,19 +1,15 @@
 "use client";
 
-import { EXIT_DURATION } from "@/constants/TRANSITIONS";
-import { motion } from "framer-motion";
-
 type Props = {
    children: React.ReactNode;
+   modal: React.ReactNode;
 };
 
-export default function MainLayout({ children }: Props) {
+export default function MainLayout({ children, modal }: Props) {
    return (
-      <motion.div
-         exit={{ opacity: 0 }}
-         transition={{ duration: EXIT_DURATION }}
-      >
+      <div>
          {children}
-      </motion.div>
+         {modal}
+      </div>
    );
 }

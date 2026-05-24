@@ -16,7 +16,11 @@ export default function useHomeInitialAnimation() {
    useEffect(() => {
       if (!scope || !isLoaded) return;
       const initialAnimation = async () => {
-         await animate("." + SCALE_SELECTOR, { scale: 1 }, transition);
+         await animate(
+            "." + SCALE_SELECTOR,
+            { scale: 1 },
+            { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+         );
          setStartAnimations(true);
          animate(
             "." + HOME_CARD_SELECTOR,

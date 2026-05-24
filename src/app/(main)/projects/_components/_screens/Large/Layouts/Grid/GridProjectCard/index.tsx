@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import ProjectCardBody from "@/app/(main)/projects/_components/ProjectCardBody";
 import useProjectTooltip from "@/app/(main)/projects/_hooks/useProjectTooltip";
 import ProjectTooltip from "@/app/(main)/projects/_components/ProjectTooltip";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
+import Link from "next/link";
 
 type Props = {
    project: ProjectType;
@@ -17,7 +17,7 @@ export default function GridProjectCard({ project }: Props) {
       useProjectTooltip();
 
    return (
-      <TransitionLink
+      <Link
          href={`/projects/${project.link}`}
          onPointerMove={getMousePosition}
          onPointerLeave={endHover}
@@ -42,6 +42,6 @@ export default function GridProjectCard({ project }: Props) {
             </motion.div>
          </div>
          <ProjectCardBody project={project} />
-      </TransitionLink>
+      </Link>
    );
 }

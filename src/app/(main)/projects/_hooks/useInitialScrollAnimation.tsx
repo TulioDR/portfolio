@@ -26,12 +26,15 @@ export default function useInitialScrollAnimation(isInitialAnimation: boolean) {
          if (!isLoaded) return;
 
          lenis.scrollTo("left", {
-            duration: 1.5,
+            duration: 1.2,
             lock: true,
+            onComplete: () => {
+               setShowHeader(true);
+            },
             easing: (x) =>
                x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2,
          });
-         await animate(
+         animate(
             ".project-card-container",
             { height: "100%" },
             {
@@ -39,7 +42,6 @@ export default function useInitialScrollAnimation(isInitialAnimation: boolean) {
                delay: stagger(0.1, { from: "last" }),
             },
          );
-         setShowHeader(true);
       };
       startAnimation();
    }, [lenis, isLoaded, animate, isInitialAnimation, ENTER_EASE]);

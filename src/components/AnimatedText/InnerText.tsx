@@ -49,11 +49,7 @@ export default function InnerText({ text, isInView }: Props) {
    }, [counter, text]);
 
    return (
-      <motion.div
-         // exit={{ opacity: 0 }}
-         // transition={{ duration: 0.5 }}
-         className="relative"
-      >
+      <motion.div className="relative">
          <div className="absolute top-0 left-0 w-full h-full">
             {currentText}
          </div>

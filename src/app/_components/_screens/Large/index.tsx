@@ -6,11 +6,9 @@ import HomeRightSide from "./HomeRightSide";
 import CircularScreen from "../../CircularScreen";
 import { IconType } from "@/app/_types/IconType";
 
-type Props = {
-   startAnimations: boolean;
-};
+type Props = {};
 
-export default function Large({ startAnimations }: Props) {
+export default function Large({}: Props) {
    const [selectedIcon, setSelectedIcon] = useState<IconType>("home");
 
    return (
@@ -19,10 +17,7 @@ export default function Large({ startAnimations }: Props) {
          className="w-full h-full pointer-events-none gap-8 hidden xl:flex px-20 2xl:px-24 py-24 2xl:py-12"
       >
          <HomeLeftSide setSelectedIcon={setSelectedIcon} />
-         <CircularScreen
-            selectedIcon={selectedIcon}
-            startAnimations={startAnimations}
-         />
+         <CircularScreen selectedIcon={selectedIcon} />
          <HomeRightSide setSelectedIcon={setSelectedIcon} />
       </motion.div>
    );

@@ -1,7 +1,7 @@
 import ProjectCardBody from "@/app/(main)/projects/_components/ProjectCardBody";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import ProjectType from "@/types/ProjectType";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
    project: ProjectType;
@@ -9,7 +9,7 @@ type Props = {
 
 export default function SelectedProject({ project }: Props) {
    return (
-      <TransitionLink
+      <Link
          href={`/projects/${project.link}`}
          className="h-full flex-1 overflow-hidden relative"
       >
@@ -34,6 +34,6 @@ export default function SelectedProject({ project }: Props) {
                <ProjectCardBody project={project} />
             </div>
          </div>
-      </TransitionLink>
+      </Link>
    );
 }

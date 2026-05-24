@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import {
    InputNameType,
    ValuesType,
-} from "@/app/contact/_types/ContactFormType";
+} from "@/app/(main)/contact/_types/ContactFormType";
 
 type Props = {
    name: InputNameType;
@@ -32,11 +32,7 @@ export default function ContactInput({
    } = useFormikContext();
 
    return (
-      <motion.div
-         exit={{ opacity: 0 }}
-         transition={{ duration: 0.4 }}
-         className="flex flex-col w-full h-full px-3 py-2 text-xs xl:text-sm 2xl:text-base"
-      >
+      <motion.div className="flex flex-col w-full h-full px-3 py-2 text-xs xl:text-sm 2xl:text-base">
          <AnimatedText text={title} initial />
 
          <div className="flex-1 w-full relative ">

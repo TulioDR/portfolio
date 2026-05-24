@@ -2,7 +2,7 @@ import ProjectType from "@/types/ProjectType";
 import ListUnderline from "../ListUnderline";
 import ListText from "../ListText";
 import { useState } from "react";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
+import Link from "next/link";
 
 type Props = {
    project: ProjectType;
@@ -17,7 +17,7 @@ export default function ListProjectCard({ project, onHover }: Props) {
    };
 
    return (
-      <TransitionLink
+      <Link
          href={`/projects/${project.link}`}
          onPointerEnter={onHoverStart}
          className="w-full cursor-pointer h-32 px-32 flex items-center relative text-text hover:bg-text active:bg-text hover:text-black active:text-black"
@@ -26,6 +26,6 @@ export default function ListProjectCard({ project, onHover }: Props) {
          <ListText restart={restart} text="Front-End" />
          <ListText restart={restart} text="Next.js" />
          <ListUnderline />
-      </TransitionLink>
+      </Link>
    );
 }

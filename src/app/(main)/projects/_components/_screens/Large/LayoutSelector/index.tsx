@@ -1,6 +1,6 @@
 import LayoutSelectorButton from "./LayoutSelectorButton";
 import { LayoutType } from "@/app/(main)/projects/_types/LayoutType";
-import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
+import { ENTER_EASE } from "@/constants/TRANSITIONS";
 import { motion } from "framer-motion";
 
 type Props = {
@@ -14,7 +14,6 @@ export default function LayoutSelector({ layout, changeLayout }: Props) {
          <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1, transition: ENTER_EASE }}
-            exit={{ scale: 0, transition: EXIT_EASE }}
             className="bg-text flex h-full p-1 rounded border border-primary"
          >
             <LayoutSelectorButton

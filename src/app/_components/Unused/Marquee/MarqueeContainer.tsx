@@ -12,7 +12,6 @@ import {
 } from "framer-motion";
 import useLanguageContext from "@/context/LanguageContext";
 import InnerContainer from "./InnerContainer";
-import { EXIT_EASE } from "@/constants/TRANSITIONS";
 
 type Props = {
    children: React.ReactNode;
@@ -36,7 +35,7 @@ export default function MarqueeContainer({ children }: Props) {
       smoothVelocity,
       [-1000, 0, 0, 1000],
       [-5, -1, 1, 5],
-      { clamp: false }
+      { clamp: false },
    );
 
    const direction = useRef<number>(1);
@@ -63,10 +62,7 @@ export default function MarqueeContainer({ children }: Props) {
 
    return (
       <div ref={divRef} className="w-screen h-main-spacing overflow-hidden">
-         <motion.div
-            exit={{ y: "-100%", transition: EXIT_EASE }}
-            className="h-full w-full"
-         >
+         <motion.div className="h-full w-full">
             <AnimatePresence initial={false} mode="wait">
                <motion.div
                   key={isEnglish ? "en" : "es"}

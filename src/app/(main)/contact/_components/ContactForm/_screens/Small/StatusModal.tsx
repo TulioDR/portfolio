@@ -1,4 +1,4 @@
-import { SentStatusType } from "@/app/contact/_types/ContactFormType";
+import { SentStatusType } from "@/app/(main)/contact/_types/ContactFormType";
 import AnimatedText from "@/components/AnimatedText";
 import useLanguageContext from "@/context/LanguageContext";
 import { motion } from "framer-motion";

@@ -6,7 +6,7 @@ import useScrollParallaxImage from "@/app/(main)/projects/_hooks/useScrollParall
 import ProjectCardBody from "@/app/(main)/projects/_components/ProjectCardBody";
 import useProjectTooltip from "@/app/(main)/projects/_hooks/useProjectTooltip";
 import ProjectTooltip from "@/app/(main)/projects/_components/ProjectTooltip";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
+import Link from "next/link";
 
 type Props = {
    project: ProjectType;
@@ -66,7 +66,7 @@ export default function FrontImage({
                onPointerLeave={endHover}
                className={`absolute top-0 aspect-video h-full flex items-center justify-center`}
             >
-               <TransitionLink
+               <Link
                   href={`/projects/${project.link}`}
                   className={`w-full h-full ${isSelected ? "" : "pointer-events-none"}`}
                >
@@ -89,7 +89,7 @@ export default function FrontImage({
                   <div className="w-full absolute top-full left-0">
                      <ProjectCardBody project={project} initial />
                   </div>
-               </TransitionLink>
+               </Link>
             </motion.div>
          </div>
       </div>

@@ -1,10 +1,10 @@
-import PhaseType from "@/app/about/_types/PhaseType";
 import {
    AnimatePresence,
    motion,
    MotionValue,
    useTransform,
 } from "framer-motion";
+import PhaseType from "../../../_types/PhaseType";
 type Props = {
    phase: PhaseType;
    rotateAngle: number;

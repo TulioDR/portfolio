@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AnimatedText from "@/components/AnimatedText";
 import { usePathname } from "next/navigation";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
+import Link from "next/link";
 
 type Props = {
    subpage?: boolean;
@@ -32,7 +32,7 @@ export default function MenuItem({
    }, [pathname]);
 
    return (
-      <TransitionLink
+      <Link
          href={href}
          onPointerEnter={handleMouseEnter}
          onPointerLeave={onMouseLeave}
@@ -51,6 +51,6 @@ export default function MenuItem({
                   : "text-sm xl:text-base 2xl:text-lg"
             }`}
          />
-      </TransitionLink>
+      </Link>
    );
 }

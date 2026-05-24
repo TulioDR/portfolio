@@ -7,9 +7,9 @@ import AnimationContainer from "./AnimationContainer";
 import { XL_MEDIA_QUERY } from "@/constants/MEDIA_QUERIES";
 import Large from "./_screens/Large";
 import Small from "./_screens/Small";
-import usePageTransitionContext from "@/modules/pageTransition/context/PageTransitionContext";
 import AdaptiveClient from "@/components/AdaptiveClient";
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 
 const NoSSRNavButtons = dynamic(() => import("./NavButtons"), {
    ssr: false,
@@ -20,10 +20,10 @@ export default function Navigation() {
    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
    const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
-   const { targetRoute } = usePageTransitionContext();
+   const pathname = usePathname();
    useEffect(() => {
       setIsMenuOpen(false);
-   }, [targetRoute]);
+   }, [pathname]);
 
    return (
       <>

@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import TranslateIcon from "./TranslateIcon";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import NavButtonContainer from "./NavButtonContainer";
+import Link from "next/link";
 
 type Props = {
    icon: string;
@@ -32,9 +32,9 @@ export default function NavButton({
       "relative w-full h-full flex items-center justify-center cursor-pointer";
    const Wrapper = ({ children }: { children: React.ReactNode }) =>
       href ? (
-         <TransitionLink href={href} className={className}>
+         <Link href={href} className={className}>
             {children}
-         </TransitionLink>
+         </Link>
       ) : (
          <button onClick={onClick} className={className}>
             {children}

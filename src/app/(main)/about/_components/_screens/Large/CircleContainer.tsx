@@ -1,4 +1,4 @@
-import { ENTER_EASE, EXIT_EASE } from "@/constants/TRANSITIONS";
+import { ENTER_EASE } from "@/constants/TRANSITIONS";
 import { motion, MotionValue } from "framer-motion";
 type Props = {
    children: React.ReactNode;
@@ -10,7 +10,6 @@ export default function CircleContainer({ children, rotate }: Props) {
       <motion.div
          initial={{ scale: 0.8, opacity: 0 }}
          animate={{ scale: 1, opacity: 1, transition: ENTER_EASE }}
-         exit={{ scale: 0.8, transition: EXIT_EASE }}
          className="flex-1 h-full shrink-0 overflow-hidden relative"
       >
          <div className="absolute inset-0 flex items-center justify-end">

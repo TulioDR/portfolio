@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AnimatedText from "@/components/AnimatedText";
 import Tooltip from "./Tooltip";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
+import Link from "next/link";
 
 type Props = {
    text: string;
@@ -23,7 +23,7 @@ export default function PanelButton({ text, href, number }: Props) {
    };
 
    return (
-      <TransitionLink
+      <Link
          href={href}
          onPointerEnter={handleEnter}
          onPointerLeave={handleLeave}
@@ -37,6 +37,6 @@ export default function PanelButton({ text, href, number }: Props) {
             text={text}
             className="text-4xl xl:text-5xl 2xl:text-7xl font-black uppercase tracking-tighter pointer-events-none"
          />
-      </TransitionLink>
+      </Link>
    );
 }

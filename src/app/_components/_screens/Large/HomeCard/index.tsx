@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Tooltip from "./Tooltip";
 import AnimatedText from "@/components/AnimatedText";
-import TransitionLink from "@/modules/pageTransition/components/TransitionLink";
 import RecommendedTooltip from "./RecommendedTooltip";
 import { motion, useAnimate } from "framer-motion";
 import { HOME_CARD_SELECTOR } from "@/app/_constants/ANIMATION_CLASSNAMES";
+import useHomeContext from "@/app/_context/HomeContext";
+import Link from "next/link";
 
 type Props = {
    className?: string;
@@ -29,17 +30,24 @@ export default function HomeCard({
    const [restart, setRestart] = useState(false);
    const [isHovered, setIsHovered] = useState(false);
 
+   const { exitAnimation } = useHomeContext();
+
    const handleEnter = () => {
       onMouseEnter();
       setRestart((prev) => !prev);
       setIsHovered(true);
-      animate("." + HOME_CARD_SELECTOR, { z: -49 });
+      animate("." + HOME_CARD_SELECTOR, { z: -40 });
    };
 
    const handleLeave = () => {
       onMouseLeave();
       setIsHovered(false);
       animate("." + HOME_CARD_SELECTOR, { z: 0 });
+   };
+
+   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      exitAnimation(href);
    };
 
    return (
@@ -49,7 +57,7 @@ export default function HomeCard({
          className={`relative flex-1 ${className}`}
       >
          <motion.div
-            initial={{ z: -49 }}
+            initial={{ z: -40 }}
             className={`w-full h-full ${HOME_CARD_SELECTOR}`}
          >
             <div
@@ -66,15 +74,16 @@ export default function HomeCard({
                {isHovered && <Tooltip number={number} />}
             </div>
          </motion.div>
-         <TransitionLink
+         <Link
             href={href}
             onPointerEnter={handleEnter}
             onPointerLeave={handleLeave}
+            onClick={handleClick}
             className="absolute inset-0 pointer-events-auto"
          />
          <motion.div
             style={{ z: -50 }}
-            className="absolute inset-0 bg-white rounded-sm opacity-60"
+            className="absolute inset-0 bg-white rounded-sm opacity-60 shadow-lg"
          />
       </div>
    );
