@@ -5,13 +5,20 @@ import { motion } from "framer-motion";
 type Props = {
    project: ProjectType;
    isHovered: boolean;
+   isSelected: boolean;
 };
 
-export default function FrontImage({ project, isHovered }: Props) {
+export default function FrontImage({ project, isHovered, isSelected }: Props) {
    return (
       <div className="inset-0 absolute flex justify-center items-center">
-         <div className="w-4/5 aspect-video">
+         <motion.div
+            initial={false}
+            animate={{ scale: isSelected ? 0 : 1 }}
+            transition={{ duration: 0.2 }}
+            className="w-4/5 aspect-video"
+         >
             <motion.div
+               layout
                animate={{ scale: isHovered ? 1.05 : 1 }}
                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                className="w-full h-full relative"
@@ -19,12 +26,10 @@ export default function FrontImage({ project, isHovered }: Props) {
                <Image
                   src={project.landingImg || project.showcaseImg}
                   alt={project.title}
-                  fill
-                  sizes="100%"
-                  className="object-cover"
+                  className="object-cover w-full h-full"
                />
             </motion.div>
-         </div>
+         </motion.div>
       </div>
    );
 }

@@ -4,10 +4,9 @@ import { useMotionTemplate, useTransform, motion } from "framer-motion";
 
 type Props = {
    project: ProjectType;
-   isHovered: boolean;
 };
 
-export default function BackImage({ project, isHovered }: Props) {
+export default function BackImage({ project }: Props) {
    const { position, containerRef } = useMotionParallaxImage();
 
    const x = useTransform(position, [0, 1], ["100%", "0%"]);
@@ -19,10 +18,6 @@ export default function BackImage({ project, isHovered }: Props) {
             style={{ objectPosition }}
             src={project.showcaseImg.src}
             alt={project.title}
-            animate={{
-               scale: isHovered ? 1 : 1.1,
-               transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-            }}
             className="object-cover w-full h-full"
          />
       </div>

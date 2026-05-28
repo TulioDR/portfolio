@@ -7,6 +7,7 @@ type Props = {
    mouseY: MotionValue<number>;
    bottom?: true;
    children: React.ReactNode;
+   isExpanded?: boolean;
 };
 
 export default function HoverPreview({
@@ -15,6 +16,7 @@ export default function HoverPreview({
    mouseY,
    bottom,
    children,
+   isExpanded,
 }: Props) {
    return (
       <AnimatePresence>
@@ -23,6 +25,7 @@ export default function HoverPreview({
                bottom={bottom}
                mouseX={mouseX}
                mouseY={mouseY}
+               isExpanded={isExpanded}
             >
                {children}
             </HoverPreviewContainer>

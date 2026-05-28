@@ -1,33 +1,52 @@
 import projects from "@/data/projects";
-import { MotionValue } from "framer-motion";
+import { MotionValue, motion } from "framer-motion";
 import ProjectListSlide from "./ProjectListSlide";
-import HoverPreview from "@/modules/hoverPreview/components/HoverPreview";
-import SliderContainer from "@/modules/hoverPreview/components/SliderContainer";
+import { NAV_TRANSITION } from "@/modules/navigation/constants/NAV_TRANSITION";
+import { useEffect, useState } from "react";
+import HoverPreviewContainer from "./HoverPreviewContainer";
 
 type Props = {
    mouseX: MotionValue<number>;
    mouseY: MotionValue<number>;
-   yAxisIndex: number | null;
+   yIndex: number | null;
+   selectedIndex: number | null;
 };
 
 export default function ProjectsListSlider({
    mouseX,
    mouseY,
-   yAxisIndex,
+   yIndex,
+   selectedIndex,
 }: Props) {
-   const y = `${(1 / projects.length) * -100 * (yAxisIndex || 0)}%`;
+   const [newY, setNewY] = useState<string>("0%");
+   useEffect(() => {
+      const newYIndex = selectedIndex === null ? yIndex : selectedIndex;
+      if (newYIndex === null) return;
+      setNewY(`${newYIndex * -100}%`);
+   }, [selectedIndex, yIndex]);
+
    return (
-      <HoverPreview
-         isOpen={yAxisIndex !== null}
+      <HoverPreviewContainer
          mouseX={mouseX}
          mouseY={mouseY}
+         selectedIndex={selectedIndex}
       >
-         <SliderContainer vertical y={y}>
-            {projects.map((project) => (
-               <ProjectListSlide key={project.title} project={project} />
+         <motion.div
+            initial={false}
+            animate={{ y: newY }}
+            transition={NAV_TRANSITION}
+            className="relative w-full h-full"
+         >
+            {projects.map((project, index) => (
+               <ProjectListSlide
+                  key={project.title}
+                  project={project}
+                  index={index}
+                  isSelected={selectedIndex !== null}
+               />
             ))}
-         </SliderContainer>
-      </HoverPreview>
+         </motion.div>
+      </HoverPreviewContainer>
    );
 
    // return (

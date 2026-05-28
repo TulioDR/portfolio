@@ -7,9 +7,7 @@ import LayoutSelector from "./LayoutSelector";
 import List from "./Layouts/List";
 import { LayoutType } from "../../../_types/LayoutType";
 
-type Props = {};
-
-export default function Large({}: Props) {
+export default function Large() {
    const [layout, setLayout] = useState<LayoutType>("carousel");
    const changeLayout = (newLayout: LayoutType) => setLayout(newLayout);
 

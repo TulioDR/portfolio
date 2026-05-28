@@ -1,18 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
+import PROJECTS from "@/data/projects";
+import { use } from "react";
+import ProjectDetailsPageContent from "@/app/(main)/projects/[project]/_components/ProjectDetailsPageContent";
 
-type Props = {};
+// 1. Define the TypeScript types for your props and params
+type Props = {
+   params: Promise<{
+      project: string; // This matches your folder name [project] exactly
+   }>;
+};
+export default function InterceptorPage({ params }: Props) {
+   const resolvedParams = use(params);
+   const projectSlug = resolvedParams.project;
+   const project = PROJECTS.find((p) => p.link === projectSlug);
 
-export default function InterceptorPage({}: Props) {
-   return (
-      <motion.div
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1 }}
-         transition={{ duration: 1 }}
-         className="fixed top-0 left-0 w-screen h-svh z-40  flex items-center justify-center bg-black/50"
-      >
-         Interceptor
-      </motion.div>
-   );
+   return <ProjectDetailsPageContent project={project} />;
 }

@@ -12,23 +12,23 @@ export default function useHoverPreview() {
       mouseY.set(y);
    };
 
-   const [xAxisIndex, setXAxisIndex] = useState<number | null>(null);
-   const [yAxisIndex, setYAxisIndex] = useState<number | null>(null);
+   const [xIndex, setXIndex] = useState<number | null>(null);
+   const [yIndex, setYIndex] = useState<number | null>(null);
 
    const changeXAxisIndex = (xAxis: number | null) => {
-      setXAxisIndex(xAxis);
+      setXIndex(xAxis);
    };
 
    const changeYAxisIndex = (yAxis: number | null) => {
-      setYAxisIndex(yAxis);
+      setYIndex(yAxis);
    };
 
    return {
       mouseX,
       mouseY,
       getMousePosition,
-      xAxisIndex,
-      yAxisIndex,
+      xIndex,
+      yIndex,
       changeXAxisIndex,
       changeYAxisIndex,
    };
