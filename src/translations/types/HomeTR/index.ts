@@ -4,6 +4,8 @@ export default interface HomeTR {
    title2: string;
    page: string;
    recommended: string;
+   smallMessage1: string;
+   smallMessage2: string;
    preview: {
       skills: string;
       strengths: string;

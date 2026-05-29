@@ -47,7 +47,7 @@ export default function CarouselProjectCard({
             isSelected={isSelected}
          >
             <BackImage project={project} isSelected={isSelected} />
-            <AnimatePresence propagate>
+            <AnimatePresence>
                {!openedLink && (
                   <CardFront
                      isSelected={isSelected}

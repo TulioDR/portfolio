@@ -6,6 +6,8 @@ const homeTR: HomeTR = {
    title2: "de Software",
    page: "Pág",
    recommended: "Recomendado",
+   smallMessage1: "Presiona el botón de menú",
+   smallMessage2: "para navegar",
    preview: {
       skills: "Habilidades",
       strengths: "Fortalezas",

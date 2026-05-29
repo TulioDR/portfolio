@@ -1,10 +1,40 @@
 import HomeTitleText from "../../HomeTitleText";
 import CircularScreen from "../../CircularScreen";
-import HomeNameAndSocials from "../../HomeNameAndSocials";
+import { IconType } from "@/app/_types/IconType";
+import { useEffect, useState } from "react";
+import SmallHomeNameAndSocial from "./SmallHomeNameAndSocial";
+import SmallMessage from "./SmallMessage";
 
-type Props = {};
+const ICONS_ROTATION: IconType[] = [
+   "home",
+   "social_leaderboard",
+   "work",
+   "stacks",
+   "support_agent",
+   "mail",
+   "trophy",
+];
 
-export default function Small({}: Props) {
+export default function Small() {
+   const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+   useEffect(() => {
+      const interval = setInterval(() => {
+         setCurrentIndex((prevIndex) => {
+            return (prevIndex + 1) % ICONS_ROTATION.length;
+         });
+      }, 2000);
+
+      return () => clearInterval(interval);
+   }, []);
+
+   const currentIcon = ICONS_ROTATION[currentIndex];
+
+   const [isHovered, setIsHovered] = useState(false);
+
+   const handleMouseEnter = () => setIsHovered(true);
+   const handleMouseLeave = () => setIsHovered(false);
+
    return (
       <>
          <div
@@ -15,15 +45,16 @@ export default function Small({}: Props) {
                <HomeTitleText />
             </div>
             <div
+               onPointerEnter={handleMouseEnter}
+               onPointerLeave={handleMouseLeave}
                style={{ transformStyle: "preserve-3d" }}
-               className="w-full sm:w-[70vw] md:w-[60vw] lg:w-[50vw] shrink-0"
+               className="w-full sm:w-[70vw] md:w-[60vw] lg:w-[50vw] shrink-0 rounded-full relative pointer-events-auto select-none"
             >
-               <CircularScreen selectedIcon="home" />
+               <CircularScreen selectedIcon={currentIcon} />
+               {isHovered && <SmallMessage />}
             </div>
          </div>
-         <div className="w-full flex justify-center absolute bottom-0 xl:hidden">
-            <HomeNameAndSocials />
-         </div>
+         <SmallHomeNameAndSocial />
       </>
    );
 }
