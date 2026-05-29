@@ -21,7 +21,7 @@ export default function ProjectTooltipContainer({
          animate={{ scale: 1 }}
          exit={{ scale: 0 }}
          transition={{ duration: 0.2 }}
-         className="py-2 px-4 rounded-md bg-accent fixed z-20 pointer-events-none min-w-max"
+         className="py-2 px-4 rounded-md bg-accent fixed z-20 pointer-events-none min-w-max overflow-hidden"
       >
          {children}
       </motion.div>

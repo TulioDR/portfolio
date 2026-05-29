@@ -9,27 +9,31 @@ type Props = {
    mouseX: MotionValue<number>;
    mouseY: MotionValue<number>;
    yIndex: number | null;
-   selectedIndex: number | null;
+   selectedLink: string | null;
 };
 
 export default function ProjectsListSlider({
    mouseX,
    mouseY,
    yIndex,
-   selectedIndex,
+   selectedLink,
 }: Props) {
    const [newY, setNewY] = useState<string>("0%");
    useEffect(() => {
-      const newYIndex = selectedIndex === null ? yIndex : selectedIndex;
-      if (newYIndex === null) return;
-      setNewY(`${newYIndex * -100}%`);
-   }, [selectedIndex, yIndex]);
+      if (selectedLink) {
+         const index = projects.findIndex((p) => p.link === selectedLink);
+         setNewY(`${index * -100}%`);
+         return;
+      }
+      if (yIndex === null) return;
+      setNewY(`${yIndex * -100}%`);
+   }, [selectedLink, yIndex]);
 
    return (
       <HoverPreviewContainer
          mouseX={mouseX}
          mouseY={mouseY}
-         selectedIndex={selectedIndex}
+         selectedLink={selectedLink}
       >
          <motion.div
             initial={false}
@@ -42,7 +46,7 @@ export default function ProjectsListSlider({
                   key={project.title}
                   project={project}
                   index={index}
-                  isSelected={selectedIndex !== null}
+                  showFrontImage={!selectedLink && yIndex !== null}
                />
             ))}
          </motion.div>

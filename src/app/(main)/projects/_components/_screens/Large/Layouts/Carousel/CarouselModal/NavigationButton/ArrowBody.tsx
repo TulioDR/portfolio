@@ -1,21 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { MAIN_EASING } from "@/constants/TRANSITIONS";
 
 type Props = {
    left?: true;
-   disabled: boolean;
    children: React.ReactNode;
    setShowArrowHead: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export default function ArrowBody({
-   children,
-   left,
-   disabled,
-   setShowArrowHead,
-}: Props) {
+export default function ArrowBody({ children, left, setShowArrowHead }: Props) {
    const DURATION = 1 / 2;
-   const transition = { duration: DURATION };
+   const transition = { duration: DURATION, ease: MAIN_EASING };
 
    const handleAnimationComplete = (e: any) => {
       if (e.width === "100%") setShowArrowHead(true);
@@ -32,9 +27,9 @@ export default function ArrowBody({
             exit={{ width: 0, transition: transition }}
             onAnimationStart={handleAnimationStart}
             onAnimationComplete={handleAnimationComplete}
-            className={`h-0.5 relative flex items-center
+            className={`h-0.5 relative flex items-center bg-white
                ${left ? "" : " justify-end"}
-               ${disabled ? "bg-gray-400" : "bg-white"}
+               
             `}
          >
             {children}

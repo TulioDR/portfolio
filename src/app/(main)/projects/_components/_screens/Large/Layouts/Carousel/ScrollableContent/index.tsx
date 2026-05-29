@@ -13,6 +13,8 @@ type Props = {
    setIsInitialAnimation: React.Dispatch<React.SetStateAction<boolean>>;
    selectedP: ProjectType | null;
    setSelectedP: React.Dispatch<React.SetStateAction<ProjectType | null>>;
+   openedLink: string | null;
+   setOpenedLink: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export default function ScrollableContent({
@@ -20,6 +22,8 @@ export default function ScrollableContent({
    isInitialAnimation,
    selectedP,
    setSelectedP,
+   openedLink,
+   setOpenedLink,
 }: Props) {
    const { displayedTitle, hoveredTitle, setHoveredTitle } = useHoveredTitle();
    const { showHeader, scope } = useInitialScrollAnimation(isInitialAnimation);
@@ -29,6 +33,11 @@ export default function ScrollableContent({
       if (showHeader) setIsInitialAnimation(false);
    }, [showHeader]);
 
+   const openCard = (project: ProjectType) => {
+      if (project.link === selectedP?.link) return;
+      setSelectedP(project);
+   };
+
    return (
       <>
          <ProjectCardsContainer scope={scope}>
@@ -36,10 +45,12 @@ export default function ScrollableContent({
                <CarouselProjectCard
                   key={project.title}
                   project={project}
-                  setSelectedP={setSelectedP}
                   isSelected={project.link === selectedP?.link}
                   hoveredTitle={hoveredTitle}
                   setHoveredTitle={setHoveredTitle}
+                  openCard={openCard}
+                  openedLink={openedLink}
+                  setOpenedLink={setOpenedLink}
                />
             ))}
          </ProjectCardsContainer>

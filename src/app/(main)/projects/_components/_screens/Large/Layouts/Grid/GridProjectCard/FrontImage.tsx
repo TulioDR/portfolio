@@ -5,15 +5,19 @@ import { motion } from "framer-motion";
 type Props = {
    project: ProjectType;
    isHovered: boolean;
-   isSelected: boolean;
+   showFrontImage: boolean;
 };
 
-export default function FrontImage({ project, isHovered, isSelected }: Props) {
+export default function FrontImage({
+   project,
+   isHovered,
+   showFrontImage,
+}: Props) {
    return (
       <div className="inset-0 absolute flex justify-center items-center">
          <motion.div
             initial={false}
-            animate={{ scale: isSelected ? 0 : 1 }}
+            animate={{ scale: showFrontImage ? 1 : 0 }}
             transition={{ duration: 0.2 }}
             className="w-4/5 aspect-video"
          >

@@ -1,4 +1,4 @@
-import projects from "@/data/projects";
+import PROJECTS from "@/data/projects";
 import ListProjectCard from "./ListProjectCard";
 import { AnimatePresence, MotionValue } from "framer-motion";
 import ListHeader from "./ListHeader";
@@ -22,26 +22,34 @@ export default function List({ currentScroll }: Props) {
       useHoverPreview();
 
    const params = useParams();
+   const [selectedLink, setSelectedLink] = useState<string | null>(null);
 
-   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
    useEffect(() => {
-      const projectLink = params.project;
-      const foundedIndex = projects.findIndex((p) => p.link === projectLink);
-
-      if (foundedIndex >= 0) setSelectedIndex(foundedIndex);
-      else setSelectedIndex(null);
-   }, [params, projects, mouseY, mouseX]);
+      const projectLink = params.project as string;
+      const exists = PROJECTS.some((p) => p.link === projectLink);
+      setSelectedLink(exists ? projectLink : null);
+   }, [params.project, PROJECTS]);
 
    const handlePointerLeave = () => {
       // Do not change to null to maintain the slider open
-      if (selectedIndex !== null) return;
+      if (selectedLink) return;
       changeYAxisIndex(null);
    };
 
    useEffect(() => {
-      if (selectedIndex !== null) return;
+      if (selectedLink) return;
       changeYAxisIndex(null);
-   }, [selectedIndex]);
+   }, [selectedLink]);
+
+   useEffect(() => {
+      mouseX.set(window.innerWidth / 2);
+      mouseY.set(window.innerHeight / 2);
+   }, [selectedLink]);
+
+   const getPositionIfNeeded = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (selectedLink) return;
+      getMousePosition(e);
+   };
 
    return (
       <ProjectsReactLenis scrollRef={scrollRef}>
@@ -49,36 +57,36 @@ export default function List({ currentScroll }: Props) {
          <div className="w-full flex flex-col -mt-36 min-h-max px-24 z-10 pb-4">
             <ListHeader />
             <motion.div
-               onPointerEnter={getMousePosition}
-               onPointerMove={getMousePosition}
+               onPointerEnter={getPositionIfNeeded}
+               onPointerMove={getPositionIfNeeded}
                onPointerLeave={handlePointerLeave}
                exit={{ pointerEvents: "none" }}
-               className={`w-full flex flex-col ${selectedIndex !== null ? "pointer-events-none" : ""}`}
+               className={`w-full flex flex-col ${selectedLink ? "pointer-events-none" : ""}`}
             >
-               {projects.map((project, index) => (
+               {PROJECTS.map((project, index) => (
                   <ListProjectCard
                      key={project.title}
                      project={project}
-                     onClick={() => setSelectedIndex(index)}
+                     onClick={() => setSelectedLink(project.link)}
                      onHover={() => changeYAxisIndex(index)}
                   />
                ))}
             </motion.div>
          </div>
          <AnimatePresence>
-            {(yIndex !== null || selectedIndex !== null) && (
+            {(yIndex !== null || selectedLink) && (
                <ProjectsListSlider
                   mouseX={mouseX}
                   mouseY={mouseY}
                   yIndex={yIndex}
-                  selectedIndex={selectedIndex}
+                  selectedLink={selectedLink}
                />
             )}
          </AnimatePresence>
          <ProjectTooltip
             mouseX={mouseX}
             mouseY={mouseY}
-            showTooltip={selectedIndex === null && yIndex !== null}
+            showTooltip={!selectedLink && yIndex !== null}
          />
       </ProjectsReactLenis>
    );

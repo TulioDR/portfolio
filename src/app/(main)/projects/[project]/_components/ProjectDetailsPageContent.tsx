@@ -27,7 +27,7 @@ export default function ProjectDetailsPageContent({
 
    if (!project) return <></>;
    return (
-      <div className="fixed top-0 left-0 w-screen h-svh z-40">
+      <div className="fixed top-0 left-0 w-screen h-svh z-40 overflow-hidden">
          {background && <Background project={project} />}
          <BackButton />
          <ReactLenis
@@ -35,12 +35,12 @@ export default function ProjectDetailsPageContent({
             className="w-full h-full overflow-y-auto [&::-webkit-scrollbar]:hidden relative"
          >
             <PageHeader project={project} />
-            <div className="w-full px-24 pb-4">
+            <div className="w-full px-24 pb-4 overflow-hidden -mt-36">
                <motion.div
                   initial={{ y: "9rem" }}
                   animate={{ y: "0rem" }}
                   transition={ENTER_EASE}
-                  className="bg-text w-full flex flex-col gap-32 p-8 2xl:p-24 -mt-36"
+                  className="bg-text w-full flex flex-col gap-32 p-8 2xl:p-24"
                >
                   <Description project={project} />
                   <TechStack techStack={project.techStack} />

@@ -83,7 +83,7 @@ export default function HomeCard({
          />
          <motion.div
             style={{ z: -50 }}
-            className="absolute inset-0 bg-white rounded-sm opacity-60 shadow-lg"
+            className="absolute inset-0 bg-white/50 rounded-sm shadow-lg"
          />
       </div>
    );

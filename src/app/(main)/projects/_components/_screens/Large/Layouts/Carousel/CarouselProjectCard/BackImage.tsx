@@ -9,7 +9,7 @@ type Props = {
 
 export default function BackImage({ project, isSelected }: Props) {
    return (
-      <div className="h-screen w-screen shrink-0 brightness-25 overflow-hidden">
+      <div className="h-screen w-screen shrink-0 brightness-50 overflow-hidden">
          <motion.div
             animate={{
                scale: isSelected ? 1 : 1.4,

@@ -14,17 +14,13 @@ export default function NavigationButton({ left, onClick, disabled }: Props) {
    const [showArrowHead, setShowArrowHead] = useState<boolean>(false);
 
    return (
-      <Container onClick={onClick} setIsHovered={setIsHovered}>
-         <ArrowBody
-            left={left}
-            disabled={disabled}
-            setShowArrowHead={setShowArrowHead}
-         >
-            <ArrowHead
-               left={left}
-               disabled={disabled}
-               startRotation={isHovered && showArrowHead}
-            />
+      <Container
+         onClick={onClick}
+         setIsHovered={setIsHovered}
+         disabled={disabled}
+      >
+         <ArrowBody left={left} setShowArrowHead={setShowArrowHead}>
+            <ArrowHead left={left} startRotation={isHovered && showArrowHead} />
          </ArrowBody>
       </Container>
    );

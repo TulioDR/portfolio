@@ -1,14 +1,17 @@
 import Container from "./Container";
 import BackImage from "./BackImage";
-import FrontImage from "./FrontImage";
 import ProjectType from "@/types/ProjectType";
+import CardFront from "./CardFront";
+import { AnimatePresence } from "framer-motion";
 
 type Props = {
    project: ProjectType;
    isSelected: boolean;
-   setSelectedP: React.Dispatch<React.SetStateAction<ProjectType | null>>;
    hoveredTitle: string | null;
    setHoveredTitle: React.Dispatch<React.SetStateAction<string | null>>;
+   openCard: (project: ProjectType) => void;
+   openedLink: string | null;
+   setOpenedLink: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export default function CarouselProjectCard({
@@ -16,11 +19,24 @@ export default function CarouselProjectCard({
    project,
    isSelected,
    hoveredTitle,
-   setSelectedP,
+   openCard,
+   openedLink,
+   setOpenedLink,
 }: Props) {
    const handleClick = () => {
-      if (isSelected) return;
-      setSelectedP(project);
+      openCard(project);
+   };
+
+   const handleHoveredTitle = (
+      latest: number,
+      entryThreshold: number,
+      exitThreshold: number,
+   ) => {
+      if (latest >= entryThreshold && latest <= exitThreshold) {
+         if (hoveredTitle !== project.title) setHoveredTitle(project.title);
+      } else {
+         if (hoveredTitle === project.title) setHoveredTitle(null);
+      }
    };
 
    return (
@@ -31,12 +47,16 @@ export default function CarouselProjectCard({
             isSelected={isSelected}
          >
             <BackImage project={project} isSelected={isSelected} />
-            <FrontImage
-               isSelected={isSelected}
-               project={project}
-               hoveredTitle={hoveredTitle}
-               setHoveredTitle={setHoveredTitle}
-            />
+            <AnimatePresence propagate>
+               {!openedLink && (
+                  <CardFront
+                     isSelected={isSelected}
+                     project={project}
+                     handleHoveredTitle={handleHoveredTitle}
+                     setOpenedLink={setOpenedLink}
+                  />
+               )}
+            </AnimatePresence>
          </Container>
       </>
    );

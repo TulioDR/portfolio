@@ -1,9 +1,9 @@
 import {
    motion,
    MotionValue,
+   Transition,
    useAnimate,
    useSpring,
-   useTransform,
 } from "framer-motion";
 import { useEffect } from "react";
 import { EXIT_EASE } from "@/constants/TRANSITIONS";
@@ -12,73 +12,42 @@ type Props = {
    children: React.ReactNode;
    mouseX: MotionValue<number>;
    mouseY: MotionValue<number>;
-   selectedIndex: number | null;
+   selectedLink: string | null;
 };
 
 export default function HoverPreviewContainer({
    children,
    mouseX,
    mouseY,
-   selectedIndex,
+   selectedLink,
 }: Props) {
    const [scope, animate] = useAnimate();
-
    const smoothOptions = { damping: 20, stiffness: 100, mass: 0.5 };
    const smoothX = useSpring(mouseX, smoothOptions);
    const smoothY = useSpring(mouseY, smoothOptions);
-
-   const isExpanded = selectedIndex !== null;
-
-   const initialValues = {
-      x: "-50%",
-      y: "-50%",
-      width: "24rem",
-      height: "24rem",
-      left: window.innerWidth / 2,
-      top: window.innerHeight / 2,
-   };
-
-   const endingValues = {
-      x: 0,
-      y: 0,
-      left: 0,
-      top: 0,
-      width: "100vw",
-      height: "100svh",
-   };
+   const TRANSITION: Transition = { duration: 0.2 };
 
    useEffect(() => {
-      if (isExpanded) {
-         animate(scope.current, endingValues, EXIT_EASE);
+      const el = scope.current;
+      if (selectedLink) {
+         animate(el, { width: "100vw", height: "100svh" }, EXIT_EASE);
       } else {
-         animate(scope.current, initialValues, EXIT_EASE);
+         animate(el, { width: "24rem", height: "24rem" }, TRANSITION);
       }
-   }, [isExpanded]);
-
-   const lockedLeft = useTransform(smoothX, (latestX) => {
-      return isExpanded ? 0 : latestX;
-   });
-   const lockedTop = useTransform(smoothY, (latestY) => {
-      return isExpanded ? 0 : latestY;
-   });
-
-   const smoothLockedLeft = useSpring(lockedLeft, smoothOptions);
-   const smoothLockedTop = useSpring(lockedTop, smoothOptions);
+   }, [selectedLink]);
 
    return (
       <motion.div
          ref={scope}
-         initial={initialValues}
-         style={{
-            left: isExpanded ? undefined : smoothLockedLeft,
-            top: isExpanded ? undefined : smoothLockedTop,
-         }}
-         className="fixed pointer-events-none"
+         initial={{ width: "24rem", height: "24rem" }}
+         style={{ left: smoothX, top: smoothY, x: "-50%", y: "-50%" }}
+         className="fixed pointer-events-none z-10"
       >
          <motion.div
             initial={{ scale: 0 }}
-            animate={{ scale: 1, transition: EXIT_EASE }}
-            exit={{ scale: 0, transition: EXIT_EASE }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            transition={TRANSITION}
             className="w-full h-full overflow-hidden"
          >
             {children}

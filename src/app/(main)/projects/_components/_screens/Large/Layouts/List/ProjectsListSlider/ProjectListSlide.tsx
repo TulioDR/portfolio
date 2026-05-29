@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 
 type Props = {
    project: ProjectType;
-   isSelected: boolean;
+   showFrontImage: boolean;
    index: number;
 };
 
 export default function ProjectListSlide({
    project,
-   isSelected,
+   showFrontImage,
    index,
 }: Props) {
    return (
@@ -29,7 +29,7 @@ export default function ProjectListSlide({
          <FrontImage
             isHovered={false}
             project={project}
-            isSelected={isSelected}
+            showFrontImage={showFrontImage}
          />
       </motion.div>
    );
