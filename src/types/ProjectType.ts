@@ -1,6 +1,9 @@
 import { StaticImageData } from "next/image";
 import { TechnologyType } from "./TechnologyType";
 
+export interface ProjectTechnologyType extends TechnologyType {
+   special?: boolean;
+}
 export default interface ProjectType {
    title: string;
    landingImg?: StaticImageData;
@@ -8,12 +11,12 @@ export default interface ProjectType {
    link: string;
    website: string;
    repository: string;
-   techStack: TechnologyType[];
    isFinished: boolean;
    translations: {
       english: ProjectTranslations;
       spanish: ProjectTranslations;
    };
+   techStack: ProjectTechnologyType[];
 }
 
 export interface ProjectTranslations {

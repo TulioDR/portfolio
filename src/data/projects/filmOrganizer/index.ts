@@ -15,7 +15,6 @@ const {
    typescript,
    tailwind,
    supabase,
-   prisma,
    tmdb,
    framerMotion,
    formik,
@@ -27,21 +26,25 @@ const {
 
 const filmOrganizer: ProjectType = {
    title: "Film App",
-   showcaseImg: showcaseImg,
-   landingImg: landingImg,
    link: "film-organizer",
+   landingImg: landingImg,
+   showcaseImg: showcaseImg,
    website: "https://film-organizer.vercel.app/",
    repository: "https://github.com/TulioDR/film-organizer-v2/",
+   isFinished: true,
+   translations: {
+      english: filmOrganizerEnglish,
+      spanish: filmOrganizerSpanish,
+   },
    techStack: [
       html,
       css,
       javascript,
       react,
-      nextjs,
-      typescript,
+      { ...nextjs, special: true },
+      { ...typescript, special: true },
       tailwind,
       supabase,
-      prisma,
       tmdb,
       framerMotion,
       formik,
@@ -50,11 +53,6 @@ const filmOrganizer: ProjectType = {
       swiper,
       redux,
    ],
-   isFinished: true,
-   translations: {
-      english: filmOrganizerEnglish,
-      spanish: filmOrganizerSpanish,
-   },
 };
 
 export default filmOrganizer;

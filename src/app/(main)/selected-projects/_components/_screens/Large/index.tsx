@@ -8,8 +8,8 @@ import ProjectSelector from "./ProjectSelector";
 import SelectedProject from "./SelectedProject";
 import PageDescription from "@/components/Typography/PageDescription";
 import usePreloaderContext from "@/modules/preloader/context/PreloaderContext";
-import { ENTER_EASE } from "@/constants/TRANSITIONS";
-import { motion } from "framer-motion";
+import ProjectSelectorContainer from "./ProjectSelectorContainer";
+import SelectedProjectContainer from "./SelectedProjectContainer";
 
 type Props = {};
 
@@ -20,6 +20,7 @@ export default function Large({}: Props) {
    const [currentIndex, setCurrentIndex] = useState<number>(0);
 
    const { isLoaded } = usePreloaderContext();
+
    return (
       <div className="w-full h-svh flex items-center justify-center overflow-hidden">
          <div className="flex-2 h-full flex flex-col justify-center items-center relative">
@@ -31,15 +32,7 @@ export default function Large({}: Props) {
                   </div>
                </>
             )}
-            <motion.div
-               initial={{ y: "100%", opacity: 0 }}
-               animate={{
-                  y: isLoaded ? "0%" : "100%",
-                  opacity: isLoaded ? 1 : 0,
-               }}
-               transition={ENTER_EASE}
-               className="absolute bottom-8 w-full h-32 flex justify-center gap-1"
-            >
+            <ProjectSelectorContainer>
                {SELECTED_PROJECTS.map((project, index) => (
                   <ProjectSelector
                      key={project.title}
@@ -48,20 +41,12 @@ export default function Large({}: Props) {
                      isSelected={index === currentIndex}
                   />
                ))}
-            </motion.div>
+            </ProjectSelectorContainer>
          </div>
          <div className="flex-1 h-full">
-            <motion.div
-               initial={{ x: "100%", opacity: 0 }}
-               animate={{
-                  x: isLoaded ? "0%" : "100%",
-                  opacity: isLoaded ? 1 : 0,
-               }}
-               transition={ENTER_EASE}
-               className="w-full h-full pr-8 flex items-center justify-center"
-            >
+            <SelectedProjectContainer>
                <SelectedProject currentIndex={currentIndex} />
-            </motion.div>
+            </SelectedProjectContainer>
          </div>
       </div>
    );

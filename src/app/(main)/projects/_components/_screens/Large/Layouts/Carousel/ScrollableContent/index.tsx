@@ -7,6 +7,7 @@ import useHoveredTitle from "@/app/(main)/projects/_hooks/useHoveredTitle";
 import useProjectAutoScroll from "@/app/(main)/projects/_hooks/useProjectAutoScroll";
 import { useEffect } from "react";
 import CarouselProjectCard from "@/app/(main)/projects/_components/_screens/Large/Layouts/Carousel/CarouselProjectCard";
+import { useLenis } from "lenis/react";
 
 type Props = {
    isInitialAnimation: boolean;
@@ -37,6 +38,13 @@ export default function ScrollableContent({
       if (project.link === selectedP?.link) return;
       setSelectedP(project);
    };
+
+   const lenis = useLenis();
+   useEffect(() => {
+      if (!lenis) return;
+      if (openedLink) lenis.stop();
+      else lenis.start();
+   }, [openedLink]);
 
    return (
       <>

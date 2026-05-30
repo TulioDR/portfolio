@@ -35,12 +35,12 @@ export default function ProjectDetailsPageContent({
             className="w-full h-full overflow-y-auto [&::-webkit-scrollbar]:hidden relative"
          >
             <PageHeader project={project} />
-            <div className="w-full px-24 pb-4 overflow-hidden -mt-36">
+            <div className="w-full px-4 xl:px-24 pb-24 xl:pb-4 overflow-hidden -mt-36">
                <motion.div
                   initial={{ y: "9rem" }}
                   animate={{ y: "0rem" }}
                   transition={ENTER_EASE}
-                  className="bg-text w-full flex flex-col gap-32 p-8 2xl:p-24"
+                  className="bg-text w-full flex flex-col gap-16 xl:gap-32 p-4 xl:p-8 2xl:p-24"
                >
                   <Description project={project} />
                   <TechStack techStack={project.techStack} />

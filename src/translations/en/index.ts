@@ -7,6 +7,7 @@ import selectedProjectsTR from "./selectedProjectsTR";
 
 import navigationTR from "./navigationTR";
 import TranslationType from "../types";
+import projectDetailsTR from "./projectDetailsTR";
 
 const english: TranslationType = {
    home: homeTR,
@@ -16,6 +17,7 @@ const english: TranslationType = {
    contact: contactTR,
    selectedProjects: selectedProjectsTR,
    navigation: navigationTR,
+   projectDetails: projectDetailsTR,
 };
 
 export default english;
