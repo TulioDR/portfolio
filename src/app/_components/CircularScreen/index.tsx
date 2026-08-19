@@ -57,7 +57,7 @@ export default function CircularScreen({ selectedIcon }: Props) {
               exit={{ scale: 0 }}
               transition={{ duration: 0.1 }}
               style={{ transformStyle: "preserve-3d" }}
-              className={`absolute inset-0 flex items-center justify-center lg:scale-50 xl:scale-50 2xl:scale-100 ${ICON_SELECTOR}`}
+              className={`absolute inset-0 flex items-center justify-center scale-30 xl:scale-50 2xl:scale-100 ${ICON_SELECTOR}`}
             >
               {currentIcon === "home" && <HomeIcon />}
               {currentIcon === "mail" && <ContactIcon />}

@@ -12,7 +12,7 @@ export default function HomeTitleText({}: Props) {
         textShadow:
           "-1px -1px 0 #e5e7eb, 1px -1px 0 #e5e7eb, -1px 1px 0 #e5e7eb, 1px 1px 0 #e5e7eb",
       }}
-      className="flex 2xl:flex-col gap-3 2xl:gap-0 items-center xl:items-start font-black uppercase text-black text-[12vw] md:text-[7vw] xl:text-[4vw] 2xl:xl:text-[5vw] leading-[0.9]"
+      className="flex flex-col xl:flex-row 2xl:flex-col gap-3 2xl:gap-0 items-center xl:items-start font-black uppercase text-black text-[12vw] md:text-[4vw] xl:text-[4vw] 2xl:xl:text-[5vw] leading-[0.9]"
     >
       <AnimatedText initial text={title1} className="w-max" />
       <AnimatedText initial text={title2} className="w-max" />
