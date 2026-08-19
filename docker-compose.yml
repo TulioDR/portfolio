@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    image: portfolio-image
+    container_name: portfolio-app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true
+      - NEXT_TELEMETRY_DISABLED=1

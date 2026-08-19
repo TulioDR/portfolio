@@ -10,71 +10,71 @@ import useHomeContext from "@/app/_context/HomeContext";
 import Link from "next/link";
 
 type Props = {
-   onMouseEnter?: () => void;
-   onMouseLeave?: () => void;
-   number: number;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  number: number;
 };
 
 export default function SelectedProjectsButton({
-   onMouseEnter,
-   onMouseLeave,
-   number,
+  onMouseEnter,
+  onMouseLeave,
+  number,
 }: Props) {
-   const [restart, setRestart] = useState(false);
-   const [isHovered, setIsHovered] = useState(false);
-   const { language } = useLanguageContext();
-   const { selectedProjects } = language.home.panel;
+  const [restart, setRestart] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const { language } = useLanguageContext();
+  const { selectedProjects } = language.home.panel;
 
-   const HREF = "/selected-projects";
-   const { exitAnimation } = useHomeContext();
+  const HREF = "/selected-projects";
+  const { exitAnimation } = useHomeContext();
 
-   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-      console.log("clicked");
-      e.preventDefault();
-      exitAnimation(HREF);
-   };
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    console.log("clicked");
+    e.preventDefault();
+    exitAnimation(HREF);
+  };
 
-   const handleEnter = () => {
-      onMouseEnter && onMouseEnter();
-      setRestart((prev) => !prev);
-      setIsHovered(true);
-   };
+  const handleEnter = () => {
+    onMouseEnter && onMouseEnter();
+    setRestart((prev) => !prev);
+    setIsHovered(true);
+  };
 
-   const handleLeave = () => {
-      onMouseLeave && onMouseLeave();
-      setIsHovered(false);
-   };
+  const handleLeave = () => {
+    onMouseLeave && onMouseLeave();
+    setIsHovered(false);
+  };
 
-   return (
-      <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent lg:p-1 ">
-         <div className="w-full h-full border lg:border-4 border-white lg:border-black rounded lg:rounded-lg overflow-hidden relative">
-            {isHovered && <Tooltip number={number} />}
-            <Link
-               href={HREF}
-               onClick={handleClick}
-               onPointerEnter={handleEnter}
-               onPointerLeave={handleLeave}
-               className="absolute inset-0 bg-black/50 flex items-center pl-2 lg:pl-8 z-10 hover:bg-black active:bg-black cursor-pointer pointer-events-auto"
-            >
-               <AnimatedText
-                  restart={restart}
-                  text={selectedProjects}
-                  className="text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-5xl text-left font-black uppercase w-min tracking-tighter pointer-events-none text-white"
-               />
-            </Link>
-            <Swiper
-               loop={true}
-               autoplay={{ delay: 3000 }}
-               className="h-full!"
-               modules={[Autoplay]}
-            >
-               {SELECTED_PROJECTS.map(({ showcaseImg, link }) => (
-                  <SwiperSlide key={link} className="h-full!">
-                     <ProjectSlide src={showcaseImg} alt={link} />
-                  </SwiperSlide>
-               ))}
-            </Swiper>
-         </div>
+  return (
+    <div className="w-full h-full rounded-xl shadow-lg bg-linear-to-l from-accent to-light-accent lg:p-1 ">
+      <div className="w-full h-full border lg:border-4 border-white lg:border-black rounded lg:rounded-lg overflow-hidden relative">
+        {isHovered && <Tooltip number={number} />}
+        <Link
+          href={HREF}
+          onClick={handleClick}
+          onPointerEnter={handleEnter}
+          onPointerLeave={handleLeave}
+          className="absolute inset-0 bg-black/50 flex items-center pl-2 lg:pl-10 z-10 hover:bg-black active:bg-black cursor-pointer pointer-events-auto"
+        >
+          <AnimatedText
+            restart={restart}
+            text={selectedProjects}
+            className="text-2xl sm:text-3xl md:text-4xl xl:text-2xl 2xl:text-4xl text-left font-black uppercase w-min tracking-tighter pointer-events-none text-white"
+          />
+        </Link>
+        <Swiper
+          loop={true}
+          autoplay={{ delay: 3000 }}
+          className="h-full!"
+          modules={[Autoplay]}
+        >
+          {SELECTED_PROJECTS.map(({ showcaseImg, link }) => (
+            <SwiperSlide key={link} className="h-full!">
+              <ProjectSlide src={showcaseImg} alt={link} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-   );
+    </div>
+  );
 }
